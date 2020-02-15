@@ -1,0 +1,15 @@
+{
+  "name": "google-home-notifier-api",
+  "version": "0.0.1",
+  "description": "Web API for send notifications to Google Home",
+  "author": "INOUE Takuya <inouetakuya5@gmail.com>",
+  "private": true,
+  "license": "MIT",
+  "scripts": {
+    "dev": "node app.js"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {}
+}
