@@ -6,11 +6,14 @@
   "private": true,
   "license": "MIT",
   "scripts": {
-    "dev": "node app.js"
+    "dev": "node src/index.js"
   },
   "dependencies": {
     "express": "^4.17.1",
     "ngrok": "^3.2.7"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "@types/express": "^4.17.2",
+    "typescript": "^3.7.5"
+  }
 }
