@@ -1,7 +1,7 @@
 import { Request, Response } from 'express'
 
-const express = require('express')
-const ngrok = require('ngrok')
+const express = require('express') // eslint-disable-line @typescript-eslint/no-var-requires
+const ngrok = require('ngrok') // eslint-disable-line @typescript-eslint/no-var-requires
 
 const app = express()
 
