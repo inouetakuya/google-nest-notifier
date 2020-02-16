@@ -1,5 +1,7 @@
 # google-home-notifier-api
 
+[![CircleCI](https://circleci.com/gh/inouetakuya/google-home-notifier-api.svg?style=svg)](https://circleci.com/gh/inouetakuya/google-home-notifier-api)
+
 Web API for Send notifications to Google Home
 
 ## Setup
