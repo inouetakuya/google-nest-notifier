@@ -6,7 +6,8 @@
   "private": true,
   "license": "MIT",
   "scripts": {
-    "dev": "node src/index.js"
+    "dev": "node dist/index.js",
+    "build": "tsc"
   },
   "dependencies": {
     "express": "^4.17.1",
