@@ -8,6 +8,10 @@ Web API for Send notifications to Google Home
 npm install
 ```
 
+```shell
+cp .env.example .env
+```
+
 ## Development
 
 ```shell
