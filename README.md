@@ -14,6 +14,13 @@ npm install
 npm run dev
 ```
 
+## Production
+
+```shell
+npm run build
+npm run start
+```
+
 ## License
 
 See LICENSE
