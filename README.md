@@ -13,3 +13,7 @@ npm install
 ```shell
 npm run dev
 ```
+
+## License
+
+See LICENSE
