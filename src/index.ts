@@ -12,7 +12,17 @@ const server = app.listen(process.env.PORT || 3000, async () => {
   const port = server.address().port
 
   if (process.env.NODE_ENV === 'production') {
-    const ngrokUrl = await ngrok.connect({ port })
+    const ngrokOptions = { port }
+
+    if (process.env.NGROK_TOKEN === 'PLEASE_SET_YOUR_NGROK_TOKEN') {
+      console.warn(
+        "Please sign up ngrok and set your token to .env so that your tunnels don't time out"
+      )
+    } else if (process.env.NGROK_TOKEN) {
+      Object.assign(ngrokOptions, { authtoken: process.env.NGROK_TOKEN })
+    }
+
+    const ngrokUrl = await ngrok.connect(ngrokOptions)
     console.log(`Forwarding: ${ngrokUrl} -> localhost:${port}`)
   } else {
     console.log(`Development server: http://localhost:${port}`)
