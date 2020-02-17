@@ -25,6 +25,6 @@ const server = app.listen(process.env.PORT || 3000, async () => {
     const ngrokUrl = await ngrok.connect(ngrokOptions)
     console.log(`Forwarding: ${ngrokUrl} -> localhost:${port}`)
   } else {
-    console.log(`Development server: http://localhost:${port}`)
+    console.log(`API Server running on http://localhost:${port}`)
   }
 })

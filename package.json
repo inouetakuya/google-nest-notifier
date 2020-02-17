@@ -11,11 +11,12 @@
     "dev": "nodemon",
     "lint": "eslint src/index.ts",
     "lint:fix": "eslint --fix src/index.ts",
-    "test": "jest"
+    "test": "jest --verbose"
   },
   "dependencies": {
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "google-tts-api": "0.0.4",
     "ngrok": "^3.2.7"
   },
   "devDependencies": {

@@ -19,5 +19,6 @@
     "project": "./tsconfig.json"
   },
   "rules": {
+    "@typescript-eslint/ban-ts-ignore": "off"
   }
 }
