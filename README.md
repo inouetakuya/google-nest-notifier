@@ -37,4 +37,4 @@ npm run start
 
 ## License
 
-See LICENSE
+See [LICENSE](./LICENSE)
