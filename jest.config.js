@@ -7,7 +7,5 @@ module.exports = {
   },
   moduleFileExtensions: ['js', 'ts', 'vue', 'json'],
   collectCoverage: true,
-  collectCoverageFrom: [
-    '<rootDir>/src/**/*.ts'
-  ]
+  collectCoverageFrom: ['<rootDir>/src/**/*.ts']
 }
