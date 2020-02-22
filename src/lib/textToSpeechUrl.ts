@@ -1,4 +1,4 @@
-// @ts-ignore TS7016: Could not find a declaration file for module 'google-tts-api'.
+// @ts-ignore TS7016: Could not find a declaration file for module 'google-tts-api'
 import googleTtsApi from 'google-tts-api'
 
 export default function textToSpeechUrl({
