@@ -22,4 +22,14 @@ describe('GoogleHomeClient', () => {
       expect(mockedCastv2Client.connect).toHaveBeenCalled()
     })
   })
+
+  describe('launch', () => {
+    test('returns player', async () => {
+      const client = new GoogleHomeClient('192.168.3.18')
+      await client.connect()
+      await expect(client.launch()).resolves.toBeInstanceOf(
+        castv2.DefaultMediaReceiver
+      )
+    })
+  })
 })

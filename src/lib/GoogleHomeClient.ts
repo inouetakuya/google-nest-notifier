@@ -1,3 +1,5 @@
+import util from 'util'
+
 // @ts-ignore TS7016: Could not find a declaration file for module 'castv2-client'
 import castv2 from 'castv2-client'
 
@@ -13,5 +15,13 @@ export default class GoogleHomeClient {
         resolve()
       })
     })
+  }
+
+  launch(): Promise<castv2.DefaultMediaReceiver> {
+    const promisifiedLaunch = util
+      .promisify(this.client.launch)
+      .bind(this.client)
+
+    return promisifiedLaunch(castv2.DefaultMediaReceiver)
   }
 }
