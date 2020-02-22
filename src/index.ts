@@ -1,10 +1,17 @@
 import dotenv from 'dotenv'
-import express, { Request, Response } from 'express'
+import express, { Request, Response, NextFunction } from 'express'
 import * as ngrok from 'ngrok'
 
 dotenv.config()
 
 const app = express()
+
+app.use((request: Request, response: Response, next: NextFunction) => {
+  console.log(
+    `Received request: ${request.method} ${request.url} from ${request.headers['user-agent']}`
+  )
+  next()
+})
 
 app.get('/', (req: Request, res: Response) => res.send('Hello World!'))
 
