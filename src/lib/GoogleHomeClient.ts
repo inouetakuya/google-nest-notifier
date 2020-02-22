@@ -1,5 +1,3 @@
-import util from 'util'
-
 // @ts-ignore TS7016: Could not find a declaration file for module 'castv2-client'
 import castv2 from 'castv2-client'
 
