@@ -11,7 +11,7 @@
     "dev": "nodemon",
     "lint": "eslint --ext .js,.ts --ignore-path .gitignore .",
     "lint:fix": "eslint --ext .js,.ts --ignore-path .gitignore . --fix",
-    "test": "jest --verbose"
+    "test": "jest --verbose --runInBand --detectOpenHandles"
   },
   "dependencies": {
     "castv2-client": "^1.2.0",

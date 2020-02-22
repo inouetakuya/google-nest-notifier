@@ -35,6 +35,8 @@ export default class GoogleHomeClient {
     }
 
     const status = await this.loadMedia({ player, media })
+    this.close()
+
     return status
   }
 
@@ -90,5 +92,9 @@ export default class GoogleHomeClient {
         }
       )
     })
+  }
+
+  close(): void {
+    this.client.close()
   }
 }
