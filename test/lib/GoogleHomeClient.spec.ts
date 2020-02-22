@@ -13,12 +13,13 @@ describe('GoogleHomeClient', () => {
 
   describe('connect', () => {
     const mockedCastv2Client = {
-      connect: (ip: string, callback: Function) => callback()
+      connect: jest.fn((ip: string, callback: Function) => callback())
     }
 
     test('connects to GoogleHome', async () => {
       const client = new GoogleHomeClient('xxx.xxx.xxx.xxx', mockedCastv2Client)
       await expect(client.connect()).resolves.toBe(undefined)
+      expect(mockedCastv2Client.connect).toHaveBeenCalled()
     })
   })
 })
