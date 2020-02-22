@@ -10,35 +10,44 @@ jest.mock('util', () => ({
 }))
 
 describe('GoogleHomeClient', () => {
+  let client: GoogleHomeClient
   const dummyIp = '192.168.3.1'
+  let mockedCastv2Client: castv2.Client
+
+  beforeEach(() => {
+    mockedCastv2Client = {
+      connect: jest.fn((ip: string, callback: Function) => callback())
+    }
+  })
 
   describe('constructor', () => {
+    beforeEach(() => {
+      client = new GoogleHomeClient(dummyIp)
+    })
+
     test('sets castv2.Client', () => {
-      const client = new GoogleHomeClient(dummyIp)
       expect(client.ip).toBe(dummyIp)
       expect(client.client).toBeInstanceOf(castv2.Client)
     })
   })
 
   describe('connect', () => {
-    const mockedCastv2Client = {
-      connect: jest.fn((ip: string, callback: Function) => callback())
-    }
+    beforeEach(() => {
+      client = new GoogleHomeClient(dummyIp, mockedCastv2Client)
+    })
 
     test('connects to GoogleHome', async () => {
-      const client = new GoogleHomeClient(dummyIp, mockedCastv2Client)
       await expect(client.connect()).resolves.toBe(undefined)
       expect(mockedCastv2Client.connect).toHaveBeenCalled()
     })
   })
 
   describe('launch', () => {
-    const mockedCastv2Client = {
-      connect: jest.fn((ip: string, callback: Function) => callback())
-    }
+    beforeEach(() => {
+      client = new GoogleHomeClient(dummyIp, mockedCastv2Client)
+    })
 
     test('returns player', async () => {
-      const client = new GoogleHomeClient(dummyIp, mockedCastv2Client)
       await client.connect()
       // await expect(client.launch()).resolves.toBeInstanceOf(
       //   castv2.DefaultMediaReceiver
@@ -51,15 +60,18 @@ describe('GoogleHomeClient', () => {
     const player = {
       load: jest.fn((media, options, callback) => callback())
     }
+    const media = {
+      contentId:
+        'https://translate.google.com/translate_tts?ie=UTF-8&q=Hello%20world&tl=ja&total=1&idx=0&textlen=11&tk=355595.252309&client=t&prev=input&ttsspeed=1',
+      contentType: 'video/mp3',
+      streamType: 'BUFFERED'
+    }
+
+    beforeEach(() => {
+      client = new GoogleHomeClient(dummyIp, mockedCastv2Client)
+    })
 
     test('loads media', async () => {
-      const client = new GoogleHomeClient(dummyIp)
-      const media = {
-        contentId:
-          'https://translate.google.com/translate_tts?ie=UTF-8&q=Hello%20world&tl=ja&total=1&idx=0&textlen=11&tk=355595.252309&client=t&prev=input&ttsspeed=1',
-        contentType: 'video/mp3',
-        streamType: 'BUFFERED'
-      }
       await expect(client.loadMedia({ player, media })).resolves
     })
   })
