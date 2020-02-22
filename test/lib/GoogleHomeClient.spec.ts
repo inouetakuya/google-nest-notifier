@@ -5,9 +5,20 @@ import GoogleHomeClient from '~/lib/GoogleHomeClient'
 describe('GoogleHomeClient', () => {
   describe('constructor', () => {
     test('sets castv2.Client', () => {
-      const client = new GoogleHomeClient('192.168.3.1')
-      expect(client.ip).toBe('192.168.3.1')
-      expect(client.castv2Client).toBeInstanceOf(castv2.Client)
+      const client = new GoogleHomeClient('xxx.xxx.xxx.xxx')
+      expect(client.ip).toBe('xxx.xxx.xxx.xxx')
+      expect(client.client).toBeInstanceOf(castv2.Client)
+    })
+  })
+
+  describe('connect', () => {
+    const mockedCastv2Client = {
+      connect: (ip: string, callback: Function) => callback()
+    }
+
+    test('connects to GoogleHome', async () => {
+      const client = new GoogleHomeClient('xxx.xxx.xxx.xxx', mockedCastv2Client)
+      await expect(client.connect()).resolves.toBe(undefined)
     })
   })
 })
