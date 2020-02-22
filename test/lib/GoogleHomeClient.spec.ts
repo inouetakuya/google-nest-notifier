@@ -2,12 +2,12 @@
 import castv2 from 'castv2-client'
 import GoogleHomeClient from '~/lib/GoogleHomeClient'
 
-jest.mock('util', () => ({
-  inherits: () => jest.fn(),
-
-  // castv2.DefaultMediaReceiver を返すようにするには複雑すぎる
-  promisify: () => jest.fn().mockResolvedValue({})
-}))
+// jest.mock('util', () => ({
+//   inherits: () => jest.fn(),
+//
+//   // castv2.DefaultMediaReceiver を返すようにするには複雑すぎる
+//   promisify: () => jest.fn().mockResolvedValue({})
+// }))
 
 describe('GoogleHomeClient', () => {
   const dummyIp = '192.168.3.1'
@@ -32,18 +32,33 @@ describe('GoogleHomeClient', () => {
     })
   })
 
-  describe('launch', () => {
-    const mockedCastv2Client = {
-      connect: jest.fn((ip: string, callback: Function) => callback())
-    }
+  // describe('launch', () => {
+  //   const mockedCastv2Client = {
+  //     connect: jest.fn((ip: string, callback: Function) => callback())
+  //   }
+  //
+  //   test('returns player', async () => {
+  //     const client = new GoogleHomeClient(dummyIp, mockedCastv2Client)
+  //     await client.connect()
+  //     // await expect(client.launch()).resolves.toBeInstanceOf(
+  //     //   castv2.DefaultMediaReceiver
+  //     // )
+  //     await expect(client.launch()).resolves
+  //   })
+  // })
 
-    test('returns player', async () => {
-      const client = new GoogleHomeClient(dummyIp, mockedCastv2Client)
+  describe('loadMedia', () => {
+    test('loads media', async () => {
+      const client = new GoogleHomeClient('192.168.3.18')
       await client.connect()
-      // await expect(client.launch()).resolves.toBeInstanceOf(
-      //   castv2.DefaultMediaReceiver
-      // )
-      await expect(client.launch()).resolves
+      const player = await client.launch()
+      const media = {
+        contentId:
+          'https://translate.google.com/translate_tts?ie=UTF-8&q=Hello%20world&tl=ja&total=1&idx=0&textlen=11&tk=355595.252309&client=t&prev=input&ttsspeed=1',
+        contentType: 'video/mp3',
+        streamType: 'BUFFERED'
+      }
+      await expect(client.loadMedia({ player, media })).resolves
     })
   })
 })

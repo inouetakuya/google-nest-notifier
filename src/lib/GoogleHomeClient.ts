@@ -3,6 +3,12 @@ import util from 'util'
 // @ts-ignore TS7016: Could not find a declaration file for module 'castv2-client'
 import castv2 from 'castv2-client'
 
+interface Media {
+  contentId: string
+  contentType: string // contentType: 'video/mp3'
+  streamType: string // streamType: 'BUFFERED'
+}
+
 export default class GoogleHomeClient {
   constructor(public ip: string, public client = new castv2.Client()) {}
 
@@ -23,5 +29,16 @@ export default class GoogleHomeClient {
       .bind(this.client)
 
     return promisifiedLaunch(castv2.DefaultMediaReceiver)
+  }
+
+  loadMedia({
+    player,
+    media
+  }: {
+    player: castv2.DefaultMediaReceiver
+    media: Media
+  }): Promise<unknown> {
+    const promisifiedLoad = util.promisify(player.load).bind(player)
+    return promisifiedLoad(media, { autoplay: true })
   }
 }
