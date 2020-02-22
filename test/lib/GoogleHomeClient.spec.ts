@@ -2,6 +2,7 @@
 import castv2 from 'castv2-client'
 import GoogleHomeClient from '~/lib/GoogleHomeClient'
 
+const ip = 'xxx.xxx.xxx.xxx' // Your Google Home IP Address for debugging
 const dummyIp = '192.168.3.1'
 const speechUrl =
   'https://translate.google.com/translate_tts?ie=UTF-8&q=Hello%20world&tl=ja&total=1&idx=0&textlen=11&tk=355595.252309&client=t&prev=input&ttsspeed=1'
@@ -36,7 +37,7 @@ describe('GoogleHomeClient', () => {
   describe.skip('Debugging', () => {
     describe('notify()', () => {
       beforeEach(() => {
-        client = new GoogleHomeClient('192.168.3.18')
+        client = new GoogleHomeClient(ip)
       })
 
       test('makes Google Home to load media and returns status', async () => {
