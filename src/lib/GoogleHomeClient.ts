@@ -21,8 +21,11 @@ export default class GoogleHomeClient {
     })
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  async notify({ speechUrl }: { speechUrl: string }): Promise<any> {
+  async notify({
+    speechUrl
+  }: {
+    speechUrl: string
+  }): Promise<Record<string, any>> {
     await this.connect()
     const player = await this.launch()
 
@@ -79,12 +82,12 @@ export default class GoogleHomeClient {
   }: {
     player: castv2.DefaultMediaReceiver
     media: Media
-  }): Promise<unknown> {
+  }): Promise<Record<string, any>> {
     return new Promise((resolve, reject) => {
       player.load(
         media,
         { autoplay: true },
-        (error: Error, status: unknown) => {
+        (error: Error, status: Record<string, any>) => {
           if (error) reject(error)
           resolve(status)
         }
