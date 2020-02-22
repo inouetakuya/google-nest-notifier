@@ -2,9 +2,12 @@
 import castv2 from 'castv2-client'
 import GoogleHomeClient from '~/lib/GoogleHomeClient'
 
+const dummyIp = '192.168.3.1'
+const speechUrl =
+  'https://translate.google.com/translate_tts?ie=UTF-8&q=Hello%20world&tl=ja&total=1&idx=0&textlen=11&tk=355595.252309&client=t&prev=input&ttsspeed=1'
+
 describe('GoogleHomeClient', () => {
   let client: GoogleHomeClient
-  const dummyIp = '192.168.3.1'
   let mockedCastv2Client: castv2.Client
 
   beforeEach(() => {
@@ -17,7 +20,7 @@ describe('GoogleHomeClient', () => {
     }
   })
 
-  describe('constructor', () => {
+  describe('constructor()', () => {
     beforeEach(() => {
       client = new GoogleHomeClient(dummyIp)
     })
@@ -28,18 +31,29 @@ describe('GoogleHomeClient', () => {
     })
   })
 
-  describe('connect', () => {
+  describe('notify()', () => {
+    beforeEach(() => {
+      client = new GoogleHomeClient('192.168.3.18')
+    })
+
+    test('makes Google Home to load media and returns status', async () => {
+      const status = await client.notify({ speechUrl })
+      expect(status.volume.muted).toBe(false)
+    })
+  })
+
+  describe('connect()', () => {
     beforeEach(() => {
       client = new GoogleHomeClient(dummyIp, mockedCastv2Client)
     })
 
-    test('connects to GoogleHome', async () => {
+    test('connects to Google Home', async () => {
       await expect(client.connect()).resolves.toBe(undefined)
       expect(mockedCastv2Client.connect).toHaveBeenCalled()
     })
   })
 
-  describe('launch', () => {
+  describe('launch()', () => {
     beforeEach(() => {
       client = new GoogleHomeClient(dummyIp, mockedCastv2Client)
     })
@@ -53,13 +67,12 @@ describe('GoogleHomeClient', () => {
     })
   })
 
-  describe('loadMedia', () => {
+  describe('loadMedia()', () => {
     const player = {
       load: jest.fn((media, options, callback) => callback())
     }
     const media = {
-      contentId:
-        'https://translate.google.com/translate_tts?ie=UTF-8&q=Hello%20world&tl=ja&total=1&idx=0&textlen=11&tk=355595.252309&client=t&prev=input&ttsspeed=1',
+      contentId: speechUrl,
       contentType: 'video/mp3',
       streamType: 'BUFFERED'
     }

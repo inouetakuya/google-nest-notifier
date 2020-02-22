@@ -23,6 +23,21 @@ export default class GoogleHomeClient {
     })
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  async notify({ speechUrl }: { speechUrl: string }): Promise<any> {
+    await this.connect()
+    const player = await this.launch()
+
+    const media: Media = {
+      contentId: speechUrl,
+      contentType: 'video/mp3',
+      streamType: 'BUFFERED'
+    }
+
+    const status = await this.loadMedia({ player, media })
+    return status
+  }
+
   // util.promisify() を使う書き方はモックの作成と削除が難しかったので手動で Promise にしている
   //
   // launch(): Promise<castv2.DefaultMediaReceiver> {
