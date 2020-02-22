@@ -23,13 +23,40 @@ export default class GoogleHomeClient {
     })
   }
 
-  launch(): Promise<castv2.DefaultMediaReceiver> {
-    const promisifiedLaunch = util
-      .promisify(this.client.launch)
-      .bind(this.client)
+  // util.promisify() を使う書き方はモックの作成と削除が難しかったので手動で Promise にしている
+  //
+  // launch(): Promise<castv2.DefaultMediaReceiver> {
+  //   const promisifiedLaunch = util
+  //     .promisify(this.client.launch)
+  //     .bind(this.client)
+  //
+  //   return promisifiedLaunch(castv2.DefaultMediaReceiver)
+  // }
 
-    return promisifiedLaunch(castv2.DefaultMediaReceiver)
+  launch(): Promise<castv2.DefaultMediaReceiver> {
+    return new Promise((resolve, reject) => {
+      this.client.launch(
+        castv2.DefaultMediaReceiver,
+        (error: Error, player: castv2.DefaultMediaReceiver) => {
+          if (error) return reject(error)
+          resolve(player)
+        }
+      )
+    })
   }
+
+  // util.promisify() を使う書き方はモックの作成と削除が難しかったので手動で Promise にしている
+  //
+  // loadMedia({
+  //   player,
+  //   media
+  // }: {
+  //   player: castv2.DefaultMediaReceiver
+  //   media: Media
+  // }): Promise<unknown> {
+  //   const promisifiedLoad = util.promisify(player.load).bind(player)
+  //   return promisifiedLoad(media, { autoplay: true })
+  // }
 
   loadMedia({
     player,
@@ -38,7 +65,15 @@ export default class GoogleHomeClient {
     player: castv2.DefaultMediaReceiver
     media: Media
   }): Promise<unknown> {
-    const promisifiedLoad = util.promisify(player.load).bind(player)
-    return promisifiedLoad(media, { autoplay: true })
+    return new Promise((resolve, reject) => {
+      player.load(
+        media,
+        { autoplay: true },
+        (error: Error, status: unknown) => {
+          if (error) reject(error)
+          resolve(status)
+        }
+      )
+    })
   }
 }

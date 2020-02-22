@@ -2,13 +2,6 @@
 import castv2 from 'castv2-client'
 import GoogleHomeClient from '~/lib/GoogleHomeClient'
 
-jest.mock('util', () => ({
-  inherits: () => jest.fn(),
-
-  // castv2.DefaultMediaReceiver や status を返すようにするには複雑すぎる
-  promisify: () => jest.fn().mockResolvedValue({})
-}))
-
 describe('GoogleHomeClient', () => {
   let client: GoogleHomeClient
   const dummyIp = '192.168.3.1'
@@ -16,7 +9,11 @@ describe('GoogleHomeClient', () => {
 
   beforeEach(() => {
     mockedCastv2Client = {
-      connect: jest.fn((ip: string, callback: Function) => callback())
+      connect: jest.fn((ip: string, callback: Function) => callback()),
+      launch: jest.fn(
+        (Application: castv2.DefaultMediaReceiver, callback: Function) =>
+          callback(null, new Application())
+      )
     }
   })
 
