@@ -27,7 +27,7 @@ describe('notificationController', () => {
         request = httpMocks.createRequest({
           method: 'POST',
           url: '/notifications',
-          params: {
+          body: {
             ipAddress: dummyIpAddress,
             text: 'Hello world'
           }
@@ -51,7 +51,7 @@ describe('notificationController', () => {
         request = httpMocks.createRequest({
           method: 'POST',
           url: '/notifications',
-          params: {
+          body: {
             text: 'Hello world'
           }
         })
@@ -72,7 +72,7 @@ describe('notificationController', () => {
         request = httpMocks.createRequest({
           method: 'POST',
           url: '/notifications',
-          params: {
+          body: {
             ipAddress: dummyIpAddress
           }
         })

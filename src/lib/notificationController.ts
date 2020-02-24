@@ -5,10 +5,10 @@ import GoogleHomeClient from '~/lib/GoogleHomeClient'
 const notificationController = {
   create: (request: Request, response: Response, next: NextFunction) => {
     ;(async () => {
-      const ipAddress = request.params.ipAddress
+      const ipAddress = request.body.ipAddress
       if (!ipAddress) throw new Error('ipAddress is required')
 
-      const text = request.params.text
+      const text = request.body.text
       if (!text) throw new Error('text is required')
 
       const speechUrl: string = await textToSpeechUrl({

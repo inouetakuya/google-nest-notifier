@@ -22,6 +22,14 @@ Please sign up ngrok and set your token to `.env` so that your tunnels don't tim
 npm run dev
 ```
 
+```shell
+curl -X POST -H "Accept: application/json" -H 'Content-Type:application/json' -d '{"ipAddress":"192.168.3.18","text":"Hello"}' http://localhost:3000/notifications
+```
+
+```shell
+curl -X POST -H "Accept: application/json" -H 'Content-Type:application/json' -d '{"ipAddress":"192.168.3.18","text":"日本語でおk"}' http://localhost:3000/notifications
+```
+
 ## Testing
 
 ```shell

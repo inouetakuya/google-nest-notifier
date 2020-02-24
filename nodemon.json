@@ -4,5 +4,5 @@
     "src"
   ],
   "ext": "ts",
-  "exec": "ts-node ./src/index.ts"
+  "exec": "ts-node --require tsconfig-paths/register ./src/index.ts"
 }

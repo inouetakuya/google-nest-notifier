@@ -1,10 +1,14 @@
 import dotenv from 'dotenv'
 import express, { Request, Response, NextFunction } from 'express'
 import * as ngrok from 'ngrok'
+import notificationController from '~/lib/notificationController'
 
 dotenv.config()
 
 const app = express()
+
+app.use(express.json())
+app.use(express.urlencoded({ extended: true }))
 
 app.use((request: Request, response: Response, next: NextFunction) => {
   console.log(
@@ -14,6 +18,8 @@ app.use((request: Request, response: Response, next: NextFunction) => {
 })
 
 app.get('/', (req: Request, res: Response) => res.send('Hello World!'))
+
+app.post('/notifications', notificationController.create)
 
 const server = app.listen(process.env.PORT || 3000, async () => {
   const port = server.address().port
