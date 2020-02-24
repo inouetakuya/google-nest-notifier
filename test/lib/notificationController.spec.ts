@@ -20,7 +20,6 @@ describe('notificationController', () => {
       eventEmitter: EventEmitter
     })
     const next = jest.fn()
-    const dummyIpAddress = '192.168.3.1'
 
     describe('when all required params is set', () => {
       beforeEach(() => {
@@ -28,7 +27,6 @@ describe('notificationController', () => {
           method: 'POST',
           url: '/notifications',
           body: {
-            ipAddress: dummyIpAddress,
             text: 'Hello world'
           }
         })
@@ -46,35 +44,12 @@ describe('notificationController', () => {
       })
     })
 
-    describe('when ipAddress is not set', () => {
-      beforeEach(() => {
-        request = httpMocks.createRequest({
-          method: 'POST',
-          url: '/notifications',
-          body: {
-            text: 'Hello world'
-          }
-        })
-      })
-
-      test('calls next() with Error', () => {
-        response.on('end', done => {
-          expect(next).toHaveBeenCalledWith(new Error('ipAddress is required'))
-          done()
-        })
-
-        notificationController.create(request, response, next)
-      })
-    })
-
     describe('when text is not set', () => {
       beforeEach(() => {
         request = httpMocks.createRequest({
           method: 'POST',
           url: '/notifications',
-          body: {
-            ipAddress: dummyIpAddress
-          }
+          body: {}
         })
       })
 

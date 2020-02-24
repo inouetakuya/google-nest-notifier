@@ -14,7 +14,8 @@ npm install
 cp .env.example .env
 ```
 
-Please sign up ngrok and set your token to `.env` so that your tunnels don't time out.
+- Please set your Google Home IP address to `.env`.
+- Please sign up ngrok and set your token to `.env` so that your tunnels don't time out.
 
 ## Development
 
@@ -23,11 +24,11 @@ npm run dev
 ```
 
 ```shell
-curl -X POST -H "Accept: application/json" -H 'Content-Type:application/json' -d '{"ipAddress":"192.168.3.18","text":"Hello"}' http://localhost:3000/notifications
+curl -X POST -H "Accept: application/json" -H 'Content-Type: application/json' -d '{"text":"Hello world"}' http://localhost:3000/notifications
 ```
 
 ```shell
-curl -X POST -H "Accept: application/json" -H 'Content-Type:application/json' -d '{"ipAddress":"192.168.3.18","text":"日本語でおk"}' http://localhost:3000/notifications
+curl -X POST -H "Accept: application/json" -H 'Content-Type: application/json' -d '{"text":"日本語でおk"}' http://localhost:3000/notifications
 ```
 
 ## Testing
@@ -41,6 +42,10 @@ npm run test
 ```shell
 npm run build
 npm run start
+```
+
+```shell
+curl -X POST -H "Accept: application/json" -H 'Content-Type: application/json' -d '{"text":"Hello world"}' https://xxxxxxxx.ngrok.io/notifications
 ```
 
 ## License
