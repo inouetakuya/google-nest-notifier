@@ -6,7 +6,7 @@
   "private": true,
   "license": "MIT",
   "scripts": {
-    "build": "tsc",
+    "build": "rm -rf dist/ && tsc",
     "start": "NODE_ENV=production node --require module-alias/register dist/index.js",
     "dev": "nodemon",
     "lint": "eslint --ext .js,.ts --ignore-path .gitignore .",
