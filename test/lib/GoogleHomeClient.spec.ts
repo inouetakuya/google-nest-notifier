@@ -2,8 +2,8 @@
 import castv2 from 'castv2-client'
 import GoogleHomeClient from '~/lib/GoogleHomeClient'
 
-const ip = 'xxx.xxx.xxx.xxx' // Your Google Home IP Address for debugging
-const dummyIp = '192.168.3.1'
+const ipAddress = 'xxx.xxx.xxx.xxx' // Your Google Home IP Address for debugging
+const dummyIpAddress = '192.168.3.1'
 const speechUrl =
   'https://translate.google.com/translate_tts?ie=UTF-8&q=Hello%20world&tl=ja&total=1&idx=0&textlen=11&tk=355595.252309&client=t&prev=input&ttsspeed=1'
 
@@ -23,11 +23,11 @@ describe('GoogleHomeClient', () => {
 
   describe('constructor()', () => {
     beforeEach(() => {
-      client = new GoogleHomeClient(dummyIp)
+      client = new GoogleHomeClient(dummyIpAddress)
     })
 
     test('sets castv2.Client', () => {
-      expect(client.ip).toBe(dummyIp)
+      expect(client.ipAddress).toBe(dummyIpAddress)
       expect(client.client).toBeInstanceOf(castv2.Client)
     })
   })
@@ -37,7 +37,7 @@ describe('GoogleHomeClient', () => {
   describe.skip('Debugging', () => {
     describe('notify()', () => {
       beforeEach(() => {
-        client = new GoogleHomeClient(ip)
+        client = new GoogleHomeClient(ipAddress)
       })
 
       test('makes Google Home to load media and returns status', async () => {
@@ -49,7 +49,7 @@ describe('GoogleHomeClient', () => {
 
   describe('connect()', () => {
     beforeEach(() => {
-      client = new GoogleHomeClient(dummyIp, mockedCastv2Client)
+      client = new GoogleHomeClient(dummyIpAddress, mockedCastv2Client)
     })
 
     test('connects to Google Home', async () => {
@@ -60,7 +60,7 @@ describe('GoogleHomeClient', () => {
 
   describe('launch()', () => {
     beforeEach(() => {
-      client = new GoogleHomeClient(dummyIp, mockedCastv2Client)
+      client = new GoogleHomeClient(dummyIpAddress, mockedCastv2Client)
     })
 
     test('returns player', async () => {
@@ -83,7 +83,7 @@ describe('GoogleHomeClient', () => {
     }
 
     beforeEach(() => {
-      client = new GoogleHomeClient(dummyIp, mockedCastv2Client)
+      client = new GoogleHomeClient(dummyIpAddress, mockedCastv2Client)
     })
 
     test('loads media', async () => {
