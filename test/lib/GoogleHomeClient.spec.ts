@@ -21,17 +21,6 @@ describe('GoogleHomeClient', () => {
     }
   })
 
-  describe('constructor()', () => {
-    beforeEach(() => {
-      client = new GoogleHomeClient(dummyIpAddress)
-    })
-
-    test('sets castv2.Client', () => {
-      expect(client.ipAddress).toBe(dummyIpAddress)
-      expect(client.client).toBeInstanceOf(castv2.Client)
-    })
-  })
-
   // FIXME: テストの位置を後ろに動かすとこける
   //   TypeError: Cannot read property 'transportId' of undefined
   describe.skip('Debugging', () => {
