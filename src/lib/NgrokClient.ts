@@ -17,10 +17,8 @@ export default class NgrokClient {
     this.setOptions()
   }
 
-  async connect(): Promise<string> {
-    const ngrokUrl = await this.client.connect(this.options)
-    console.log(`Forwarding: ${ngrokUrl} -> localhost:${this.options.port}`)
-    return ngrokUrl
+  connect(): Promise<string> {
+    return this.client.connect(this.options)
   }
 
   private setOptions(): void {
