@@ -7,16 +7,6 @@ describe('NgrokClient', () => {
   let client: NgrokClient
   let mockedNgrok
 
-  describe('constructor()', () => {
-    beforeEach(() => {
-      client = new NgrokClient(dummyPort)
-    })
-
-    test('sets options', () => {
-      expect(client.options.port).toBe(dummyPort)
-    })
-  })
-
   describe('connect()', () => {
     beforeEach(() => {
       mockedNgrok = {

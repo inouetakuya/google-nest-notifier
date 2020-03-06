@@ -8,7 +8,10 @@ interface Media {
 }
 
 export default class GoogleHomeClient {
-  constructor(public ipAddress: string, public client = new castv2.Client()) {}
+  constructor(
+    private ipAddress: string,
+    private client = new castv2.Client()
+  ) {}
 
   connect(): Promise<undefined> {
     // コールバック関数の最初の引数がエラーでないため手動で Promise にしている

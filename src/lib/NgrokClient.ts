@@ -10,9 +10,12 @@ interface MockedNgrok {
 }
 
 export default class NgrokClient {
-  public options: NgrokOptions = { port: 0 }
+  private options: NgrokOptions = { port: 0 }
 
-  constructor(port: number, public client: typeof ngrok | MockedNgrok = ngrok) {
+  constructor(
+    port: number,
+    private client: typeof ngrok | MockedNgrok = ngrok
+  ) {
     this.options.port = port
     this.setOptions()
   }
