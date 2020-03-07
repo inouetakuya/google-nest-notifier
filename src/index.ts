@@ -17,18 +17,17 @@ const app = express()
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
+// https://github.com/expressjs/morgan#combined の date format のみ変更
+const logFormat =
+  ':remote-addr - :remote-user [:date[iso]] ":method :url HTTP/:http-version" :status :res[content-length] ":referrer" ":user-agent"'
+
 const accessLogStream = fs.createWriteStream(
   path.join(__dirname, '../log/access.log'),
   { flags: 'a' }
 )
 
-app.use(
-  morgan(
-    // https://github.com/expressjs/morgan#combined の date format のみ変更
-    ':remote-addr - :remote-user [:date[iso]] ":method :url HTTP/:http-version" :status :res[content-length] ":referrer" ":user-agent"',
-    { stream: accessLogStream }
-  )
-)
+app.use(morgan(logFormat))
+app.use(morgan(logFormat, { stream: accessLogStream }))
 
 app.post('/notifications', notificationController.create)
 
