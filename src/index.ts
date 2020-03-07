@@ -14,7 +14,12 @@ const app = express()
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
-app.use(morgan('combined'))
+app.use(
+  morgan(
+    // https://github.com/expressjs/morgan#combined の date format のみ変更
+    ':remote-addr - :remote-user [:date[iso]] ":method :url HTTP/:http-version" :status :res[content-length] ":referrer" ":user-agent"'
+  )
+)
 
 app.post('/notifications', notificationController.create)
 
