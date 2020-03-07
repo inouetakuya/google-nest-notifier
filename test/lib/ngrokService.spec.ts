@@ -14,7 +14,7 @@ jest.mock('ngrok', () => {
   }
 })
 
-describe('NgrokService', () => {
+describe('ngrokService', () => {
   describe('connect()', () => {
     describe('when authtoken is set', () => {
       let ngrokUrl: string
