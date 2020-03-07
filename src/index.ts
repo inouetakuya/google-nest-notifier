@@ -12,6 +12,7 @@ import notificationController from '~/lib/notificationController'
 
 dotenv.config()
 
+const environment = process.env.NODE_ENV || 'development'
 const app = express()
 
 app.use(express.json())
@@ -21,20 +22,20 @@ app.use(express.urlencoded({ extended: true }))
 const logFormat =
   ':remote-addr - :remote-user [:date[iso]] ":method :url HTTP/:http-version" :status :res[content-length] ":referrer" ":user-agent"'
 
-const accessLogStream = fs.createWriteStream(
-  path.join(__dirname, '../log/access.log'),
+const logStream = fs.createWriteStream(
+  path.join(__dirname, `../log/${environment}.log`),
   { flags: 'a' }
 )
 
 app.use(morgan(logFormat))
-app.use(morgan(logFormat, { stream: accessLogStream }))
+app.use(morgan(logFormat, { stream: logStream }))
 
 app.post('/notifications', notificationController.create)
 
 const server = app.listen(process.env.PORT || 3000, async () => {
   const port = server.address().port
 
-  if (process.env.NODE_ENV === 'production') {
+  if (environment === 'production') {
     const ngrokUrl = await ngrokService.connect({
       port,
       authtoken: process.env.NGROK_TOKEN,
