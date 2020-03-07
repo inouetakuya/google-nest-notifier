@@ -41,7 +41,7 @@ npm run test
 
 ```shell
 npm run build
-npm run start NODE_ENV=production 
+npm run start
 ```
 
 copy your ngrok url from stdout.
@@ -62,7 +62,7 @@ curl -X POST -H "Accept: application/json" -H 'Content-Type: application/json' -
 
 ```shell
 npm run build
-npm run start NODE_ENV=production 
+npm run start
 ```
 
 copy your AWS API Gateway url from stdout.
