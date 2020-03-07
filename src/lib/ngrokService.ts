@@ -12,17 +12,17 @@ const ngrokService = {
     region
   }: {
     port: number
-    authtoken: string
+    authtoken?: string
     region?: string
   }): Promise<string> => {
     const ngrokOptions: NgrokOptions = { port }
 
-    if (authtoken === 'PLEASE_SET_YOUR_NGROK_TOKEN') {
+    if (authtoken && authtoken !== 'PLEASE_SET_YOUR_NGROK_TOKEN') {
+      Object.assign(ngrokOptions, { authtoken })
+    } else {
       console.warn(
         "Please sign up ngrok and set your token to .env so that your tunnels don't time out"
       )
-    } else if (authtoken) {
-      Object.assign(ngrokOptions, { authtoken })
     }
 
     if (region) Object.assign(ngrokOptions, { region })

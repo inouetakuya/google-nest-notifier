@@ -1,6 +1,6 @@
 import dotenv from 'dotenv'
 import express, { Request, Response, NextFunction } from 'express'
-import NgrokClient from '~/lib/NgrokClient'
+import ngrokService from '~/lib/ngrokService'
 import notificationController from '~/lib/notificationController'
 
 dotenv.config()
@@ -25,8 +25,11 @@ const server = app.listen(process.env.PORT || 3000, async () => {
   const port = server.address().port
 
   if (process.env.NODE_ENV === 'production') {
-    const ngrokClient = new NgrokClient(port)
-    const ngrokUrl = await ngrokClient.connect()
+    const ngrokUrl = await ngrokService.connect({
+      port,
+      authtoken: process.env.NGROK_TOKEN,
+      region: process.env.NGROK_REGION
+    })
     console.log(`Forwarding: ${ngrokUrl} -> localhost:${port}`)
   } else {
     console.log(`API Server running on http://localhost:${port}`)
