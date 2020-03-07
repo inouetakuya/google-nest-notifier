@@ -1,5 +1,7 @@
 import dotenv from 'dotenv'
 import express, { Request, Response, NextFunction } from 'express'
+import fs from 'fs'
+import path from 'path'
 
 // @ts-ignore TS7016: Could not find a declaration file for module 'morgan'
 import morgan from 'morgan'
@@ -14,10 +16,17 @@ const app = express()
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
+
+const accessLogStream = fs.createWriteStream(
+  path.join(__dirname, '../log/access.log'),
+  { flags: 'a' }
+)
+
 app.use(
   morgan(
     // https://github.com/expressjs/morgan#combined の date format のみ変更
-    ':remote-addr - :remote-user [:date[iso]] ":method :url HTTP/:http-version" :status :res[content-length] ":referrer" ":user-agent"'
+    ':remote-addr - :remote-user [:date[iso]] ":method :url HTTP/:http-version" :status :res[content-length] ":referrer" ":user-agent"',
+    { stream: accessLogStream }
   )
 )
 
