@@ -3,17 +3,20 @@ import NgrokClient from '~/lib/NgrokClient'
 const dummyPort = 3000
 const dummyNgrokUrl = 'https://xxxxxxxx.ngrok.io'
 
+jest.mock('ngrok', () => {
+  return {
+    // connect: jest.fn().mockResolvedValue(dummyNgrokUrl) だと
+    // ReferenceError: Cannot access 'dummyNgrokUrl' before initialization
+    connect: jest.fn().mockResolvedValue('https://xxxxxxxx.ngrok.io')
+  }
+})
+
 describe('NgrokClient', () => {
   let client: NgrokClient
-  let mockedNgrok
 
   describe('connect()', () => {
     beforeEach(() => {
-      mockedNgrok = {
-        connect: jest.fn().mockResolvedValue(dummyNgrokUrl)
-      }
-
-      client = new NgrokClient(dummyPort, mockedNgrok)
+      client = new NgrokClient(dummyPort)
     })
 
     test('returns ngrokUrl', async () => {
