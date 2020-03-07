@@ -19,6 +19,7 @@
     "express": "^4.17.1",
     "google-tts-api": "0.0.4",
     "module-alias": "^2.2.2",
+    "morgan": "^1.9.1",
     "ngrok": "^3.2.7",
     "proper-url-join": "^2.1.1"
   },

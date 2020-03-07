@@ -1,5 +1,9 @@
 import dotenv from 'dotenv'
 import express, { Request, Response, NextFunction } from 'express'
+
+// @ts-ignore TS7016: Could not find a declaration file for module 'morgan'
+import morgan from 'morgan'
+
 import ngrokService from '~/lib/ngrokService'
 import apiGatewayService from '~/lib/apiGatewayService'
 import notificationController from '~/lib/notificationController'
@@ -10,15 +14,7 @@ const app = express()
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
-
-app.use((request: Request, response: Response, next: NextFunction) => {
-  console.log(
-    `Received request: ${request.method} ${request.url} from ${request.headers['user-agent']}`
-  )
-  next()
-})
-
-app.get('/', (req: Request, res: Response) => res.send('Hello World!'))
+app.use(morgan('combined'))
 
 app.post('/notifications', notificationController.create)
 
