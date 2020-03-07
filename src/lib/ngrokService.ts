@@ -8,10 +8,12 @@ interface NgrokOptions {
 const ngrokService = {
   connect: ({
     port,
-    authtoken
+    authtoken,
+    region
   }: {
     port: number
     authtoken: string
+    region?: string
   }): Promise<string> => {
     const ngrokOptions: NgrokOptions = { port }
 
@@ -22,6 +24,8 @@ const ngrokService = {
     } else if (authtoken) {
       Object.assign(ngrokOptions, { authtoken })
     }
+
+    if (region) Object.assign(ngrokOptions, { region })
 
     return ngrok.connect(ngrokOptions)
   }

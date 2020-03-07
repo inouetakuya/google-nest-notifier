@@ -3,6 +3,7 @@ import ngrokService from '~/lib/ngrokService'
 
 const dummyPort = 3000
 const dummyToken = 'xxxxxxxx'
+const dummyRegion = 'jp'
 const dummyNgrokUrl = 'https://xxxxxxxx.ngrok.io'
 
 jest.mock('ngrok', () => {
@@ -30,6 +31,27 @@ describe('NgrokService', () => {
         expect(ngrok.connect).toBeCalledWith({
           port: dummyPort,
           authtoken: dummyToken
+        })
+      })
+    })
+
+    describe('when region is set', () => {
+      let ngrokUrl: string
+
+      beforeEach(async () => {
+        ngrokUrl = await ngrokService.connect({
+          port: dummyPort,
+          authtoken: dummyToken,
+          region: dummyRegion
+        })
+      })
+
+      test('connects with region', async () => {
+        expect(ngrokUrl).toBe(dummyNgrokUrl)
+        expect(ngrok.connect).toBeCalledWith({
+          port: dummyPort,
+          authtoken: dummyToken,
+          region: dummyRegion
         })
       })
     })
