@@ -31,7 +31,9 @@ const server = app.listen(process.env.PORT || 3000, async () => {
       authtoken: process.env.NGROK_TOKEN,
       region: process.env.NGROK_REGION
     })
-    console.log(`Forwarding: ${ngrokUrl} -> localhost:${port}`)
+    console.log(
+      [`Forwarding: ${ngrokUrl}`, `-> http://localhost:${port}`].join('\n')
+    )
 
     if (process.env.USE_API_GATEWAY) {
       const apiGatewayUrl = apiGatewayService.putIntegration({
@@ -45,7 +47,11 @@ const server = app.listen(process.env.PORT || 3000, async () => {
       })
 
       console.log(
-        `HttpProxy: ${apiGatewayUrl} -> ${ngrokUrl} -> localhost:${port}`
+        [
+          `HttpProxy: ${apiGatewayUrl}`,
+          `-> ${ngrokUrl}/notifications`,
+          `-> http://localhost:${port}/notifications`
+        ].join('\n')
       )
     }
   } else {
