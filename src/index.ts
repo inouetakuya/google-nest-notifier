@@ -23,7 +23,7 @@ morgan.token('request-body', (request: Request) => {
 })
 
 const logFormat =
-  '[:date[iso]] :remote-addr :method ":url" request-body: :request-body :status in :response-time ms'
+  '[:date[iso]] :remote-addr :method ":url" request-body: :request-body :status in :response-time[0] ms'
 
 const logStream = fs.createWriteStream(
   path.join(__dirname, `../log/${environment}.log`),
