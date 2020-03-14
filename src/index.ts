@@ -22,12 +22,8 @@ morgan.token('request-body', (request: Request) => {
   return JSON.stringify(request.body)
 })
 
-// https://github.com/expressjs/morgan#combined をベースにして
-// - date format を変更
-// - request-body を追加
-// - response-time ms を追加
 const logFormat =
-  ':remote-addr - :remote-user [:date[iso]] ":method :url HTTP/:http-version" :request-body :status :response-time ms :res[content-length] ":referrer" ":user-agent"'
+  '[:date[iso]] :remote-addr :method ":url" request-body: :request-body :status in :response-time ms'
 
 const logStream = fs.createWriteStream(
   path.join(__dirname, `../log/${environment}.log`),
