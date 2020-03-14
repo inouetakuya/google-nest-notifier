@@ -1,5 +1,5 @@
 import dotenv from 'dotenv'
-import express from 'express'
+import express, { Request } from 'express'
 import fs from 'fs'
 import path from 'path'
 
@@ -18,11 +18,16 @@ const app = express()
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
+morgan.token('request-body', (request: Request) => {
+  return JSON.stringify(request.body)
+})
+
 // https://github.com/expressjs/morgan#combined をベースにして
 // - date format を変更
+// - request-body を追加
 // - response-time ms を追加
 const logFormat =
-  ':remote-addr - :remote-user [:date[iso]] ":method :url HTTP/:http-version" :status :response-time ms :res[content-length] ":referrer" ":user-agent"'
+  ':remote-addr - :remote-user [:date[iso]] ":method :url HTTP/:http-version" :request-body :status :response-time ms :res[content-length] ":referrer" ":user-agent"'
 
 const logStream = fs.createWriteStream(
   path.join(__dirname, `../log/${environment}.log`),
