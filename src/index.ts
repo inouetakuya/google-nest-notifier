@@ -1,31 +1,44 @@
 import dotenv from 'dotenv'
-import express, { Request, Response, NextFunction } from 'express'
+import express, { Request } from 'express'
+import fs from 'fs'
+import path from 'path'
+
+// @ts-ignore TS7016: Could not find a declaration file for module 'morgan'
+import morgan from 'morgan'
+
 import ngrokService from '~/lib/ngrokService'
 import apiGatewayService from '~/lib/apiGatewayService'
 import notificationController from '~/lib/notificationController'
 
 dotenv.config()
 
+const environment = process.env.NODE_ENV || 'development'
 const app = express()
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
-app.use((request: Request, response: Response, next: NextFunction) => {
-  console.log(
-    `Received request: ${request.method} ${request.url} from ${request.headers['user-agent']}`
-  )
-  next()
+morgan.token('request-body', (request: Request) => {
+  return JSON.stringify(request.body)
 })
 
-app.get('/', (req: Request, res: Response) => res.send('Hello World!'))
+const logFormat =
+  '[:date[iso]] :remote-addr :method ":url" request-body: :request-body :status in :response-time[0] ms'
+
+const logStream = fs.createWriteStream(
+  path.join(__dirname, `../log/${environment}.log`),
+  { flags: 'a' }
+)
+
+app.use(morgan(logFormat))
+app.use(morgan(logFormat, { stream: logStream }))
 
 app.post('/notifications', notificationController.create)
 
 const server = app.listen(process.env.PORT || 3000, async () => {
   const port = server.address().port
 
-  if (process.env.NODE_ENV === 'production') {
+  if (environment === 'production') {
     const ngrokUrl = await ngrokService.connect({
       port,
       authtoken: process.env.NGROK_TOKEN,
