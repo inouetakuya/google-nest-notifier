@@ -18,9 +18,11 @@ const app = express()
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
-// https://github.com/expressjs/morgan#combined の date format のみ変更
+// https://github.com/expressjs/morgan#combined をベースにして
+// - date format を変更
+// - response-time ms を追加
 const logFormat =
-  ':remote-addr - :remote-user [:date[iso]] ":method :url HTTP/:http-version" :status :res[content-length] ":referrer" ":user-agent"'
+  ':remote-addr - :remote-user [:date[iso]] ":method :url HTTP/:http-version" :status :response-time ms :res[content-length] ":referrer" ":user-agent"'
 
 const logStream = fs.createWriteStream(
   path.join(__dirname, `../log/${environment}.log`),
