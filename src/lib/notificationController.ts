@@ -5,7 +5,7 @@ import GoogleNestClient from '~/lib/GoogleNestClient'
 const notificationController = {
   create: (request: Request, response: Response, next: NextFunction) => {
     ;(async () => {
-      const ipAddress = process.env.GOOGLE_HOME_IP_ADDRESS
+      const ipAddress = process.env.GOOGLE_NEST_IP_ADDRESS
       if (!ipAddress) throw new Error('ipAddress is required')
 
       const text = request.body.text
