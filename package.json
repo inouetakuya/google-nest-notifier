@@ -7,7 +7,9 @@
   "license": "MIT",
   "scripts": {
     "build": "rm -rf dist/ && tsc",
-    "start": "NODE_ENV=production node --require module-alias/register dist/index.js",
+    "start": "NODE_ENV=production pm2 start dist/index.js --name google-home-notifier-api",
+    "restart": "NODE_ENV=production pm2 restart google-home-notifier-api",
+    "stop": "NODE_ENV=production pm2 stop google-home-notifier-api",
     "dev": "nodemon",
     "lint": "eslint --ext .js,.ts --ignore-path .gitignore .",
     "lint:fix": "eslint --ext .js,.ts --ignore-path .gitignore . --fix",
@@ -21,6 +23,7 @@
     "module-alias": "^2.2.2",
     "morgan": "^1.9.1",
     "ngrok": "^3.2.7",
+    "pm2": "^4.2.3",
     "proper-url-join": "^2.1.1"
   },
   "devDependencies": {
