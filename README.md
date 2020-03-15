@@ -129,6 +129,16 @@ curl -X POST -H "Accept: application/json" -H 'Content-Type: application/json' -
 npm run deploy
 ```
 
+### Execute commands
+
+```shell
+npx pm2 deploy production exec 'npx pm2 logs'
+```
+
+```shell
+npx pm2 deploy production exec 'tail log/production.log'
+```
+
 ## License
 
 See [LICENSE](./LICENSE)
