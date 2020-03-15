@@ -1,7 +1,7 @@
 module.exports = {
   apps: [
     {
-      name: 'google-home-notifier-api',
+      name: 'google-nest-notifier-api',
       script: 'dist/index.js',
 
       // Options reference: https://pm2.keymetrics.io/docs/usage/application-declaration/

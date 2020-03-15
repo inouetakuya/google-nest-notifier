@@ -1,7 +1,7 @@
 {
-  "name": "google-home-notifier-api",
-  "version": "0.0.1",
-  "description": "Web API for send notifications to Google Home",
+  "name": "google-nest-notifier-api",
+  "version": "0.0.2",
+  "description": "Web API for send notifications to Google Nest",
   "author": "INOUE Takuya <inouetakuya5@gmail.com>",
   "private": true,
   "license": "MIT",
