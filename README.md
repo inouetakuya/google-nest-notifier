@@ -43,25 +43,25 @@ npm run test
 
 ```shell
 npm run build
-NODE_ENV=production npm run start
+npm run start
 ```
 
 ### Zero downtime reload
 
 ```shell
-NODE_ENV=production npm run reload
+npm run reload
 ```
 
 ### Restart server
 
 ```shell
-NODE_ENV=production npm run restart
+npm run restart
 ```
 
 ### Stop server
 
 ```shell
-NODE_ENV=production npm run stop
+npm run stop
 ```
 
 ### Show logs
@@ -89,7 +89,7 @@ curl -X POST -H "Accept: application/json" -H 'Content-Type: application/json' -
 
 ```shell
 npm run build
-NODE_ENV=production npm run start
+npm run start
 ```
 
 ```shell

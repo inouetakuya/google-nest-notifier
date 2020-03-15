@@ -1,11 +1,10 @@
 module.exports = {
   apps: [
     {
-      name: 'API',
-      script: 'app.js',
+      name: 'google-home-notifier-api',
+      script: 'dist/index.js',
 
       // Options reference: https://pm2.keymetrics.io/docs/usage/application-declaration/
-      args: 'one two',
       instances: 1,
       autorestart: true,
       watch: false,
@@ -20,6 +19,7 @@ module.exports = {
     }
   ],
 
+  // FIXME: Not yet implemented
   deploy: {
     production: {
       user: 'node',
