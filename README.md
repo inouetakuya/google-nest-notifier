@@ -46,6 +46,12 @@ npm run build
 NODE_ENV=production npm run start
 ```
 
+### Zero downtime reload
+
+```shell
+NODE_ENV=production npm run reload
+```
+
 ### Restart server
 
 ```shell

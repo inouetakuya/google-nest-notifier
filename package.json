@@ -8,6 +8,7 @@
   "scripts": {
     "build": "rm -rf dist/ && tsc",
     "start": "pm2 start dist/index.js --name google-home-notifier-api",
+    "reload": "pm2 reload google-home-notifier-api",
     "restart": "pm2 restart google-home-notifier-api",
     "stop": "pm2 stop google-home-notifier-api",
     "dev": "nodemon",
