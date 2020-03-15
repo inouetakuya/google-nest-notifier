@@ -7,9 +7,9 @@
   "license": "MIT",
   "scripts": {
     "build": "rm -rf dist/ && tsc",
-    "start": "NODE_ENV=production pm2 start dist/index.js --name google-home-notifier-api",
-    "restart": "NODE_ENV=production pm2 restart google-home-notifier-api",
-    "stop": "NODE_ENV=production pm2 stop google-home-notifier-api",
+    "start": "pm2 start dist/index.js --name google-home-notifier-api",
+    "restart": "pm2 restart google-home-notifier-api",
+    "stop": "pm2 stop google-home-notifier-api",
     "dev": "nodemon",
     "lint": "eslint --ext .js,.ts --ignore-path .gitignore .",
     "lint:fix": "eslint --ext .js,.ts --ignore-path .gitignore . --fix",
