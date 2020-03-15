@@ -39,9 +39,50 @@ npm run test
 
 ## Production
 
+### Start server
+
 ```shell
 npm run build
 npm run start
+```
+
+### Zero downtime reload
+
+```shell
+npm run reload
+```
+
+### Restart server
+
+```shell
+npm run restart
+```
+
+### Stop server
+
+```shell
+npm run stop
+```
+
+### Show process list
+
+```shell
+npx pm2 list
+```
+
+```text
+┌─────┬─────────────────────────────┬─────────────┬─────────┬─────────┬──────────┬────────┬──────┬───────────┬──────────┬──────────┬──────────┬──────────┐
+│ id  │ name                        │ namespace   │ version │ mode    │ pid      │ uptime │ ↺    │ status    │ cpu      │ mem      │ user     │ watching │
+├─────┼─────────────────────────────┼─────────────┼─────────┼─────────┼──────────┼────────┼──────┼───────────┼──────────┼──────────┼──────────┼──────────┤
+│ 0   │ google-home-notifier-api    │ default     │ 0.0.1   │ fork    │ 98063    │ 7s     │ 0    │ online    │ 4.8%     │ 53.6mb   │ pi       │ disabled │
+└─────┴─────────────────────────────┴─────────────┴─────────┴─────────┴──────────┴────────┴──────┴───────────┴──────────┴──────────┴──────────┴──────────┘
+```
+
+### Show logs
+
+```shell
+npx pm2 logs google-home-notifier-api
+npx pm2 logs google-home-notifier-api --lines 50
 ```
 
 copy your ngrok url from stdout.
@@ -63,6 +104,11 @@ curl -X POST -H "Accept: application/json" -H 'Content-Type: application/json' -
 ```shell
 npm run build
 npm run start
+```
+
+```shell
+npx pm2 logs google-home-notifier-api
+npx pm2 logs google-home-notifier-api --lines 50
 ```
 
 copy your AWS API Gateway url from stdout.
