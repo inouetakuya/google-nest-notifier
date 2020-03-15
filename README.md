@@ -39,9 +39,30 @@ npm run test
 
 ## Production
 
+### Start server
+
 ```shell
 npm run build
-npm run start
+NODE_ENV=production npm run start
+```
+
+### Restart server
+
+```shell
+NODE_ENV=production npm run restart
+```
+
+### Stop server
+
+```shell
+NODE_ENV=production npm run stop
+```
+
+### Show logs
+
+```shell
+npx pm2 logs google-home-notifier-api
+npx pm2 logs google-home-notifier-api --lines 50
 ```
 
 copy your ngrok url from stdout.
@@ -62,7 +83,12 @@ curl -X POST -H "Accept: application/json" -H 'Content-Type: application/json' -
 
 ```shell
 npm run build
-npm run start
+NODE_ENV=production npm run start
+```
+
+```shell
+npx pm2 logs google-home-notifier-api
+npx pm2 logs google-home-notifier-api --lines 50
 ```
 
 copy your AWS API Gateway url from stdout.
