@@ -7,7 +7,7 @@ interface Media {
   streamType: string // streamType: 'BUFFERED'
 }
 
-export default class GoogleHomeClient {
+export default class GoogleNestClient {
   constructor(
     private ipAddress: string,
     private client = new castv2.Client()

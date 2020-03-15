@@ -7,7 +7,7 @@ const mockedStatus = { volume: { muted: false } }
 const mockedNotify = jest.fn().mockResolvedValue(mockedStatus)
 
 // https://jestjs.io/docs/ja/es6-class-mocks
-jest.mock('~/lib/GoogleHomeClient', () => {
+jest.mock('~/lib/GoogleNestClient', () => {
   return jest.fn().mockImplementation(() => {
     return { notify: mockedNotify }
   })

@@ -1,8 +1,8 @@
-# google-home-notifier-api
+# google-nest-notifier-api
 
-[![CircleCI](https://circleci.com/gh/inouetakuya/google-home-notifier-api.svg?style=svg)](https://circleci.com/gh/inouetakuya/google-home-notifier-api)
+[![CircleCI](https://circleci.com/gh/inouetakuya/google-nest-notifier-api.svg?style=svg)](https://circleci.com/gh/inouetakuya/google-nest-notifier-api)
 
-Web API for Send notifications to Google Home
+Web API for Send notifications to Google Nest
 
 ## Setup
 
@@ -14,7 +14,7 @@ npm install
 cp .env.example .env
 ```
 
-- Set your Google Home IP address to `.env`
+- Set your Google Nest IP address to `.env`
 - Sign up ngrok and set your token to `.env` so that your tunnels don't time out
 
 ## Development
@@ -74,15 +74,15 @@ npx pm2 list
 ┌─────┬─────────────────────────────┬─────────────┬─────────┬─────────┬──────────┬────────┬──────┬───────────┬──────────┬──────────┬──────────┬──────────┐
 │ id  │ name                        │ namespace   │ version │ mode    │ pid      │ uptime │ ↺    │ status    │ cpu      │ mem      │ user     │ watching │
 ├─────┼─────────────────────────────┼─────────────┼─────────┼─────────┼──────────┼────────┼──────┼───────────┼──────────┼──────────┼──────────┼──────────┤
-│ 0   │ google-home-notifier-api    │ default     │ 0.0.1   │ fork    │ 98063    │ 7s     │ 0    │ online    │ 4.8%     │ 53.6mb   │ pi       │ disabled │
+│ 0   │ google-nest-notifier-api    │ default     │ 0.0.1   │ fork    │ 98063    │ 7s     │ 0    │ online    │ 4.8%     │ 53.6mb   │ pi       │ disabled │
 └─────┴─────────────────────────────┴─────────────┴─────────┴─────────┴──────────┴────────┴──────┴───────────┴──────────┴──────────┴──────────┴──────────┘
 ```
 
 ### Show logs
 
 ```shell
-npx pm2 logs google-home-notifier-api
-npx pm2 logs google-home-notifier-api --lines 50
+npx pm2 logs google-nest-notifier-api
+npx pm2 logs google-nest-notifier-api --lines 50
 ```
 
 copy your ngrok url from stdout.
@@ -107,8 +107,8 @@ npm run start
 ```
 
 ```shell
-npx pm2 logs google-home-notifier-api
-npx pm2 logs google-home-notifier-api --lines 50
+npx pm2 logs google-nest-notifier-api
+npx pm2 logs google-nest-notifier-api --lines 50
 ```
 
 copy your AWS API Gateway url from stdout.
