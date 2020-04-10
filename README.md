@@ -123,6 +123,26 @@ HttpProxy: https://xxxxxxxx.execute-api.ap-northeast-1.amazonaws.com/prod/notifi
 curl -X POST -H "Accept: application/json" -H 'Content-Type: application/json' -d '{"text":"Hello world"}' https://xxxxxxxxx.execute-api.ap-northeast-1.amazonaws.com/prod/notifications
 ```
 
+## Deployment
+
+```shell
+npm run deploy
+```
+
+### Execute commands
+
+```shell
+npx pm2 deploy production exec 'npx pm2 list'
+```
+
+```shell
+npx pm2 deploy production exec 'npx pm2 logs'
+```
+
+```shell
+npx pm2 deploy production exec 'tail log/production.log'
+```
+
 ## License
 
 See [LICENSE](./LICENSE)

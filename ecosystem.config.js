@@ -19,16 +19,14 @@ module.exports = {
     }
   ],
 
-  // FIXME: Not yet implemented
   deploy: {
     production: {
-      user: 'node',
-      host: '212.83.163.1',
+      user: 'pi',
+      host: 'raspberrypi',
       ref: 'origin/master',
-      repo: 'git@github.com:repo.git',
-      path: '/var/www/production',
-      'post-deploy':
-        'npm install && pm2 reload ecosystem.config.js --env production'
+      repo: 'git@github.com:inouetakuya/google-nest-notifier-api.git',
+      path: '/var/www/google-nest-notifier-api',
+      'post-deploy': 'npm install && npm run build && npm run reload'
     }
   }
 }
