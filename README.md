@@ -132,6 +132,10 @@ npm run deploy
 ### Execute commands
 
 ```shell
+npx pm2 deploy production exec 'npx pm2 list'
+```
+
+```shell
 npx pm2 deploy production exec 'npx pm2 logs'
 ```
 
