@@ -27,28 +27,9 @@ export const getMulticastDnsDataAll = (): Promise<MulticastDnsData[]> => {
   })
 }
 
-export const queryMulticastDnsDataByDeviceName = (
+export const queryMulticastDnsDataByDeviceName = async (
   deviceName: string
 ): Promise<MulticastDnsData[]> => {
-  const dataArray: MulticastDnsData[] = []
-  const browser = mdns.createBrowser(mdns.tcp('googlecast'))
-
-  return new Promise((resolve, reject) => {
-    browser.on('ready', () => {
-      browser.discover()
-    })
-
-    browser.on('update', (data: MulticastDnsResponse) => {
-      dataArray.push(new MulticastDnsData(data))
-    })
-
-    browser.on('error', (error: Error) => {
-      reject(error)
-    })
-
-    setTimeout(() => {
-      browser.stop()
-      resolve(dataArray.filter(data => data.deviceName === deviceName))
-    }, 1000)
-  })
+  const dataArray: MulticastDnsData[] = await getMulticastDnsDataAll()
+  return dataArray.filter(data => data.deviceName === deviceName)
 }
