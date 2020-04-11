@@ -1,8 +1,12 @@
 // @ts-ignore TS7016: Could not find a declaration file for module 'mdns-js'
 import mdns from 'mdns-js'
-
 import { EventEmitter } from 'events'
-import * as multicastDnsService from '~/lib/multicastDnsService'
+
+import {
+  getMulticastDnsDataAll,
+  queryMulticastDnsDataByDeviceName
+} from '~/lib/multicastDnsService'
+
 import multicastDnsResponse from 'test/fixtures/multicastDnsResponse'
 
 jest.useFakeTimers()
@@ -20,13 +24,11 @@ describe('multicastDnsService', () => {
 
   describe('getMulticastDnsDataAll()', () => {
     test('returns multicastDnsData[]', () => {
-      const result = multicastDnsService
-        .getMulticastDnsDataAll()
-        .then(dataArray => {
-          expect(browser.discover).toHaveBeenCalled()
-          expect(browser.stop).toHaveBeenCalled()
-          expect(dataArray[0].deviceName).toBe('Rachael')
-        })
+      const result = getMulticastDnsDataAll().then(dataArray => {
+        expect(browser.discover).toHaveBeenCalled()
+        expect(browser.stop).toHaveBeenCalled()
+        expect(dataArray[0].deviceName).toBe('Rachael')
+      })
 
       browser.emit('ready')
       browser.emit('update', multicastDnsResponse)
@@ -40,11 +42,11 @@ describe('multicastDnsService', () => {
   describe('queryMulticastDnsDataByDeviceName()', () => {
     test('returns multicastDnsData[]', () => {
       const deviceName = 'Rachael'
-      const result = multicastDnsService
-        .queryMulticastDnsDataByDeviceName(deviceName)
-        .then(dataArray => {
+      const result = queryMulticastDnsDataByDeviceName(deviceName).then(
+        dataArray => {
           expect(dataArray[0].deviceName).toBe(deviceName)
-        })
+        }
+      )
 
       browser.emit('ready')
       browser.emit('update', multicastDnsResponse)
