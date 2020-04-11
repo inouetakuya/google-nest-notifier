@@ -13,4 +13,10 @@ describe('MulticastDnsData', () => {
       expect(multicastDnsData.ipAddress).toBe('192.168.3.8')
     })
   })
+
+  describe('deviceName', () => {
+    test('returns deviceName', () => {
+      expect(multicastDnsData.deviceName).toBe('Rachael')
+    })
+  })
 })
