@@ -19,4 +19,10 @@ describe('MulticastDnsData', () => {
       expect(multicastDnsData.deviceName).toBe('Rachael')
     })
   })
+
+  describe('machineName', () => {
+    test('returns machineName', () => {
+      expect(multicastDnsData.machineName).toBe('Google Home')
+    })
+  })
 })
