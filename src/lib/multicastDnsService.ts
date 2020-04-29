@@ -33,3 +33,10 @@ export const queryMulticastDnsDataByDeviceName = async (
   const dataArray: MulticastDnsData[] = await getMulticastDnsDataAll()
   return dataArray.filter(data => data.deviceName === deviceName)
 }
+
+export const getMulticastDnsDataByDeviceName = async (
+  deviceName: string
+): Promise<MulticastDnsData | undefined> => {
+  const dataArray: MulticastDnsData[] = await getMulticastDnsDataAll()
+  return dataArray.find(data => data.deviceName === deviceName)
+}

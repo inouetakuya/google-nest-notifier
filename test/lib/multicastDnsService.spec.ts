@@ -4,7 +4,8 @@ import { EventEmitter } from 'events'
 
 import {
   getMulticastDnsDataAll,
-  queryMulticastDnsDataByDeviceName
+  queryMulticastDnsDataByDeviceName,
+  getMulticastDnsDataByDeviceName
 } from '~/lib/multicastDnsService'
 
 import multicastDnsResponse from 'test/fixtures/multicastDnsResponse'
@@ -47,6 +48,22 @@ describe('multicastDnsService', () => {
           expect(dataArray[0].deviceName).toBe(deviceName)
         }
       )
+
+      browser.emit('ready')
+      browser.emit('update', multicastDnsResponse)
+
+      jest.runOnlyPendingTimers()
+
+      return result
+    })
+  })
+
+  describe('getMulticastDnsDataByDeviceName()', () => {
+    test('returns multicastDnsData', () => {
+      const deviceName = 'Rachael'
+      const result = getMulticastDnsDataByDeviceName(deviceName).then(data => {
+        expect(data?.deviceName).toBe(deviceName)
+      })
 
       browser.emit('ready')
       browser.emit('update', multicastDnsResponse)
