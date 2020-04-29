@@ -23,7 +23,7 @@ module.exports = {
     production: {
       user: 'pi',
       host: 'raspberrypi',
-      ref: 'origin/master',
+      ref: 'origin/multicast-dns',
       repo: 'git@github.com:inouetakuya/google-nest-notifier-api.git',
       path: '/var/www/google-nest-notifier-api',
       'post-deploy': 'npm install && npm run build && npm run reload'
