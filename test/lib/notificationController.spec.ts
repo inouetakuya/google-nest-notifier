@@ -6,6 +6,14 @@ import notificationController from '~/lib/notificationController'
 const mockedStatus = { volume: { muted: false } }
 const mockedNotify = jest.fn().mockResolvedValue(mockedStatus)
 
+jest.mock('~/lib/multicastDnsService', () => {
+  return {
+    getMulticastDnsDataByDeviceName: jest
+      .fn()
+      .mockResolvedValue({ ipAddress: '192.168.3.1' })
+  }
+})
+
 // https://jestjs.io/docs/ja/es6-class-mocks
 jest.mock('~/lib/GoogleNestClient', () => {
   return jest.fn().mockImplementation(() => {
