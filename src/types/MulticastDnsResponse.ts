@@ -3,7 +3,7 @@ export default interface MulticastDnsResponse {
   query: []
   type: object[]
   txt: string[]
-  port: 8009
+  port: number
   fullname: string
   host: string
   interfaceIndex: number

@@ -11,7 +11,13 @@ export default class MulticastDnsData {
     this.machineName = this.extractMachineName()
   }
 
+  isValid(): boolean {
+    return !!(this.ipAddress && this.deviceName && this.machineName)
+  }
+
   private extractDeviceName(): string {
+    if (!this.response.txt) return ''
+
     const txtRecord:
       | string
       | undefined = this.response.txt.find((value: string) =>
@@ -22,6 +28,8 @@ export default class MulticastDnsData {
   }
 
   private extractMachineName(): string {
+    if (!this.response.txt) return ''
+
     const txtRecord:
       | string
       | undefined = this.response.txt.find((value: string) =>

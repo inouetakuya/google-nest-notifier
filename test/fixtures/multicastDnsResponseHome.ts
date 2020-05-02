@@ -1,6 +1,6 @@
 import MulticastDnsResponse from '~/types/MulticastDnsResponse'
 
-const multicastDnsResponse: MulticastDnsResponse = {
+const multicastDnsResponseHome: MulticastDnsResponse = {
   addresses: ['192.168.3.8'],
   query: [],
   type: [
@@ -33,4 +33,4 @@ const multicastDnsResponse: MulticastDnsResponse = {
   networkInterface: 'pseudo multicast'
 }
 
-export default multicastDnsResponse
+export default multicastDnsResponseHome

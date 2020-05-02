@@ -13,7 +13,11 @@ export const getMulticastDnsDataAll = (): Promise<MulticastDnsData[]> => {
     })
 
     browser.on('update', (data: MulticastDnsResponse) => {
-      dataArray.push(new MulticastDnsData(data))
+      const multicastDnsData = new MulticastDnsData(data)
+
+      if (multicastDnsData.isValid()) {
+        dataArray.push(multicastDnsData)
+      }
     })
 
     browser.on('error', (error: Error) => {
@@ -27,11 +31,15 @@ export const getMulticastDnsDataAll = (): Promise<MulticastDnsData[]> => {
   })
 }
 
-export const queryMulticastDnsDataByDeviceName = async (
-  deviceName: string
+export const queryMulticastDnsDataByDeviceNames = async (
+  deviceNames: string[]
 ): Promise<MulticastDnsData[]> => {
   const dataArray: MulticastDnsData[] = await getMulticastDnsDataAll()
-  return dataArray.filter(data => data.deviceName === deviceName)
+  return dataArray.filter(data => {
+    return deviceNames.some(deviceName => {
+      return deviceName.toLowerCase() === data.deviceName.toLowerCase()
+    })
+  })
 }
 
 export const getMulticastDnsDataByDeviceName = async (
