@@ -27,11 +27,11 @@ export const getMulticastDnsDataAll = (): Promise<MulticastDnsData[]> => {
   })
 }
 
-export const queryMulticastDnsDataByDeviceName = async (
-  deviceName: string
+export const queryMulticastDnsDataByDeviceNames = async (
+  deviceNames: string[]
 ): Promise<MulticastDnsData[]> => {
   const dataArray: MulticastDnsData[] = await getMulticastDnsDataAll()
-  return dataArray.filter(data => data.deviceName === deviceName)
+  return dataArray.filter(data => deviceNames.indexOf(data.deviceName) >= 0)
 }
 
 export const getMulticastDnsDataByDeviceName = async (

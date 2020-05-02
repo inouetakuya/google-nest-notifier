@@ -4,11 +4,12 @@ import { EventEmitter } from 'events'
 
 import {
   getMulticastDnsDataAll,
-  queryMulticastDnsDataByDeviceName,
+  queryMulticastDnsDataByDeviceNames,
   getMulticastDnsDataByDeviceName
 } from '~/lib/multicastDnsService'
 
-import multicastDnsResponse from 'test/fixtures/multicastDnsResponse'
+import multicastDnsResponseHome from 'test/fixtures/multicastDnsResponseHome'
+import multicastDnsResponseNestHub from 'test/fixtures/multicastDnsResponseNestHub'
 
 jest.useFakeTimers()
 
@@ -29,10 +30,12 @@ describe('multicastDnsService', () => {
         expect(browser.discover).toHaveBeenCalled()
         expect(browser.stop).toHaveBeenCalled()
         expect(dataArray[0].deviceName).toBe('Rachael')
+        expect(dataArray[1].deviceName).toBe('Joi')
       })
 
       browser.emit('ready')
-      browser.emit('update', multicastDnsResponse)
+      browser.emit('update', multicastDnsResponseHome)
+      browser.emit('update', multicastDnsResponseNestHub)
 
       jest.runOnlyPendingTimers()
 
@@ -40,17 +43,18 @@ describe('multicastDnsService', () => {
     })
   })
 
-  describe('queryMulticastDnsDataByDeviceName()', () => {
+  describe('queryMulticastDnsDataByDeviceNames()', () => {
     test('returns multicastDnsData[]', () => {
-      const deviceName = 'Rachael'
-      const result = queryMulticastDnsDataByDeviceName(deviceName).then(
+      const deviceNames = ['Rachael', 'Joi']
+      const result = queryMulticastDnsDataByDeviceNames(deviceNames).then(
         dataArray => {
-          expect(dataArray[0].deviceName).toBe(deviceName)
+          expect(dataArray.map(data => data.deviceName)).toEqual(deviceNames)
         }
       )
 
       browser.emit('ready')
-      browser.emit('update', multicastDnsResponse)
+      browser.emit('update', multicastDnsResponseHome)
+      browser.emit('update', multicastDnsResponseNestHub)
 
       jest.runOnlyPendingTimers()
 
@@ -66,7 +70,8 @@ describe('multicastDnsService', () => {
       })
 
       browser.emit('ready')
-      browser.emit('update', multicastDnsResponse)
+      browser.emit('update', multicastDnsResponseHome)
+      browser.emit('update', multicastDnsResponseNestHub)
 
       jest.runOnlyPendingTimers()
 
