@@ -44,21 +44,44 @@ describe('multicastDnsService', () => {
   })
 
   describe('queryMulticastDnsDataByDeviceNames()', () => {
-    test('returns multicastDnsData[]', () => {
-      const deviceNames = ['Rachael', 'Joi']
-      const result = queryMulticastDnsDataByDeviceNames(deviceNames).then(
-        dataArray => {
-          expect(dataArray.map(data => data.deviceName)).toEqual(deviceNames)
-        }
-      )
+    describe('deviceNames がキャメルケースのとき', () => {
+      test('returns multicastDnsData[]', () => {
+        const deviceNames = ['Rachael', 'Joi']
+        const result = queryMulticastDnsDataByDeviceNames(deviceNames).then(
+          dataArray => {
+            expect(dataArray.map(data => data.deviceName)).toEqual(deviceNames)
+          }
+        )
 
-      browser.emit('ready')
-      browser.emit('update', multicastDnsResponseHome)
-      browser.emit('update', multicastDnsResponseNestHub)
+        browser.emit('ready')
+        browser.emit('update', multicastDnsResponseHome)
+        browser.emit('update', multicastDnsResponseNestHub)
 
-      jest.runOnlyPendingTimers()
+        jest.runOnlyPendingTimers()
 
-      return result
+        return result
+      })
+    })
+
+    describe('deviceNames がすべて小文字のとき', () => {
+      test('returns multicastDnsData[]', () => {
+        const deviceNames = ['rachael', 'joi']
+        const result = queryMulticastDnsDataByDeviceNames(deviceNames).then(
+          dataArray => {
+            expect(
+              dataArray.map(data => data.deviceName.toLowerCase())
+            ).toEqual(deviceNames)
+          }
+        )
+
+        browser.emit('ready')
+        browser.emit('update', multicastDnsResponseHome)
+        browser.emit('update', multicastDnsResponseNestHub)
+
+        jest.runOnlyPendingTimers()
+
+        return result
+      })
     })
   })
 
