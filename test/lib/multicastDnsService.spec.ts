@@ -10,6 +10,7 @@ import {
 
 import multicastDnsResponseHome from 'test/fixtures/multicastDnsResponseHome'
 import multicastDnsResponseNestHub from 'test/fixtures/multicastDnsResponseNestHub'
+import multicastDnsResponseRpc from 'test/fixtures/multicastDnsResponseRpc'
 
 jest.useFakeTimers()
 
@@ -29,6 +30,7 @@ describe('multicastDnsService', () => {
       const result = getMulticastDnsDataAll().then(dataArray => {
         expect(browser.discover).toHaveBeenCalled()
         expect(browser.stop).toHaveBeenCalled()
+        expect(dataArray.every(data => data.isValid())).toBeTruthy()
         expect(dataArray[0].deviceName).toBe('Rachael')
         expect(dataArray[1].deviceName).toBe('Joi')
       })
@@ -36,6 +38,7 @@ describe('multicastDnsService', () => {
       browser.emit('ready')
       browser.emit('update', multicastDnsResponseHome)
       browser.emit('update', multicastDnsResponseNestHub)
+      browser.emit('update', multicastDnsResponseRpc)
 
       jest.runOnlyPendingTimers()
 
@@ -56,6 +59,7 @@ describe('multicastDnsService', () => {
         browser.emit('ready')
         browser.emit('update', multicastDnsResponseHome)
         browser.emit('update', multicastDnsResponseNestHub)
+        browser.emit('update', multicastDnsResponseRpc)
 
         jest.runOnlyPendingTimers()
 
@@ -77,6 +81,7 @@ describe('multicastDnsService', () => {
         browser.emit('ready')
         browser.emit('update', multicastDnsResponseHome)
         browser.emit('update', multicastDnsResponseNestHub)
+        browser.emit('update', multicastDnsResponseRpc)
 
         jest.runOnlyPendingTimers()
 
@@ -95,6 +100,7 @@ describe('multicastDnsService', () => {
       browser.emit('ready')
       browser.emit('update', multicastDnsResponseHome)
       browser.emit('update', multicastDnsResponseNestHub)
+      browser.emit('update', multicastDnsResponseRpc)
 
       jest.runOnlyPendingTimers()
 

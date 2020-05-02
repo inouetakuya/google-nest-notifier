@@ -13,7 +13,11 @@ export const getMulticastDnsDataAll = (): Promise<MulticastDnsData[]> => {
     })
 
     browser.on('update', (data: MulticastDnsResponse) => {
-      dataArray.push(new MulticastDnsData(data))
+      const multicastDnsData = new MulticastDnsData(data)
+
+      if (multicastDnsData.isValid()) {
+        dataArray.push(multicastDnsData)
+      }
     })
 
     browser.on('error', (error: Error) => {

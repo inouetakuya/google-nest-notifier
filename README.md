@@ -24,11 +24,11 @@ npm run dev
 ```
 
 ```shell
-curl -X POST -H "Accept: application/json" -H 'Content-Type: application/json' -d '{"text":"Hello world"}' http://localhost:3000/notifications
+curl -X POST -H "Accept: application/json" -H 'Content-Type: application/json' -d '{"deviceNames":["rachael"],"text":"Hello world"}' http://localhost:3000/notifications
 ```
 
 ```shell
-curl -X POST -H "Accept: application/json" -H 'Content-Type: application/json' -d '{"text":"日本語でおk"}' http://localhost:3000/notifications
+curl -X POST -H "Accept: application/json" -H 'Content-Type: application/json' -d '{"deviceNames":["rachael"],"text":"日本語でおk"}' http://localhost:3000/notifications
 ```
 
 ## Testing
@@ -93,7 +93,7 @@ Forwarding: https://xxxxxxxx.ngrok.io
 ```
 
 ```shell
-curl -X POST -H "Accept: application/json" -H 'Content-Type: application/json' -d '{"text":"Hello world"}' https://xxxxxxxx.ngrok.io/notifications
+curl -X POST -H "Accept: application/json" -H 'Content-Type: application/json' -d '{"deviceNames":["rachael"]"text":"Hello world"}' https://xxxxxxxx.ngrok.io/notifications
 ```
 
 ### Fix URL with AWS API Gateway (optional)
@@ -120,7 +120,7 @@ HttpProxy: https://xxxxxxxx.execute-api.ap-northeast-1.amazonaws.com/prod/notifi
 ```
 
 ```shell
-curl -X POST -H "Accept: application/json" -H 'Content-Type: application/json' -d '{"text":"Hello world"}' https://xxxxxxxxx.execute-api.ap-northeast-1.amazonaws.com/prod/notifications
+curl -X POST -H "Accept: application/json" -H 'Content-Type: application/json' -d '{"deviceNames":["rachael"],"text":"Hello world"}' https://xxxxxxxxx.execute-api.ap-northeast-1.amazonaws.com/prod/notifications
 ```
 
 ## Deployment

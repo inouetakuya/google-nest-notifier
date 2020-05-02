@@ -19,7 +19,8 @@ const notificationController = {
       )
 
       if (multicastDnsDataArray.length === 0) {
-        throw new Error('Google Nest Device is not found')
+        // throw new Error('Google Nest Device is not found')
+        throw new Error(deviceNames[0])
       }
 
       const speechUrl: string = await textToSpeechUrl({
