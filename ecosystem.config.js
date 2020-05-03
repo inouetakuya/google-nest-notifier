@@ -10,10 +10,12 @@ module.exports = {
       watch: false,
       max_memory_restart: '1G', // eslint-disable-line @typescript-eslint/camelcase
       env: {
+        USE_DIST: true,
         NODE_ENV: 'development'
       },
       // eslint-disable-next-line @typescript-eslint/camelcase
       env_production: {
+        USE_DIST: true,
         NODE_ENV: 'production'
       }
     }

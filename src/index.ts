@@ -1,4 +1,3 @@
-import 'module-alias/register'
 import dotenv from 'dotenv'
 import express, { Request } from 'express'
 import fs from 'fs'
@@ -6,6 +5,8 @@ import path from 'path'
 
 // @ts-ignore TS7016: Could not find a declaration file for module 'morgan'
 import morgan from 'morgan'
+
+if (process.env.USE_DIST) require('module-alias/register')
 
 import ngrokService from '~/lib/ngrokService'
 import apiGatewayService from '~/lib/apiGatewayService'
