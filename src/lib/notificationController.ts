@@ -9,18 +9,21 @@ const notificationController = {
     ;(async () => {
       const deviceNames = request.body.deviceNames
       if (!Array.isArray(deviceNames) || deviceNames.length === 0) {
-        throw badData('deviceNames is required')
+        throw badData('deviceNames is required', { requestBody: request.body })
       }
 
       const text = request.body.text
-      if (!text) throw badData('text is required')
+      if (!text)
+        throw badData('text is required', { requestBody: request.body })
 
       const multicastDnsDataArray = await queryMulticastDnsDataByDeviceNames(
         deviceNames
       )
 
       if (multicastDnsDataArray.length === 0) {
-        throw notFound(`deviceName: ${deviceNames[0]} is not found`)
+        throw notFound('Google Nest Device is not found', {
+          deviceNames: request.body.deviceNames
+        })
       }
 
       const speechUrl: string = await textToSpeechUrl({

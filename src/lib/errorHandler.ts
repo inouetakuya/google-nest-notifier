@@ -8,7 +8,8 @@ const errorHandler = (
 ) => {
   response.status(500).json({
     error: 'Internal Server Error',
-    message: error.message
+    message: error.message,
+    data: {}
   })
 }
 

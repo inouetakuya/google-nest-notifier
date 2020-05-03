@@ -11,7 +11,8 @@ const boomHandler = (
 
   response.status(error.output.statusCode).json({
     error: error.output.payload.error,
-    message: error.output.payload.message
+    message: error.message,
+    data: error.data || {}
   })
 }
 
