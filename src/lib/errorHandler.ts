@@ -6,7 +6,10 @@ const errorHandler = (
   response: Response,
   next: NextFunction
 ) => {
-  response.status(500).json({ error: error.message })
+  response.status(500).json({
+    error: 'Internal Server Error',
+    message: error.message
+  })
 }
 
 export default errorHandler

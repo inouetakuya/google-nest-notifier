@@ -1,6 +1,7 @@
 import { EventEmitter } from 'events'
 import httpMocks, { MockRequest, MockResponse } from 'node-mocks-http'
 import { Request, Response } from 'express'
+import { badData } from '@hapi/boom'
 import notificationController from '~/lib/notificationController'
 
 const mockedStatus = { volume: { muted: false } }
@@ -72,9 +73,7 @@ describe('notificationController', () => {
 
       test('calls next() with Error', () => {
         response.on('end', done => {
-          expect(next).toHaveBeenCalledWith(
-            new Error('deviceNames is required')
-          )
+          expect(next).toHaveBeenCalledWith(badData('deviceNames is required'))
           done()
         })
 
@@ -95,7 +94,7 @@ describe('notificationController', () => {
 
       test('calls next() with Error', () => {
         response.on('end', done => {
-          expect(next).toHaveBeenCalledWith(new Error('text is required'))
+          expect(next).toHaveBeenCalledWith(badData('text is required'))
           done()
         })
 

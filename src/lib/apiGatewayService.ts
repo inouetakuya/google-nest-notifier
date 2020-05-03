@@ -2,6 +2,7 @@ import * as childProcess from 'child_process'
 
 // @ts-ignore TS7016: Could not find a declaration file for module 'proper-url-join'
 import urlJoin from 'proper-url-join'
+import { badData } from '@hapi/boom'
 
 interface ApiGatewayOptions {
   region: string
@@ -32,12 +33,12 @@ const apiGatewayService = {
     path?: string
     profile?: string
   }): string => {
-    if (!region) throw new Error('API Gateway region is required')
-    if (!restApiId) throw new Error('API Gateway restApiId is required')
-    if (!resourceId) throw new Error('API Gateway resourceId is required')
-    if (!httpMethod) throw new Error('API Gateway httpMethod is required')
-    if (!url) throw new Error('API Gateway url is required')
-    if (!path) throw new Error('API Gateway path is required')
+    if (!region) throw badData('API Gateway region is required')
+    if (!restApiId) throw badData('API Gateway restApiId is required')
+    if (!resourceId) throw badData('API Gateway resourceId is required')
+    if (!httpMethod) throw badData('API Gateway httpMethod is required')
+    if (!url) throw badData('API Gateway url is required')
+    if (!path) throw badData('API Gateway path is required')
 
     const apiGatewayOptions: ApiGatewayOptions = {
       region,
