@@ -1,4 +1,5 @@
 import { Request, Response, NextFunction } from 'express'
+import { badData, notFound } from '@hapi/boom'
 import { queryMulticastDnsDataByDeviceNames } from '~/lib/multicastDnsService'
 import textToSpeechUrl from '~/lib/textToSpeechUrl'
 import GoogleNestClient from '~/lib/GoogleNestClient'
@@ -8,19 +9,21 @@ const notificationController = {
     ;(async () => {
       const deviceNames = request.body.deviceNames
       if (!Array.isArray(deviceNames) || deviceNames.length === 0) {
-        throw new Error('deviceNames is required')
+        throw badData('deviceNames is required', { requestBody: request.body })
       }
 
       const text = request.body.text
-      if (!text) throw new Error('text is required')
+      if (!text)
+        throw badData('text is required', { requestBody: request.body })
 
       const multicastDnsDataArray = await queryMulticastDnsDataByDeviceNames(
         deviceNames
       )
 
       if (multicastDnsDataArray.length === 0) {
-        // throw new Error('Google Nest Device is not found')
-        throw new Error(deviceNames[0])
+        throw notFound('Google Nest Device is not found', {
+          deviceNames: request.body.deviceNames
+        })
       }
 
       const speechUrl: string = await textToSpeechUrl({

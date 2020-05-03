@@ -11,6 +11,8 @@ if (process.env.USE_DIST) require('module-alias/register')
 import ngrokService from '~/lib/ngrokService'
 import apiGatewayService from '~/lib/apiGatewayService'
 import notificationController from '~/lib/notificationController'
+import boomHandler from '~/lib/boomHandler'
+import errorHandler from '~/lib/errorHandler'
 
 dotenv.config()
 
@@ -36,6 +38,9 @@ app.use(morgan(logFormat))
 app.use(morgan(logFormat, { stream: logStream }))
 
 app.post('/notifications', notificationController.create)
+
+app.use(boomHandler)
+app.use(errorHandler)
 
 const server = app.listen(process.env.PORT || 3000, async () => {
   const port = server.address().port
