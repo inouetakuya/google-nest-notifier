@@ -9,12 +9,9 @@ const mockedNotify = jest.fn().mockResolvedValue(mockedStatus)
 
 jest.mock('~/lib/multicastDnsService', () => {
   return {
-    queryMulticastDnsDataByDeviceNames: jest
+    getMulticastDnsDataByDeviceName: jest
       .fn()
-      .mockResolvedValue([
-        { ipAddress: '192.168.3.1' },
-        { ipAddress: '192.168.3.2' }
-      ])
+      .mockResolvedValue({ ipAddress: '192.168.3.1' })
   }
 })
 
@@ -39,7 +36,7 @@ describe('notificationController', () => {
           method: 'POST',
           url: '/notifications',
           body: {
-            deviceNames: ['rachael', 'joi'],
+            deviceName: 'rachael',
             text: 'Hello world'
           }
         })
@@ -48,10 +45,7 @@ describe('notificationController', () => {
       test('returns response successfully', done => {
         response.on('end', () => {
           expect(response.statusCode).toBe(201)
-          expect(response._getJSONData().statuses).toEqual([
-            mockedStatus,
-            mockedStatus
-          ])
+          expect(response._getJSONData().status).toEqual(mockedStatus)
           expect(next).not.toHaveBeenCalled()
           done()
         })
@@ -60,7 +54,7 @@ describe('notificationController', () => {
       })
     })
 
-    describe('when deviceNames is not set', () => {
+    describe('when deviceName is not set', () => {
       beforeEach(() => {
         request = httpMocks.createRequest({
           method: 'POST',
@@ -73,7 +67,7 @@ describe('notificationController', () => {
 
       test('calls next() with Error', () => {
         response.on('end', done => {
-          expect(next).toHaveBeenCalledWith(badData('deviceNames is required'))
+          expect(next).toHaveBeenCalledWith(badData('deviceName is required'))
           done()
         })
 
@@ -87,7 +81,7 @@ describe('notificationController', () => {
           method: 'POST',
           url: '/notifications',
           body: {
-            deviceNames: ['rachael', 'joi']
+            deviceName: 'rachael'
           }
         })
       })
