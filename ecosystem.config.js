@@ -22,6 +22,14 @@ module.exports = {
   ],
 
   deploy: {
+    'deploy-only': {
+      user: 'pi',
+      host: 'raspberrypi',
+      ref: 'origin/master',
+      repo: 'git@github.com:inouetakuya/google-nest-notifier.git',
+      path: '/var/www/google-nest-notifier',
+      'post-deploy': 'yarn install && yarn build'
+    },
     production: {
       user: 'pi',
       host: 'raspberrypi',

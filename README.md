@@ -129,6 +129,7 @@ curl -X POST -H "Accept: application/json" -H 'Content-Type: application/json' -
 
 ```shell
 yarn deploy:setup
+yarn deploy:only
 ```
 
 ### Set .env
