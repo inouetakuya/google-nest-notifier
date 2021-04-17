@@ -28,7 +28,7 @@ module.exports = {
       ref: 'origin/master',
       repo: 'git@github.com:inouetakuya/google-nest-notifier-api.git',
       path: '/var/www/google-nest-notifier-api',
-      'post-deploy': 'npm install && npm run build && npm run reload'
+      'post-deploy': 'yarn install && yarn build && yarn reload'
     }
   }
 }

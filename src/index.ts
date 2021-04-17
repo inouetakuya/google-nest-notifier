@@ -42,7 +42,9 @@ app.post('/notifications', notificationController.create)
 app.use(boomHandler)
 app.use(errorHandler)
 
+// @ts-ignore TS2697: An async function or method must return a 'Promise'. Make sure you have a declaration for 'Promise' or include 'ES2015' in your `--lib` option.
 const server = app.listen(process.env.PORT || 3000, async () => {
+  // @ts-ignore TS2531: Object is possibly 'null'.
   const port = server.address().port
 
   if (environment === 'production') {
