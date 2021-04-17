@@ -85,7 +85,7 @@ npx pm2 logs google-nest-notifier
 npx pm2 logs google-nest-notifier --lines 50
 ```
 
-copy your ngrok url from stdout.
+Copy your ngrok url from stdout.
 
 ```
 Forwarding: https://xxxxxxxx.ngrok.io
@@ -111,7 +111,7 @@ npx pm2 logs google-nest-notifier
 npx pm2 logs google-nest-notifier --lines 50
 ```
 
-copy your AWS API Gateway url from stdout.
+Copy your AWS API Gateway url from stdout.
 
 ```
 HttpProxy: https://xxxxxxxx.execute-api.ap-northeast-1.amazonaws.com/prod/notifications
@@ -148,7 +148,7 @@ scp .env.production {USER}@{HOST}:/var/www/google-nest-notifier/source/.env
 scp .env.production pi@raspberrypi:/var/www/google-nest-notifier/source/.env
 ```
 
-### deploy
+### Deploy
 
 ```shell
 yarn deploy
