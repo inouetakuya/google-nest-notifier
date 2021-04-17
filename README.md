@@ -125,10 +125,27 @@ curl -X POST -H "Accept: application/json" -H 'Content-Type: application/json' -
 
 ## Deployment
 
-### setup
+### Setup
 
 ```shell
 yarn deploy:setup
+yarn deploy:only
+```
+
+### Set .env
+
+```shell
+cp .env.example .env.production
+```
+
+Edit .env.production
+
+```shell
+scp .env.production {USER}@{HOST}:/var/www/google-nest-notifier/source/.env
+```
+
+```shell
+scp .env.production pi@raspberrypi:/var/www/google-nest-notifier/source/.env
 ```
 
 ### deploy
