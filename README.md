@@ -20,7 +20,7 @@ cp .env.example .env
 ## Development
 
 ```shell
-npm run dev
+yarn dev
 ```
 
 ```shell
@@ -34,7 +34,7 @@ curl -X POST -H "Accept: application/json" -H 'Content-Type: application/json' -
 ## Testing
 
 ```shell
-npm run test
+yarn test
 ```
 
 ## Production
@@ -42,26 +42,26 @@ npm run test
 ### Start server
 
 ```shell
-npm run build
-npm run start
+yarn build
+yarn start
 ```
 
 ### Zero downtime reload
 
 ```shell
-npm run reload
+yarn reload
 ```
 
 ### Restart server
 
 ```shell
-npm run restart
+yarn restart
 ```
 
 ### Stop server
 
 ```shell
-npm run stop
+yarn stop
 ```
 
 ### Show process list
@@ -102,8 +102,8 @@ curl -X POST -H "Accept: application/json" -H 'Content-Type: application/json' -
 - Set your AWS API Gateway info to `.env`
 
 ```shell
-npm run build
-npm run start
+yarn build
+yarn start
 ```
 
 ```shell
@@ -126,7 +126,7 @@ curl -X POST -H "Accept: application/json" -H 'Content-Type: application/json' -
 ## Deployment
 
 ```shell
-npm run deploy
+yarn deploy
 ```
 
 ### Execute commands
