@@ -1,6 +1,6 @@
 {
   "name": "listener",
-  "version": "1.0.0",
+  "version": "0.0.2",
   "description": "Listener for google-nest-notifier",
   "author": "INOUE Takuya <inouetakuya5@gmail.com>",
   "homepage": "https://github.com/inouetakuya/google-nest-notifier#readme",
