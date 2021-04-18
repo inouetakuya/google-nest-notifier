@@ -8,8 +8,8 @@ const multicastDnsResponseHome: MulticastDnsResponse = {
       name: 'googlecast',
       protocol: 'tcp',
       subtypes: [],
-      description: 'Google Chromecast'
-    }
+      description: 'Google Chromecast',
+    },
   ],
   txt: [
     'id=a802e6b35e868b0b39bb4e982e295b6e',
@@ -23,14 +23,14 @@ const multicastDnsResponseHome: MulticastDnsResponse = {
     'st=0',
     'bs=FA8FCA31CF46',
     'nf=1',
-    'rs='
+    'rs=',
   ],
   port: 8009,
   fullname:
     'Google-Home-a802e6b35e868b0b39bb4e982e295b6e._googlecast._tcp.local',
   host: 'a802e6b3-5e86-8b0b-39bb-4e982e295b6e.local',
   interfaceIndex: 3,
-  networkInterface: 'pseudo multicast'
+  networkInterface: 'pseudo multicast',
 }
 
 export default multicastDnsResponseHome

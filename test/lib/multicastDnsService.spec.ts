@@ -5,7 +5,7 @@ import { EventEmitter } from 'events'
 import {
   getMulticastDnsDataAll,
   queryMulticastDnsDataByDeviceNames,
-  getMulticastDnsDataByDeviceName
+  getMulticastDnsDataByDeviceName,
 } from '~/lib/multicastDnsService'
 
 import multicastDnsResponseHome from 'test/fixtures/multicastDnsResponseHome'
@@ -27,10 +27,10 @@ describe('multicastDnsService', () => {
 
   describe('getMulticastDnsDataAll()', () => {
     test('returns multicastDnsData[]', () => {
-      const result = getMulticastDnsDataAll().then(dataArray => {
+      const result = getMulticastDnsDataAll().then((dataArray) => {
         expect(browser.discover).toHaveBeenCalled()
         expect(browser.stop).toHaveBeenCalled()
-        expect(dataArray.every(data => data.isValid())).toBeTruthy()
+        expect(dataArray.every((data) => data.isValid())).toBeTruthy()
         expect(dataArray[0].deviceName).toBe('Rachael')
         expect(dataArray[1].deviceName).toBe('Joi')
       })
@@ -51,8 +51,10 @@ describe('multicastDnsService', () => {
       test('returns multicastDnsData[]', () => {
         const deviceNames = ['Rachael', 'Joi']
         const result = queryMulticastDnsDataByDeviceNames(deviceNames).then(
-          dataArray => {
-            expect(dataArray.map(data => data.deviceName)).toEqual(deviceNames)
+          (dataArray) => {
+            expect(dataArray.map((data) => data.deviceName)).toEqual(
+              deviceNames
+            )
           }
         )
 
@@ -71,9 +73,9 @@ describe('multicastDnsService', () => {
       test('returns multicastDnsData[]', () => {
         const deviceNames = ['rachael', 'joi']
         const result = queryMulticastDnsDataByDeviceNames(deviceNames).then(
-          dataArray => {
+          (dataArray) => {
             expect(
-              dataArray.map(data => data.deviceName.toLowerCase())
+              dataArray.map((data) => data.deviceName.toLowerCase())
             ).toEqual(deviceNames)
           }
         )
@@ -93,9 +95,11 @@ describe('multicastDnsService', () => {
   describe('getMulticastDnsDataByDeviceName()', () => {
     test('returns multicastDnsData', () => {
       const deviceName = 'Rachael'
-      const result = getMulticastDnsDataByDeviceName(deviceName).then(data => {
-        expect(data?.deviceName).toBe(deviceName)
-      })
+      const result = getMulticastDnsDataByDeviceName(deviceName).then(
+        (data) => {
+          expect(data?.deviceName).toBe(deviceName)
+        }
+      )
 
       browser.emit('ready')
       browser.emit('update', multicastDnsResponseHome)

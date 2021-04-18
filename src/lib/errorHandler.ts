@@ -9,7 +9,7 @@ const errorHandler = (
   response.status(500).json({
     error: 'Internal Server Error',
     message: error.message,
-    data: {}
+    data: {},
   })
 }
 

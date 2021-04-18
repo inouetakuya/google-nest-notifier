@@ -8,17 +8,16 @@ module.exports = {
       instances: 1,
       autorestart: true,
       watch: false,
-      max_memory_restart: '1G', // eslint-disable-line @typescript-eslint/camelcase
+      max_memory_restart: '1G',
       env: {
         USE_DIST: true,
-        NODE_ENV: 'development'
+        NODE_ENV: 'development',
       },
-      // eslint-disable-next-line @typescript-eslint/camelcase
       env_production: {
         USE_DIST: true,
-        NODE_ENV: 'production'
-      }
-    }
+        NODE_ENV: 'production',
+      },
+    },
   ],
 
   deploy: {
@@ -28,7 +27,7 @@ module.exports = {
       ref: 'origin/master',
       repo: 'git@github.com:inouetakuya/google-nest-notifier.git',
       path: '/var/www/google-nest-notifier',
-      'post-deploy': 'yarn install && yarn build'
+      'post-deploy': 'yarn install && yarn build',
     },
     production: {
       user: 'pi',
@@ -36,7 +35,7 @@ module.exports = {
       ref: 'origin/master',
       repo: 'git@github.com:inouetakuya/google-nest-notifier.git',
       path: '/var/www/google-nest-notifier',
-      'post-deploy': 'yarn install && yarn build && yarn reload'
-    }
-  }
+      'post-deploy': 'yarn install && yarn build && yarn reload',
+    },
+  },
 }

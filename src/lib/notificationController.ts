@@ -25,7 +25,7 @@ const notificationController = {
       const speechUrl: string = await textToSpeechUrl({
         text,
         language: 'ja',
-        speed: 1
+        speed: 1,
       })
 
       const googleNestClient = new GoogleNestClient(multicastDnsData.ipAddress)
@@ -33,7 +33,7 @@ const notificationController = {
 
       response.status(201).json({ status })
     })().catch(next)
-  }
+  },
 }
 
 export default notificationController

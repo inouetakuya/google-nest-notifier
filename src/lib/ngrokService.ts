@@ -9,7 +9,7 @@ const ngrokService = {
   connect: ({
     port,
     authtoken,
-    region
+    region,
   }: {
     port: number
     authtoken?: string
@@ -28,7 +28,7 @@ const ngrokService = {
     if (region) Object.assign(ngrokOptions, { region })
 
     return ngrok.connect(ngrokOptions)
-  }
+  },
 }
 
 export default ngrokService

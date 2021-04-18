@@ -51,7 +51,7 @@ const server = app.listen(process.env.PORT || 3000, async () => {
     const ngrokUrl = await ngrokService.connect({
       port,
       authtoken: process.env.NGROK_TOKEN,
-      region: process.env.NGROK_REGION
+      region: process.env.NGROK_REGION,
     })
     console.log(
       [`Forwarding: ${ngrokUrl}`, `-> http://localhost:${port}`].join('\n')
@@ -65,14 +65,14 @@ const server = app.listen(process.env.PORT || 3000, async () => {
         httpMethod: process.env.API_GATEWAY_HTTP_METHOD,
         url: ngrokUrl,
         path: '/notifications',
-        profile: process.env.API_GATEWAY_PROFILE
+        profile: process.env.API_GATEWAY_PROFILE,
       })
 
       console.log(
         [
           `HttpProxy: ${apiGatewayUrl}`,
           `-> ${ngrokUrl}/notifications`,
-          `-> http://localhost:${port}/notifications`
+          `-> http://localhost:${port}/notifications`,
         ].join('\n')
       )
     }
