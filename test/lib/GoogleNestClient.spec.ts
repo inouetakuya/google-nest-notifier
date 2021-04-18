@@ -42,7 +42,7 @@ describe('GoogleNestClient', () => {
     })
 
     test('connects to Google Nest', async () => {
-      await expect(client.connect()).resolves.toBe(undefined)
+      await expect(client.connect()).resolves.toBe(true)
       expect(mockedCastv2Client.connect).toHaveBeenCalled()
     })
   })
