@@ -1,7 +1,7 @@
 export default interface MulticastDnsResponse {
   addresses: string[]
   query: []
-  type: object[]
+  type: Record<string, any>[]
   txt: string[]
   port: number
   fullname: string

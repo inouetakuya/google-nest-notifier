@@ -13,11 +13,11 @@ describe('GoogleNestClient', () => {
 
   beforeEach(() => {
     mockedCastv2Client = {
-      connect: jest.fn((ip: string, callback: Function) => callback()),
+      connect: jest.fn((ip: string, callback: any) => callback()),
       launch: jest.fn(
-        (Application: castv2.DefaultMediaReceiver, callback: Function) =>
+        (Application: castv2.DefaultMediaReceiver, callback: any) =>
           callback(null, new Application())
-      )
+      ),
     }
   })
 
@@ -42,7 +42,7 @@ describe('GoogleNestClient', () => {
     })
 
     test('connects to Google Nest', async () => {
-      await expect(client.connect()).resolves.toBe(undefined)
+      await expect(client.connect()).resolves.toBe(true)
       expect(mockedCastv2Client.connect).toHaveBeenCalled()
     })
   })
@@ -63,12 +63,12 @@ describe('GoogleNestClient', () => {
 
   describe('loadMedia()', () => {
     const player = {
-      load: jest.fn((media, options, callback) => callback())
+      load: jest.fn((media, options, callback) => callback()),
     }
     const media = {
       contentId: speechUrl,
       contentType: 'video/mp3',
-      streamType: 'BUFFERED'
+      streamType: 'BUFFERED',
     }
 
     beforeEach(() => {

@@ -10,7 +10,7 @@ jest.mock('ngrok', () => {
   return {
     // connect: jest.fn().mockResolvedValue(dummyNgrokUrl) だと
     // ReferenceError: Cannot access 'dummyNgrokUrl' before initialization
-    connect: jest.fn().mockResolvedValue('https://xxxxxxxx.ngrok.io')
+    connect: jest.fn().mockResolvedValue('https://xxxxxxxx.ngrok.io'),
   }
 })
 
@@ -22,7 +22,7 @@ describe('ngrokService', () => {
       beforeEach(async () => {
         ngrokUrl = await ngrokService.connect({
           port: dummyPort,
-          authtoken: dummyToken
+          authtoken: dummyToken,
         })
       })
 
@@ -30,7 +30,7 @@ describe('ngrokService', () => {
         expect(ngrokUrl).toBe(dummyNgrokUrl)
         expect(ngrok.connect).toBeCalledWith({
           port: dummyPort,
-          authtoken: dummyToken
+          authtoken: dummyToken,
         })
       })
     })
@@ -42,7 +42,7 @@ describe('ngrokService', () => {
         ngrokUrl = await ngrokService.connect({
           port: dummyPort,
           authtoken: dummyToken,
-          region: dummyRegion
+          region: dummyRegion,
         })
       })
 
@@ -51,7 +51,7 @@ describe('ngrokService', () => {
         expect(ngrok.connect).toBeCalledWith({
           port: dummyPort,
           authtoken: dummyToken,
-          region: dummyRegion
+          region: dummyRegion,
         })
       })
     })

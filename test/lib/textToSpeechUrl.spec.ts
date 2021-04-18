@@ -6,7 +6,7 @@ describe('textToSpeechUrl()', () => {
       await expect(
         textToSpeechUrl({
           text: 'あ'.repeat(200),
-          language: 'ja'
+          language: 'ja',
         })
       ).resolves.toMatch(/^https:\/\/translate\.google\.com\/translate_tts\?/)
     })
@@ -17,7 +17,7 @@ describe('textToSpeechUrl()', () => {
       await expect(
         textToSpeechUrl({
           text: 'あ'.repeat(201),
-          language: 'ja'
+          language: 'ja',
         })
       ).rejects.toThrow(
         new RangeError('text length (201) should be less than 200 characters')

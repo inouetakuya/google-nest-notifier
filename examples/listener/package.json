@@ -1,0 +1,30 @@
+{
+  "name": "listener",
+  "version": "0.0.2",
+  "description": "Listener for google-nest-notifier",
+  "author": "INOUE Takuya <inouetakuya5@gmail.com>",
+  "homepage": "https://github.com/inouetakuya/google-nest-notifier#readme",
+  "private": true,
+  "license": "MIT",
+  "main": "lib/listener.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "publishConfig": {
+    "registry": "https://registry.yarnpkg.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/inouetakuya/google-nest-notifier.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/inouetakuya/google-nest-notifier/issues"
+  }
+}

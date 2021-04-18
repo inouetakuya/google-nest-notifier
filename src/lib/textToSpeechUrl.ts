@@ -4,7 +4,7 @@ import googleTtsApi from 'google-tts-api'
 export default function textToSpeechUrl({
   text,
   language = 'ja',
-  speed
+  speed,
 }: {
   text: string
   language?: string // https://cloud.google.com/translate/docs/languages

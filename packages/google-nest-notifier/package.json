@@ -1,0 +1,35 @@
+{
+  "name": "google-nest-notifier",
+  "version": "0.0.2",
+  "description": "Send notifications to Google Nest",
+  "keywords": [
+    "google home",
+    "google nest",
+    "notifications",
+    "notifier"
+  ],
+  "author": "INOUE Takuya <inouetakuya5@gmail.com>",
+  "homepage": "https://github.com/inouetakuya/google-nest-notifier#readme",
+  "license": "MIT",
+  "main": "lib/google-nest-notifier.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "publishConfig": {
+    "registry": "https://registry.yarnpkg.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/inouetakuya/google-nest-notifier.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/inouetakuya/google-nest-notifier/issues"
+  }
+}

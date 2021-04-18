@@ -23,7 +23,7 @@ const apiGatewayService = {
     httpMethod,
     url,
     path,
-    profile
+    profile,
   }: {
     region?: string
     restApiId?: string
@@ -47,7 +47,7 @@ const apiGatewayService = {
       httpMethod,
       url,
       path,
-      stageName: 'prod'
+      stageName: 'prod',
     }
 
     if (profile) Object.assign(apiGatewayOptions, { profile })
@@ -62,7 +62,7 @@ const apiGatewayService = {
       `--resource-id ${apiGatewayOptions.resourceId}`,
       `--http-method ${apiGatewayOptions.httpMethod}`,
       `--integration-http-method ${apiGatewayOptions.httpMethod}`,
-      `--uri ${urlJoin(apiGatewayOptions.url, apiGatewayOptions.path)}`
+      `--uri ${urlJoin(apiGatewayOptions.url, apiGatewayOptions.path)}`,
     ]
 
     if (apiGatewayOptions.profile) {
@@ -75,7 +75,7 @@ const apiGatewayService = {
       'aws apigateway create-deployment',
       `--region ${apiGatewayOptions.region}`,
       `--rest-api-id ${apiGatewayOptions.restApiId}`,
-      `--stage-name ${apiGatewayOptions.stageName}`
+      `--stage-name ${apiGatewayOptions.stageName}`,
     ]
 
     if (apiGatewayOptions.profile) {
@@ -91,7 +91,7 @@ const apiGatewayService = {
       apiGatewayOptions.stageName,
       apiGatewayOptions.path
     )
-  }
+  },
 }
 
 export default apiGatewayService

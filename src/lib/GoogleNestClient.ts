@@ -13,19 +13,19 @@ export default class GoogleNestClient {
     private client = new castv2.Client()
   ) {}
 
-  connect(): Promise<undefined> {
+  connect(): Promise<boolean> {
     // コールバック関数の最初の引数がエラーでないため手動で Promise にしている
     // https://yosuke-furukawa.hatenablog.com/entry/2017/05/10/101752
     // https://nodejs.org/dist/latest-v8.x/docs/api/util.html#util_util_promisify_original
-    return new Promise(resolve => {
+    return new Promise((resolve) => {
       this.client.connect(this.ipAddress, () => {
-        resolve()
+        resolve(true)
       })
     })
   }
 
   async notify({
-    speechUrl
+    speechUrl,
   }: {
     speechUrl: string
   }): Promise<Record<string, any>> {
@@ -35,7 +35,7 @@ export default class GoogleNestClient {
     const media: Media = {
       contentId: speechUrl,
       contentType: 'video/mp3',
-      streamType: 'BUFFERED'
+      streamType: 'BUFFERED',
     }
 
     const status = await this.loadMedia({ player, media })
@@ -81,7 +81,7 @@ export default class GoogleNestClient {
 
   loadMedia({
     player,
-    media
+    media,
   }: {
     player: castv2.DefaultMediaReceiver
     media: Media

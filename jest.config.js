@@ -1,3 +1,4 @@
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 require('dotenv').config({ path: '.env.test' })
 
 module.exports = {
@@ -5,9 +6,9 @@ module.exports = {
   testEnvironment: 'node',
   moduleNameMapper: {
     '^~/(.*)$': '<rootDir>/src/$1',
-    '^test/(.*)$': '<rootDir>/test/$1'
+    '^test/(.*)$': '<rootDir>/test/$1',
   },
   moduleFileExtensions: ['js', 'ts', 'vue', 'json'],
   collectCoverage: true,
-  collectCoverageFrom: ['<rootDir>/src/**/*.ts']
+  collectCoverageFrom: ['<rootDir>/src/**/*.ts'],
 }

@@ -14,7 +14,7 @@ describe('apiGatewayService', () => {
           resourceId: 'xxxxxxxx',
           httpMethod: 'POST',
           url: 'https://xxxxxxxx.ngrok.io',
-          path: '/notifications'
+          path: '/notifications',
         })
       })
 
