@@ -1,0 +1,15 @@
+name: reviewdog
+on: [pull_request]
+jobs:
+  eslint:
+    name: runner / eslint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: eslint
+        uses: reviewdog/action-eslint@v1
+        with:
+          level: warning
+          reporter: github-pr-review
+          filter_mode: nofilter
+          fail_on_error: false # because level is warning
