@@ -1,7 +1,7 @@
 {
-  "name": "google-nest-notifier",
-  "version": "0.0.2",
-  "description": "Web API for send notifications to Google Nest",
+  "name": "google-nest-notifier-workspaces",
+  "version": "0.0.3",
+  "description": "Workspaces for google-nest-notifier",
   "author": "INOUE Takuya <inouetakuya5@gmail.com>",
   "private": true,
   "license": "MIT",
