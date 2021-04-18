@@ -1,7 +1,7 @@
-'use strict';
+'use strict'
 
-const listener = require('..');
+const listener = require('..')
 
 describe('listener', () => {
-    it('needs tests');
-});
+  it('needs tests')
+})

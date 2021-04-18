@@ -1,7 +1,7 @@
-'use strict';
+'use strict'
 
-module.exports = googleNestNotifier;
+module.exports = googleNestNotifier
 
 function googleNestNotifier() {
-    // TODO
+  // TODO
 }

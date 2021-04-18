@@ -1,7 +1,7 @@
-'use strict';
+'use strict'
 
-module.exports = listener;
+module.exports = listener
 
 function listener() {
-    // TODO
+  // TODO
 }

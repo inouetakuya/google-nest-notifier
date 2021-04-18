@@ -1,7 +1,7 @@
-'use strict';
+'use strict'
 
-const googleNestNotifier = require('..');
+const googleNestNotifier = require('..')
 
 describe('google-nest-notifier', () => {
-    it('needs tests');
-});
+  it('needs tests')
+})
