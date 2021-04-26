@@ -3,8 +3,8 @@
   "version": "0.0.2",
   "description": "Send notifications to Google Nest",
   "keywords": [
-    "google home",
     "google nest",
+    "google home",
     "notifications",
     "notifier"
   ],
@@ -26,10 +26,13 @@
     "type": "git",
     "url": "git+ssh://git@github.com/inouetakuya/google-nest-notifier.git"
   },
-  "scripts": {
-    "test": "echo \"Error: run tests from root\" && exit 1"
-  },
   "bugs": {
     "url": "https://github.com/inouetakuya/google-nest-notifier/issues"
+  },
+  "scripts": {
+    "test": "jest --verbose --runInBand --detectOpenHandles"
+  },
+  "dependencies": {
+    "google-tts-api": "^0.0.6"
   }
 }
