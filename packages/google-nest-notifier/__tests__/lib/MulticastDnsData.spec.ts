@@ -1,4 +1,4 @@
-import MulticastDnsData from '../../src/lib/MulticastDnsData'
+import { MulticastDnsData } from '../../src/lib/MulticastDnsData'
 import { multicastDnsResponseHome } from '../fixtures/multicastDnsResponseHome'
 import { multicastDnsResponseNestHub } from '../fixtures/multicastDnsResponseNestHub'
 import { multicastDnsResponseRpc } from '../fixtures/multicastDnsResponseRpc'
