@@ -33,6 +33,7 @@
     "test": "jest --verbose --runInBand --detectOpenHandles"
   },
   "dependencies": {
-    "google-tts-api": "^0.0.6"
+    "google-tts-api": "^0.0.6",
+    "mdns-js": "^1.0.3"
   }
 }

@@ -8,6 +8,7 @@ module.exports = {
     '^test/(.*)$': '<rootDir>/test/$1',
   },
   moduleFileExtensions: ['js', 'ts', 'vue', 'json'],
+  testRegex: '/test/.*\\.spec\\.ts$',
   collectCoverage: true,
   collectCoverageFrom: ['<rootDir>/src/**/*.ts'],
 }
