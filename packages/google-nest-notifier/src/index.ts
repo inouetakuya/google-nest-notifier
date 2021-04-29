@@ -1,3 +1,5 @@
+import { getMulticastDnsDataByDeviceName } from './lib/multicastDnsService'
+
 type NotificationOptions = {
   deviceName?: string
   ipAddress?: string
@@ -15,10 +17,10 @@ export class GoogleNestNotifier {
     if (language) this.defaultLanguage = language
   }
 
-  notify(
+  async notify(
     message: string,
     { deviceName, ipAddress, language }: NotificationOptions = {}
-  ): boolean {
+  ): Promise<boolean> {
     if (
       !(
         deviceName ||
@@ -29,6 +31,17 @@ export class GoogleNestNotifier {
     )
       throw new Error('Neither deviceName nor ipAddress is assigned')
 
+    const _ipAddress =
+      ipAddress ||
+      this.defaultIpAddress ||
+      (await this.getIpAddress(deviceName || this.defaultDeviceName))
+
     return true
+  }
+
+  async getIpAddress(deviceName: string): Promise<string> {
+    const multicastDnsData = await getMulticastDnsDataByDeviceName(deviceName)
+    if (!multicastDnsData) throw new Error('Google Nest device is not found')
+    return multicastDnsData.ipAddress
   }
 }
