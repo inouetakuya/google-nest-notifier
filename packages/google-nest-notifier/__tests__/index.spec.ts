@@ -1,7 +1,15 @@
-'use strict'
-
-const googleNestNotifier = require('../src')
+import { GoogleNestNotifier } from '../src'
 
 describe('google-nest-notifier', () => {
-  it.todo('needs tests')
+  let googleNestNotifier: GoogleNestNotifier
+
+  describe('notify', () => {
+    beforeEach(() => {
+      googleNestNotifier = new GoogleNestNotifier({ language: 'jp' })
+    })
+
+    it('succeeds', () => {
+      googleNestNotifier.notify('Hello', { deviceName: 'Rachael' })
+    })
+  })
 })
