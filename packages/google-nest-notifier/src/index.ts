@@ -5,9 +5,9 @@ type NotificationOptions = {
 }
 
 export class GoogleNestNotifier {
-  private defaultDeviceName = ''
-  private defaultIpAddress = ''
-  private defaultLanguage = ''
+  private readonly defaultDeviceName: string = ''
+  private readonly defaultIpAddress: string = ''
+  private readonly defaultLanguage: string = ''
 
   constructor({ deviceName, ipAddress, language }: NotificationOptions) {
     if (deviceName) this.defaultDeviceName = deviceName
@@ -17,8 +17,18 @@ export class GoogleNestNotifier {
 
   notify(
     message: string,
-    { deviceName, ipAddress, language }: NotificationOptions
+    { deviceName, ipAddress, language }: NotificationOptions = {}
   ): boolean {
+    if (
+      !(
+        deviceName ||
+        ipAddress ||
+        this.defaultDeviceName ||
+        this.defaultIpAddress
+      )
+    )
+      throw new Error('Neither deviceName nor ipAddress is assigned')
+
     return true
   }
 }

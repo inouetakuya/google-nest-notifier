@@ -11,5 +11,11 @@ describe('google-nest-notifier', () => {
     it('succeeds', () => {
       googleNestNotifier.notify('Hello', { deviceName: 'Rachael' })
     })
+
+    describe('when neither deviceName nor ipAddress is assigned', () => {
+      it('throws an error', () => {
+        expect(() => googleNestNotifier.notify('Hello')).toThrow()
+      })
+    })
   })
 })
