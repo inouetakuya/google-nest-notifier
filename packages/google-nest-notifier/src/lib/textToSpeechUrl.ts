@@ -3,7 +3,7 @@ import googleTtsApi from 'google-tts-api'
 
 export default function textToSpeechUrl({
   text,
-  language = 'ja',
+  language = 'en',
   speed,
 }: {
   text: string
