@@ -8,6 +8,12 @@ type NotificationOptions = {
   language?: string
 }
 
+type Media = {
+  contentId: string
+  contentType: string // contentType: 'video/mp3'
+  streamType: string // streamType: 'BUFFERED'
+}
+
 export class GoogleNestNotifier {
   private readonly defaultDeviceName: string = ''
   private readonly defaultIpAddress: string = ''
@@ -57,6 +63,13 @@ export class GoogleNestNotifier {
     await this.client.connect(_ipAddress)
     const mediaReceiver = await this.launchMediaReceiver()
 
+    const media: Media = {
+      contentId: 'https://example.com', // dummy speechUrl
+      contentType: 'video/mp3',
+      streamType: 'BUFFERED',
+    }
+    await this.loadMedia({ mediaReceiver, media })
+
     return true
   }
 
@@ -73,6 +86,25 @@ export class GoogleNestNotifier {
         (error: Error, mediaReceiver: castv2.DefaultMediaReceiver) => {
           if (error) return reject(error)
           resolve(mediaReceiver)
+        }
+      )
+    })
+  }
+
+  loadMedia({
+    mediaReceiver,
+    media,
+  }: {
+    mediaReceiver: castv2.DefaultMediaReceiver
+    media: any
+  }): Promise<Record<string, any>> {
+    return new Promise((resolve, reject) => {
+      mediaReceiver.load(
+        media,
+        { autoplay: true },
+        (error: Error, status: Record<string, any>) => {
+          if (error) reject(error)
+          resolve(status)
         }
       )
     })

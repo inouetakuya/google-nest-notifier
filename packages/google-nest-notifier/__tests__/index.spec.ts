@@ -74,4 +74,20 @@ describe('google-nest-notifier', () => {
       await expect(googleNestNotifier.launchMediaReceiver()).resolves
     })
   })
+
+  describe('loadMedia', () => {
+    const mediaReceiver = {
+      load: jest.fn((media, options, callback) => callback()),
+    }
+    const media = {
+      contentId: 'https://example.com', // dummy speechUrl
+      contentType: 'video/mp3',
+      streamType: 'BUFFERED',
+    }
+
+    it('loads media', async () => {
+      await expect(googleNestNotifier.loadMedia({ mediaReceiver, media }))
+        .resolves
+    })
+  })
 })
