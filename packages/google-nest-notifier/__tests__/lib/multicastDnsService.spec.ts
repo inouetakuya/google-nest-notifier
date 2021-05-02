@@ -15,7 +15,6 @@ import { multicastDnsResponseRpc } from '../fixtures/multicastDnsResponseRpc'
 jest.useFakeTimers()
 
 describe('multicastDnsService', () => {
-  // @ts-ignore TS7005: Variable 'browser' implicitly has an 'any' type.
   let browser: any
 
   beforeEach(() => {
