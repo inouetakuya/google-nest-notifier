@@ -1,6 +1,6 @@
-import textToSpeechUrl from '../../src/lib/textToSpeechUrl'
+import { textToSpeechUrl } from '../../src/lib/textToSpeechUrl'
 
-describe('textToSpeechUrl()', () => {
+describe('textToSpeechUrl', () => {
   describe('when text.length <= 200', () => {
     test('returns speechUrl', async () => {
       await expect(
