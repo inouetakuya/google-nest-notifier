@@ -11,6 +11,10 @@ describe('google-nest-notifier', () => {
   beforeEach(() => {
     mockedCastv2Client = {
       connect: jest.fn((ip: string, callback: any) => callback()),
+      launch: jest.fn(
+        (Application: castv2.DefaultMediaReceiver, callback: any) =>
+          callback(null, new Application())
+      ),
     }
     googleNestNotifier = new GoogleNestNotifier(
       { language: 'jp' },
@@ -62,6 +66,12 @@ describe('google-nest-notifier', () => {
           googleNestNotifier.getIpAddress('wrongDeviceName')
         ).rejects.toThrow()
       })
+    })
+  })
+
+  describe('launchMediaReceiver', () => {
+    it('returns mediaReceiver', async () => {
+      await expect(googleNestNotifier.launchMediaReceiver()).resolves
     })
   })
 })

@@ -55,6 +55,7 @@ export class GoogleNestNotifier {
       (await this.getIpAddress(deviceName || this.defaultDeviceName))
 
     await this.client.connect(_ipAddress)
+    const mediaReceiver = await this.launchMediaReceiver()
 
     return true
   }
@@ -63,5 +64,17 @@ export class GoogleNestNotifier {
     const multicastDnsData = await getMulticastDnsDataByDeviceName(deviceName)
     if (!multicastDnsData) throw new Error('Google Nest device is not found')
     return multicastDnsData.ipAddress
+  }
+
+  launchMediaReceiver(): Promise<castv2.DefaultMediaReceiver> {
+    return new Promise((resolve, reject) => {
+      this.client.launch(
+        castv2.DefalutMediaReceiver,
+        (error: Error, mediaReceiver: castv2.DefaultMediaReceiver) => {
+          if (error) return reject(error)
+          resolve(mediaReceiver)
+        }
+      )
+    })
   }
 }
