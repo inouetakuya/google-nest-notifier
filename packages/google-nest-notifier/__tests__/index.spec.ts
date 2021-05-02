@@ -1,12 +1,21 @@
+// @ts-ignore TS7016: Could not find a declaration file for module 'castv2-client'
+import castv2 from 'castv2-client'
 import { GoogleNestNotifier } from '../src'
 import * as multicastDnsService from '../src/lib/multicastDnsService'
 import { MulticastDnsData } from '../src/lib/MulticastDnsData'
 
 describe('google-nest-notifier', () => {
+  let mockedCastv2Client: castv2.Client
   let googleNestNotifier: GoogleNestNotifier
 
   beforeEach(() => {
-    googleNestNotifier = new GoogleNestNotifier({ language: 'jp' })
+    mockedCastv2Client = {
+      connect: jest.fn((ip: string, callback: any) => callback()),
+    }
+    googleNestNotifier = new GoogleNestNotifier(
+      { language: 'jp' },
+      mockedCastv2Client
+    )
   })
 
   describe('notify', () => {
