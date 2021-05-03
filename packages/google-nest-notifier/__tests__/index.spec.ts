@@ -3,6 +3,7 @@ import castv2 from 'castv2-client'
 import { GoogleNestNotifier } from '../src'
 import * as multicastDnsService from '../src/lib/multicastDnsService'
 import { MulticastDnsData } from '../src/lib/MulticastDnsData'
+import * as TextToSpeechUrl from '../src/lib/textToSpeechUrl'
 
 describe('google-nest-notifier', () => {
   let mockedCastv2Client: castv2.Client
@@ -69,6 +70,29 @@ describe('google-nest-notifier', () => {
     })
   })
 
+  describe('getMedia', () => {
+    beforeEach(() => {
+      jest
+        .spyOn(TextToSpeechUrl, 'textToSpeechUrl')
+        .mockResolvedValue(
+          'https://translate.google.com/translate_tts?foo=dummy'
+        )
+    })
+
+    it('returns media', async () => {
+      const media = await googleNestNotifier.getMedia('Hello', {
+        language: 'ja',
+      })
+      expect(media).toEqual({
+        contentId: expect.stringContaining(
+          'https://translate.google.com/translate_tts'
+        ),
+        contentType: 'video/mp3',
+        streamType: 'BUFFERED',
+      })
+    })
+  })
+
   describe('launchMediaReceiver', () => {
     it('returns mediaReceiver', async () => {
       await expect(googleNestNotifier.launchMediaReceiver()).resolves
@@ -80,7 +104,7 @@ describe('google-nest-notifier', () => {
       load: jest.fn((media, options, callback) => callback()),
     }
     const media = {
-      contentId: 'https://example.com', // dummy speechUrl
+      contentId: 'https://translate.google.com/translate_tts/dummy', // dummy speechUrl
       contentType: 'video/mp3',
       streamType: 'BUFFERED',
     }

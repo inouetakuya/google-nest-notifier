@@ -1,6 +1,7 @@
 // @ts-ignore TS7016: Could not find a declaration file for module 'castv2-client'
 import castv2 from 'castv2-client'
 import { getMulticastDnsDataByDeviceName } from './lib/multicastDnsService'
+import { textToSpeechUrl } from './lib/textToSpeechUrl'
 
 type NotificationOptions = {
   deviceName?: string
@@ -60,14 +61,12 @@ export class GoogleNestNotifier {
       this.defaultIpAddress ||
       (await this.getIpAddress(deviceName || this.defaultDeviceName))
 
+    const media = await this.getMedia(message, {
+      language: language || this.defaultLanguage || 'en',
+    })
+
     await this.client.connect(_ipAddress)
     const mediaReceiver = await this.launchMediaReceiver()
-
-    const media: Media = {
-      contentId: 'https://example.com', // dummy speechUrl
-      contentType: 'video/mp3',
-      streamType: 'BUFFERED',
-    }
     await this.loadMedia({ mediaReceiver, media })
 
     return true
@@ -77,6 +76,23 @@ export class GoogleNestNotifier {
     const multicastDnsData = await getMulticastDnsDataByDeviceName(deviceName)
     if (!multicastDnsData) throw new Error('Google Nest device is not found')
     return multicastDnsData.ipAddress
+  }
+
+  async getMedia(
+    message: string,
+    { language }: Pick<NotificationOptions, 'language'>
+  ): Promise<Media> {
+    const speechUrl: string = await textToSpeechUrl({
+      text: message,
+      language,
+      speed: 1,
+    })
+
+    return {
+      contentId: speechUrl,
+      contentType: 'video/mp3',
+      streamType: 'BUFFERED',
+    }
   }
 
   launchMediaReceiver(): Promise<castv2.DefaultMediaReceiver> {
