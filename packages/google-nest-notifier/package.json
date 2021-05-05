@@ -11,7 +11,7 @@
   "author": "INOUE Takuya <inouetakuya5@gmail.com>",
   "homepage": "https://github.com/inouetakuya/google-nest-notifier#readme",
   "license": "MIT",
-  "main": "lib/google-nest-notifier.js",
+  "main": "dist/index.js",
   "directories": {
     "lib": "lib",
     "test": "__tests__"
@@ -30,6 +30,7 @@
     "url": "https://github.com/inouetakuya/google-nest-notifier/issues"
   },
   "scripts": {
+    "build": "rm -rf dist/ && tsc",
     "test": "jest --verbose --runInBand --detectOpenHandles"
   },
   "dependencies": {
