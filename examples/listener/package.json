@@ -21,10 +21,13 @@
     "type": "git",
     "url": "git+ssh://git@github.com/inouetakuya/google-nest-notifier.git"
   },
+  "bugs": {
+    "url": "https://github.com/inouetakuya/google-nest-notifier/issues"
+  },
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
-  "bugs": {
-    "url": "https://github.com/inouetakuya/google-nest-notifier/issues"
+  "dependencies": {
+    "google-nest-notifier": "./packages/google-nest-notifier"
   }
 }
