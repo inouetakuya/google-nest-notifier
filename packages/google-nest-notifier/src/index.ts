@@ -22,7 +22,7 @@ export class GoogleNestNotifier {
   private client: castv2.Client
 
   constructor(
-    { deviceName, ipAddress, language }: NotificationOptions,
+    { deviceName, ipAddress, language }: NotificationOptions = {},
     client = new castv2.Client()
   ) {
     if (deviceName) this.defaultDeviceName = deviceName
@@ -43,7 +43,7 @@ export class GoogleNestNotifier {
   }
 
   async notify(
-    message: string,
+    text: string,
     { deviceName, ipAddress, language }: NotificationOptions = {}
   ): Promise<boolean> {
     if (
@@ -61,7 +61,7 @@ export class GoogleNestNotifier {
       this.defaultIpAddress ||
       (await this.getIpAddress(deviceName || this.defaultDeviceName))
 
-    const media = await this.getMedia(message, {
+    const media = await this.getMedia(text, {
       language: language || this.defaultLanguage || 'en',
     })
 
@@ -79,11 +79,11 @@ export class GoogleNestNotifier {
   }
 
   async getMedia(
-    message: string,
+    text: string,
     { language }: Pick<NotificationOptions, 'language'>
   ): Promise<Media> {
     const speechUrl: string = await textToSpeechUrl({
-      text: message,
+      text,
       language,
       speed: 1,
     })

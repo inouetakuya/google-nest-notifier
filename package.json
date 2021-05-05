@@ -22,8 +22,9 @@
     "dev": "nodemon",
     "lint": "eslint --ext .js,.ts --ignore-path .gitignore .",
     "lint:fix": "eslint --ext .js,.ts --ignore-path .gitignore . --fix",
-    "test": "jest --verbose --runInBand --detectOpenHandles && yarn test:google-nest-notifiler",
-    "test:google-nest-notifiler": "yarn workspace google-nest-notifier test"
+    "test": "jest --verbose --runInBand --detectOpenHandles && yarn test:google-nest-notifiler && yarn test:listener",
+    "test:google-nest-notifiler": "yarn workspace google-nest-notifier test",
+    "test:listener": "yarn workspace listener test"
   },
   "dependencies": {
     "@hapi/boom": "^9.1.0",
