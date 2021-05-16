@@ -1,5 +1,6 @@
-import { EventEmitter } from 'events'
+import { badData } from '@hapi/boom'
 import httpMocks, { MockRequest, MockResponse } from 'node-mocks-http'
+import { EventEmitter } from 'events'
 import { Request, Response } from 'express'
 import { notificationsController } from '../../src/controllers/notificationsController'
 
@@ -35,8 +36,8 @@ describe('notificationsController', () => {
         })
       })
 
-      it('returns response successfully', (done) => {
-        response.on('end', () => {
+      it('returns response successfully', () => {
+        response.on('end', (done) => {
           expect(response.statusCode).toBe(201)
           expect(response._getJSONData().status).toEqual(mockedStatus)
           expect(next).not.toHaveBeenCalled()
@@ -47,8 +48,28 @@ describe('notificationsController', () => {
       })
     })
 
-    describe('when neither deviceName or ipAddress is specified', () => {
-      it.todo('calls next() with Error')
+    describe('when neither deviceName nor ipAddress is specified', () => {
+      beforeEach(() => {
+        request = httpMocks.createRequest({
+          method: 'POST',
+          url: '/notifications',
+          body: {
+            text: 'Hello',
+            language: 'ja',
+          },
+        })
+      })
+
+      it('calls next() with Error', () => {
+        response.on('end', (done) => {
+          expect(next).toHaveBeenCalledWith(
+            badData('Either deviceName or ipAddress is required')
+          )
+          done()
+        })
+
+        notificationsController.create(request, response, next)
+      })
     })
 
     describe('when text is not set', () => {

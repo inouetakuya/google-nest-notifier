@@ -28,6 +28,7 @@
     "test": "jest --verbose --runInBand --detectOpenHandles"
   },
   "dependencies": {
+    "@hapi/boom": "^9.1.2",
     "express": "^4.17.1"
   },
   "devDependencies": {
