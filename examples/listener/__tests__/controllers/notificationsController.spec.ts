@@ -6,7 +6,7 @@ import { notificationsController } from '../../src/controllers/notificationsCont
 const mockedStatus = { volume: { muted: false } }
 const mockedNotify = jest.fn().mockResolvedValue(mockedStatus)
 
-jest.mock('google-nest-notifier', () => {
+jest.mock('../../../../packages/google-nest-notifier/src', () => {
   return {
     GoogleNestNotifier: jest.fn().mockImplementation(() => {
       return { notify: mockedNotify }

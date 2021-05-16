@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express'
-import { GoogleNestNotifier } from 'google-nest-notifier'
+import { GoogleNestNotifier } from '../../../../packages/google-nest-notifier/src'
 
 export const notificationsController = {
   create: (request: Request, response: Response, next: NextFunction) => {
