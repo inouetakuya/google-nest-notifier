@@ -13,6 +13,12 @@ export const notificationsController = {
         })
       }
 
+      if (!text) {
+        throw badData('Text is required', {
+          requestBody: request.body,
+        })
+      }
+
       const googleNestNotifier = new GoogleNestNotifier()
       const status = await googleNestNotifier.notify(text, {
         deviceName,

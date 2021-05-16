@@ -73,7 +73,25 @@ describe('notificationsController', () => {
     })
 
     describe('when text is not set', () => {
-      it.todo('calls next() with Error')
+      beforeEach(() => {
+        request = httpMocks.createRequest({
+          method: 'POST',
+          url: '/notifications',
+          body: {
+            deviceName: 'Rachael',
+            language: 'ja',
+          },
+        })
+      })
+
+      it('calls next() with Error', () => {
+        response.on('end', (done) => {
+          expect(next).toHaveBeenCalledWith(badData('Text is required'))
+          done()
+        })
+
+        notificationsController.create(request, response, next)
+      })
     })
   })
 })
