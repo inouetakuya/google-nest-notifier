@@ -1,4 +1,4 @@
-import { badData } from '@hapi/boom'
+import { badData, notFound } from '@hapi/boom'
 import { Request, Response, NextFunction } from 'express'
 import { GoogleNestNotifier } from '../../../../packages/google-nest-notifier/src'
 
@@ -20,9 +20,17 @@ export const notificationsController = {
       }
 
       const googleNestNotifier = new GoogleNestNotifier()
+
+      const _ipAddress =
+        ipAddress || (await googleNestNotifier.getIpAddress(deviceName))
+
+      if (!_ipAddress)
+        throw notFound('Google Nest device is not found', {
+          requestBody: request.body,
+        })
+
       const status = await googleNestNotifier.notify(text, {
-        deviceName,
-        ipAddress,
+        ipAddress: _ipAddress,
         language,
       })
 

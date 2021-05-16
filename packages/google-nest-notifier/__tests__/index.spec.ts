@@ -81,10 +81,9 @@ describe('google-nest-notifier', () => {
           .mockResolvedValue(undefined)
       })
 
-      it('throws an error', async () => {
-        await expect(() =>
-          googleNestNotifier.getIpAddress('wrongDeviceName')
-        ).rejects.toThrow()
+      it('returns undefined', async () => {
+        const ipAddress = await googleNestNotifier.getIpAddress('Rachael')
+        expect(ipAddress).toBeUndefined()
       })
     })
   })

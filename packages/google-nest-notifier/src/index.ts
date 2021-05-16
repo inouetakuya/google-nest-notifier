@@ -61,6 +61,8 @@ export class GoogleNestNotifier {
       this.defaultIpAddress ||
       (await this.getIpAddress(deviceName || this.defaultDeviceName))
 
+    if (!_ipAddress) throw new Error('Google Nest device is not found')
+
     const media = await this.getMedia(text, {
       language: language || this.defaultLanguage || 'en',
     })
@@ -72,10 +74,9 @@ export class GoogleNestNotifier {
     return true
   }
 
-  async getIpAddress(deviceName: string): Promise<string> {
+  async getIpAddress(deviceName: string): Promise<string | undefined> {
     const multicastDnsData = await getMulticastDnsDataByDeviceName(deviceName)
-    if (!multicastDnsData) throw new Error('Google Nest device is not found')
-    return multicastDnsData.ipAddress
+    return multicastDnsData ? multicastDnsData.ipAddress : undefined
   }
 
   async getMedia(

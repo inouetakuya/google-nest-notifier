@@ -6,11 +6,12 @@ import { notificationsController } from '../../src/controllers/notificationsCont
 
 const mockedStatus = { volume: { muted: false } }
 const mockedNotify = jest.fn().mockResolvedValue(mockedStatus)
+const mockedGetIpAddress = jest.fn().mockResolvedValue('192.168.3.1')
 
 jest.mock('../../../../packages/google-nest-notifier/src', () => {
   return {
     GoogleNestNotifier: jest.fn().mockImplementation(() => {
-      return { notify: mockedNotify }
+      return { notify: mockedNotify, getIpAddress: mockedGetIpAddress }
     }),
   }
 })
