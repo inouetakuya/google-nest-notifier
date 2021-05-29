@@ -5,7 +5,7 @@ import textToSpeechUrl from '~/lib/textToSpeechUrl'
 import GoogleNestClient from '~/lib/GoogleNestClient'
 
 const notificationController = {
-  create: (request: Request, response: Response, next: NextFunction) => {
+  create: (request: Request, response: Response, next: NextFunction): void => {
     ;(async () => {
       const deviceName = request.body.deviceName
       if (!deviceName) {

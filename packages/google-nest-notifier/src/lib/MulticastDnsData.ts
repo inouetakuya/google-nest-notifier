@@ -1,6 +1,6 @@
-import MulticastDnsResponse from '~/types/MulticastDnsResponse'
+import { MulticastDnsResponse } from '../types/MulticastDnsResponse'
 
-export default class MulticastDnsData {
+export class MulticastDnsData {
   ipAddress: string
   deviceName: string
   machineName: string

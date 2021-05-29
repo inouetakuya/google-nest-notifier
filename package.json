@@ -22,14 +22,15 @@
     "dev": "nodemon",
     "lint": "eslint --ext .js,.ts --ignore-path .gitignore .",
     "lint:fix": "eslint --ext .js,.ts --ignore-path .gitignore . --fix",
-    "test": "jest --verbose --runInBand --detectOpenHandles"
+    "test": "jest --verbose --runInBand --detectOpenHandles && yarn test:google-nest-notifiler",
+    "test:google-nest-notifiler": "yarn workspace google-nest-notifier test"
   },
   "dependencies": {
     "@hapi/boom": "^9.1.0",
     "castv2-client": "^1.2.0",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "google-tts-api": "0.0.6",
+    "google-tts-api": "^0.0.6",
     "mdns-js": "^1.0.3",
     "module-alias": "^2.2.2",
     "morgan": "^1.9.1",
@@ -50,7 +51,7 @@
     "minimist": "^1.2.5",
     "node-mocks-http": "^1.8.1",
     "nodemon": "^2.0.7",
-    "prettier": "^2.2.1",
+    "prettier": "^2.3.0",
     "ts-jest": "^26.5.5",
     "ts-node": "^8.6.2",
     "tsconfig-paths": "^3.9.0",
