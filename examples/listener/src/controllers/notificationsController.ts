@@ -3,7 +3,7 @@ import { Request, Response, NextFunction } from 'express'
 import { GoogleNestNotifier } from '../../../../packages/google-nest-notifier/src'
 
 export const notificationsController = {
-  create: (request: Request, response: Response, next: NextFunction) => {
+  create: (request: Request, response: Response, next: NextFunction): void => {
     ;(async () => {
       const { deviceName, ipAddress, text, language } = request.body
 
