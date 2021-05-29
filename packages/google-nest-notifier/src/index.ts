@@ -99,7 +99,7 @@ export class GoogleNestNotifier {
   launchMediaReceiver(): Promise<castv2.DefaultMediaReceiver> {
     return new Promise((resolve, reject) => {
       this.client.launch(
-        castv2.DefalutMediaReceiver,
+        castv2.DefaultMediaReceiver,
         (error: Error, mediaReceiver: castv2.DefaultMediaReceiver) => {
           if (error) return reject(error)
           resolve(mediaReceiver)
