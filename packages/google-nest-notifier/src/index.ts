@@ -22,7 +22,7 @@ export class GoogleNestNotifier {
   private client: castv2.Client
 
   constructor(
-    { deviceName, ipAddress, language }: NotificationOptions,
+    { deviceName, ipAddress, language }: NotificationOptions = {},
     client = new castv2.Client()
   ) {
     if (deviceName) this.defaultDeviceName = deviceName
@@ -43,7 +43,7 @@ export class GoogleNestNotifier {
   }
 
   async notify(
-    message: string,
+    text: string,
     { deviceName, ipAddress, language }: NotificationOptions = {}
   ): Promise<boolean> {
     if (
@@ -61,29 +61,30 @@ export class GoogleNestNotifier {
       this.defaultIpAddress ||
       (await this.getIpAddress(deviceName || this.defaultDeviceName))
 
-    const media = await this.getMedia(message, {
+    if (!_ipAddress) throw new Error('Google Nest device is not found')
+
+    const media = await this.getMedia(text, {
       language: language || this.defaultLanguage || 'en',
     })
 
-    await this.client.connect(_ipAddress)
+    await this.connect(_ipAddress)
     const mediaReceiver = await this.launchMediaReceiver()
     await this.loadMedia({ mediaReceiver, media })
 
     return true
   }
 
-  async getIpAddress(deviceName: string): Promise<string> {
+  async getIpAddress(deviceName: string): Promise<string | undefined> {
     const multicastDnsData = await getMulticastDnsDataByDeviceName(deviceName)
-    if (!multicastDnsData) throw new Error('Google Nest device is not found')
-    return multicastDnsData.ipAddress
+    return multicastDnsData ? multicastDnsData.ipAddress : undefined
   }
 
   async getMedia(
-    message: string,
+    text: string,
     { language }: Pick<NotificationOptions, 'language'>
   ): Promise<Media> {
     const speechUrl: string = await textToSpeechUrl({
-      text: message,
+      text,
       language,
       speed: 1,
     })
@@ -98,7 +99,7 @@ export class GoogleNestNotifier {
   launchMediaReceiver(): Promise<castv2.DefaultMediaReceiver> {
     return new Promise((resolve, reject) => {
       this.client.launch(
-        castv2.DefalutMediaReceiver,
+        castv2.DefaultMediaReceiver,
         (error: Error, mediaReceiver: castv2.DefaultMediaReceiver) => {
           if (error) return reject(error)
           resolve(mediaReceiver)

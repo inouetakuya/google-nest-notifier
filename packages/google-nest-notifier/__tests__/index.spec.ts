@@ -3,7 +3,16 @@ import castv2 from 'castv2-client'
 import { GoogleNestNotifier } from '../src'
 import * as multicastDnsService from '../src/lib/multicastDnsService'
 import { MulticastDnsData } from '../src/lib/MulticastDnsData'
-import * as TextToSpeechUrl from '../src/lib/textToSpeechUrl'
+
+jest.mock('../src/lib/textToSpeechUrl', () => {
+  return {
+    textToSpeechUrl: jest
+      .fn()
+      .mockResolvedValue(
+        'https://translate.google.com/translate_tts?foo=dummy'
+      ),
+  }
+})
 
 describe('google-nest-notifier', () => {
   let mockedCastv2Client: castv2.Client
@@ -72,23 +81,14 @@ describe('google-nest-notifier', () => {
           .mockResolvedValue(undefined)
       })
 
-      it('throws an error', async () => {
-        await expect(() =>
-          googleNestNotifier.getIpAddress('wrongDeviceName')
-        ).rejects.toThrow()
+      it('returns undefined', async () => {
+        const ipAddress = await googleNestNotifier.getIpAddress('Rachael')
+        expect(ipAddress).toBeUndefined()
       })
     })
   })
 
   describe('getMedia', () => {
-    beforeEach(() => {
-      jest
-        .spyOn(TextToSpeechUrl, 'textToSpeechUrl')
-        .mockResolvedValue(
-          'https://translate.google.com/translate_tts?foo=dummy'
-        )
-    })
-
     it('returns media', async () => {
       const media = await googleNestNotifier.getMedia('Hello', {
         language: 'ja',
