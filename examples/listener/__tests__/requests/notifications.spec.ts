@@ -1,11 +1,11 @@
 import request from 'supertest'
-import { app } from '../src/app'
+import { app } from '../../src/app'
 
 const mockedStatus = { volume: { muted: false } }
 const mockedNotify = jest.fn().mockResolvedValue(mockedStatus)
 const mockedGetIpAddress = jest.fn().mockResolvedValue('192.168.3.1')
 
-jest.mock('../../../packages/google-nest-notifier/src', () => {
+jest.mock('../../../../packages/google-nest-notifier/src', () => {
   return {
     GoogleNestNotifier: jest.fn().mockImplementation(() => {
       return { notify: mockedNotify, getIpAddress: mockedGetIpAddress }
