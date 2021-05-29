@@ -16,8 +16,8 @@ jest.mock('../../../packages/google-nest-notifier/src', () => {
 describe('app', () => {
   describe('POST /notifications', () => {
     describe('when all required params are set', () => {
-      it('returns response successfully', (done) => {
-        request(app)
+      it('returns response successfully', async () => {
+        const response = await request(app)
           .post('/notifications')
           .set('Accept', 'application/json')
           .send({
@@ -26,11 +26,9 @@ describe('app', () => {
             language: 'ja',
           })
           .expect('Content-Type', /json/)
-          .then((response) => {
-            expect(response.statusCode).toBe(201)
-            expect(response.body).toEqual({ status: mockedStatus })
-            done()
-          })
+
+        expect(response.statusCode).toBe(201)
+        expect(response.body).toEqual({ status: mockedStatus })
       })
     })
   })
