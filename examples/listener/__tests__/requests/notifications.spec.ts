@@ -30,4 +30,52 @@ describe('POST /notifications', () => {
       expect(response.body).toEqual({ status: mockedStatus })
     })
   })
+
+  describe('when neither deviceName nor ipAddress is specified', () => {
+    it('returns 422 Unprocessable Entity', async () => {
+      const requestBody = {
+        text: 'Hello',
+        language: 'ja',
+      }
+
+      const response = await request(app)
+        .post('/notifications')
+        .set('Accept', 'application/json')
+        .send(requestBody)
+        .expect('Content-Type', /json/)
+
+      expect(response.statusCode).toBe(422)
+      expect(response.body).toEqual({
+        error: 'Unprocessable Entity',
+        message: 'Either deviceName or ipAddress is required',
+        data: {
+          requestBody,
+        },
+      })
+    })
+  })
+
+  describe('when text is not set', () => {
+    it('returns 422 Unprocessable Entity', async () => {
+      const requestBody = {
+        deviceName: 'Rachael',
+        language: 'ja',
+      }
+
+      const response = await request(app)
+        .post('/notifications')
+        .set('Accept', 'application/json')
+        .send(requestBody)
+        .expect('Content-Type', /json/)
+
+      expect(response.statusCode).toBe(422)
+      expect(response.body).toEqual({
+        error: 'Unprocessable Entity',
+        message: 'Text is required',
+        data: {
+          requestBody,
+        },
+      })
+    })
+  })
 })
