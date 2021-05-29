@@ -67,7 +67,7 @@ export class GoogleNestNotifier {
       language: language || this.defaultLanguage || 'en',
     })
 
-    await this.client.connect(_ipAddress)
+    await this.connect(_ipAddress)
     const mediaReceiver = await this.launchMediaReceiver()
     await this.loadMedia({ mediaReceiver, media })
 
