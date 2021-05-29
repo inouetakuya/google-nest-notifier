@@ -6,7 +6,7 @@ const boomHandler = (
   request: Request,
   response: Response,
   next: NextFunction
-) => {
+): void => {
   if (!error.isBoom) return next(error)
 
   response.status(error.output.statusCode).json({

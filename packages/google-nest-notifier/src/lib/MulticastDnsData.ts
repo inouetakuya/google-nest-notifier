@@ -18,10 +18,8 @@ export class MulticastDnsData {
   private extractDeviceName(): string {
     if (!this.response.txt) return ''
 
-    const txtRecord:
-      | string
-      | undefined = this.response.txt.find((value: string) =>
-      value.match(/^fn=/)
+    const txtRecord: string | undefined = this.response.txt.find(
+      (value: string) => value.match(/^fn=/)
     )
 
     return txtRecord ? txtRecord.replace(/^fn=/, '') : ''
@@ -30,10 +28,8 @@ export class MulticastDnsData {
   private extractMachineName(): string {
     if (!this.response.txt) return ''
 
-    const txtRecord:
-      | string
-      | undefined = this.response.txt.find((value: string) =>
-      value.match(/^md=/)
+    const txtRecord: string | undefined = this.response.txt.find(
+      (value: string) => value.match(/^md=/)
     )
 
     return txtRecord ? txtRecord.replace(/^md=/, '') : ''

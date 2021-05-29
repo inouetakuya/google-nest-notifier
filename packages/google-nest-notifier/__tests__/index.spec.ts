@@ -10,11 +10,21 @@ describe('google-nest-notifier', () => {
   let googleNestNotifier: GoogleNestNotifier
 
   beforeEach(() => {
+    type ConnectCallbackType = () => void
+    type LaunchCallbackType = (
+      error: Error | null,
+      application: castv2.DefaultMediaReceiver
+    ) => void
+
     mockedCastv2Client = {
-      connect: jest.fn((ip: string, callback: any) => callback()),
+      connect: jest.fn((ip: string, callback: ConnectCallbackType): void =>
+        callback()
+      ),
       launch: jest.fn(
-        (Application: castv2.DefaultMediaReceiver, callback: any) =>
-          callback(null, new Application())
+        (
+          Application: castv2.DefaultMediaReceiver,
+          callback: LaunchCallbackType
+        ) => callback(null, new Application())
       ),
     }
     googleNestNotifier = new GoogleNestNotifier(

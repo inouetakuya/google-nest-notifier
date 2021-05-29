@@ -1,7 +1,12 @@
 export type MulticastDnsResponse = {
   addresses: string[]
   query: []
-  type: Record<string, any>[]
+  type: {
+    name: string
+    protocol: string
+    subtypes: string[]
+    description: string | undefined
+  }[]
   txt: string[]
   port: number
   fullname: string
