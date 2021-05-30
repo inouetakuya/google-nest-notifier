@@ -1771,6 +1771,13 @@
   resolved "https://registry.yarnpkg.com/@types/prettier/-/prettier-2.2.3.tgz#ef65165aea2924c9359205bf748865b8881753c0"
   integrity sha512-PijRCG/K3s3w1We6ynUKdxEc5AcuuH3NBmMDP8uvKVp6X43UY7NQlTzczakXP3DJR0F4dfNQIGjU2cUeRYs2AA==
 
+"@types/proper-url-join@^2.1.0":
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/@types/proper-url-join/-/proper-url-join-2.1.0.tgz#ed7c8a1a2aa2490f5245e0415888f806a4c644ff"
+  integrity sha512-1OfLCMft+H1vVS7MfZuO9xqLqB9XEc2jCXoDWcuauiw4UOagJ4ipB1Pl5jp/arNxtJ5r/CbWxO/9uucHGAfkPw==
+  dependencies:
+    query-string "^6.3.0"
+
 "@types/qs@*":
   version "6.9.6"
   resolved "https://registry.yarnpkg.com/@types/qs/-/qs-6.9.6.tgz#df9c3c8b31a247ec315e6996566be3171df4b3b1"
