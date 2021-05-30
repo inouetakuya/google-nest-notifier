@@ -12,6 +12,8 @@ yarn install
 cp .env.example .env
 ```
 
+Sign up ngrok and set your token to .env so that your tunnels don't time out.
+
 ## Development
 
 ```shell
@@ -30,4 +32,10 @@ curl -X POST -H "Accept: application/json" -H 'Content-Type: application/json' -
 
 ```shell
 yarn test
+```
+
+## Production
+
+```shell
+NODE_ENV=production yarn dev
 ```
