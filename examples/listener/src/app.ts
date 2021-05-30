@@ -7,8 +7,8 @@ import { notificationsController } from './controllers/notificationsController'
 import { boomHandler } from './lib/boomHandler'
 import { errorHandler } from './lib/errorHandler'
 
-dotenv.config()
 const environment = process.env.NODE_ENV || 'development'
+if (environment !== 'test') dotenv.config()
 
 const app = express()
 
