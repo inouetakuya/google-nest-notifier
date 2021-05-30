@@ -4,8 +4,8 @@ import fs from 'fs'
 import morgan from 'morgan'
 import path from 'path'
 import { notificationsController } from './controllers/notificationsController'
-import { boomHandler } from './middlewares/boomHandler'
-import { errorHandler } from './middlewares/errorHandler'
+import { boomHandler } from './middleware/boomHandler'
+import { errorHandler } from './middleware/errorHandler'
 
 const environment = process.env.NODE_ENV || 'development'
 if (environment !== 'test') dotenv.config()
