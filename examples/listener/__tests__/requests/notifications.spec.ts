@@ -3,7 +3,7 @@ import { app } from '../../src/app'
 
 const mockedStatus = { volume: { muted: false } }
 const mockedNotify = jest.fn().mockResolvedValue(mockedStatus)
-const mockedGetIpAddress = jest.fn().mockResolvedValue('192.168.3.1')
+let mockedGetIpAddress = jest.fn().mockResolvedValue('192.168.3.1')
 
 jest.mock('../../../../packages/google-nest-notifier/src', () => {
   return {
@@ -72,6 +72,35 @@ describe('POST /notifications', () => {
       expect(response.body).toEqual({
         error: 'Unprocessable Entity',
         message: 'Text is required',
+        data: {
+          requestBody,
+        },
+      })
+    })
+  })
+
+  describe('when Google Nest device is not found', () => {
+    beforeEach(() => {
+      mockedGetIpAddress = jest.fn().mockResolvedValue(undefined)
+    })
+
+    it('returns 404 Not Found', async () => {
+      const requestBody = {
+        deviceName: 'Wrong',
+        text: 'Hello',
+        language: 'ja',
+      }
+
+      const response = await request(app)
+        .post('/notifications')
+        .set('Accept', 'application/json')
+        .send(requestBody)
+        .expect('Content-Type', /json/)
+
+      expect(response.statusCode).toBe(404)
+      expect(response.body).toEqual({
+        error: 'Not Found',
+        message: 'Google Nest device is not found',
         data: {
           requestBody,
         },
