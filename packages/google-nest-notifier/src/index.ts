@@ -1,6 +1,6 @@
 import { getMulticastDnsDataByDeviceName } from './lib/multicastDnsService'
 import { textToSpeechUrl } from './lib/textToSpeechUrl'
-import { Client, DefaultMediaReceiver } from './@types/castv2-client'
+import { Client, DefaultMediaReceiver } from './types/castv2-client'
 
 // TS7016: Could not find a declaration file for module 'castv2-client'
 const castv2 = require('castv2-client')
