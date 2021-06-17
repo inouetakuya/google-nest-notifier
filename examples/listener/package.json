@@ -21,6 +21,7 @@
     "url": "https://github.com/inouetakuya/google-nest-notifier/issues"
   },
   "scripts": {
+    "build": "rm -rf dist/ && tsc",
     "dev": "nodemon",
     "test": "jest --verbose --runInBand --detectOpenHandles"
   },
