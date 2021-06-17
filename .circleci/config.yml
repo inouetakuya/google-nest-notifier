@@ -35,5 +35,4 @@ jobs:
 
       - run: yarn lint
       - run: yarn build
-      - run: yarn workspace listener add ./packages/google-nest-notifier
       - run: yarn test
