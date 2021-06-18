@@ -74,6 +74,13 @@ npx pm2 list
 └─────┴─────────────────────────┴─────────────┴─────────┴─────────┴──────────┴────────┴──────┴───────────┴──────────┴──────────┴──────────┴──────────┘
 ```
 
+### Show logs
+
+```shell
+npx pm2 logs google-nest-notifier
+npx pm2 logs google-nest-notifier --lines 50
+```
+
 ### Use ngrok (optional)
 
 You can use ngrok.
