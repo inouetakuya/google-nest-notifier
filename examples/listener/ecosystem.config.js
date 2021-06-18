@@ -17,4 +17,22 @@ module.exports = {
       },
     },
   ],
+  deploy: {
+    'deploy-only': {
+      user: 'pi',
+      host: 'raspberrypi',
+      ref: 'origin/main',
+      repo: 'git@github.com:inouetakuya/google-nest-notifier.git',
+      path: '/var/www/google-nest-notifier',
+      'post-deploy': 'echo "post-deploy is blank"',
+    },
+    production: {
+      user: 'pi',
+      host: 'raspberrypi',
+      ref: 'origin/main',
+      repo: 'git@github.com:inouetakuya/google-nest-notifier.git',
+      path: '/var/www/google-nest-notifier',
+      'post-deploy': 'yarn install && yarn workspace listener reload',
+    },
+  },
 }

@@ -121,3 +121,51 @@ HttpProxy: https://xxxxxxxx.execute-api.ap-northeast-1.amazonaws.com/prod/notifi
 ```shell
 curl -X POST -H "Accept: application/json" -H 'Content-Type: application/json' -d '{"deviceName":"rachael","text":"Hello world","language":"en"}' https://xxxxxxxxx.execute-api.ap-northeast-1.amazonaws.com/prod/notifications
 ```
+
+## Deployment
+
+### Setup
+
+```shell
+yarn deploy:setup
+yarn deploy:only
+yarn deploy:install:yarn
+yarn deploy:install:google-nest-notifier
+```
+
+### Set .env
+
+```shell
+cp .env.example .env.production
+```
+
+Edit .env.production
+
+```shell
+scp .env.production {USER}@{HOST}:/var/www/google-nest-notifier/source/.env
+```
+
+```shell
+scp .env.production pi@raspberrypi:/var/www/google-nest-notifier/source/.env
+```
+
+### Build & Start
+
+```
+yarn deploy:build
+yarn deploy:start
+```
+
+### Execute commands
+
+```shell
+npx pm2 deploy production exec 'npx pm2 list'
+```
+
+```shell
+npx pm2 deploy production exec 'npx pm2 logs'
+```
+
+```shell
+npx pm2 deploy production exec 'tail logs/production.log'
+```
