@@ -4,7 +4,7 @@ import { app } from '../../src/app'
 const mockedNotify = jest.fn().mockRejectedValue(new Error('Something wrong'))
 const mockedGetIpAddress = jest.fn().mockResolvedValue('192.168.3.1')
 
-jest.mock('../../../../packages/google-nest-notifier/src', () => {
+jest.mock('google-nest-notifier', () => {
   return {
     GoogleNestNotifier: jest.fn().mockImplementation(() => {
       return { notify: mockedNotify, getIpAddress: mockedGetIpAddress }

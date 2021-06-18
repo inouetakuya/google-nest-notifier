@@ -21,6 +21,8 @@
     "url": "https://github.com/inouetakuya/google-nest-notifier/issues"
   },
   "scripts": {
+    "build": "rm -rf dist/ && tsc",
+    "start": "node dist/index.js",
     "dev": "nodemon",
     "test": "jest --verbose --runInBand --detectOpenHandles"
   },
@@ -28,6 +30,7 @@
     "@hapi/boom": "^9.1.2",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
+    "google-nest-notifier": "^0.0.2",
     "morgan": "^1.10.0",
     "ngrok": "^4.0.1",
     "proper-url-join": "^2.1.1"

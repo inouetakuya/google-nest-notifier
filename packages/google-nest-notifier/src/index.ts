@@ -1,7 +1,9 @@
-// @ts-ignore TS7016: Could not find a declaration file for module 'castv2-client'
-import castv2 from 'castv2-client'
 import { getMulticastDnsDataByDeviceName } from './lib/multicastDnsService'
 import { textToSpeechUrl } from './lib/textToSpeechUrl'
+import { Client, DefaultMediaReceiver } from './types/castv2-client'
+
+// TS7016: Could not find a declaration file for module 'castv2-client'
+const castv2 = require('castv2-client')
 
 type NotificationOptions = {
   deviceName?: string
@@ -19,11 +21,11 @@ export class GoogleNestNotifier {
   private readonly defaultDeviceName: string = ''
   private readonly defaultIpAddress: string = ''
   private readonly defaultLanguage: string = ''
-  private client: castv2.Client
+  private client: Client
 
   constructor(
     { deviceName, ipAddress, language }: NotificationOptions = {},
-    client = new castv2.Client()
+    client: Client = new castv2.Client()
   ) {
     if (deviceName) this.defaultDeviceName = deviceName
     if (ipAddress) this.defaultIpAddress = ipAddress
@@ -96,11 +98,11 @@ export class GoogleNestNotifier {
     }
   }
 
-  launchMediaReceiver(): Promise<castv2.DefaultMediaReceiver> {
+  launchMediaReceiver(): Promise<DefaultMediaReceiver> {
     return new Promise((resolve, reject) => {
       this.client.launch(
         castv2.DefaultMediaReceiver,
-        (error: Error, mediaReceiver: castv2.DefaultMediaReceiver) => {
+        (error: Error, mediaReceiver: DefaultMediaReceiver) => {
           if (error) return reject(error)
           resolve(mediaReceiver)
         }
@@ -112,7 +114,7 @@ export class GoogleNestNotifier {
     mediaReceiver,
     media,
   }: {
-    mediaReceiver: castv2.DefaultMediaReceiver
+    mediaReceiver: DefaultMediaReceiver
     media: any
   }): Promise<Record<string, any>> {
     return new Promise((resolve, reject) => {

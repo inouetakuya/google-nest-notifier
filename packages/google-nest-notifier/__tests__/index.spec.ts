@@ -3,6 +3,7 @@ import castv2 from 'castv2-client'
 import { GoogleNestNotifier } from '../src'
 import * as multicastDnsService from '../src/lib/multicastDnsService'
 import { MulticastDnsData } from '../src/lib/MulticastDnsData'
+import { DefaultMediaReceiver } from '../src/types/castv2-client'
 
 jest.mock('../src/lib/textToSpeechUrl', () => {
   return {
@@ -112,7 +113,8 @@ describe('google-nest-notifier', () => {
   describe('loadMedia', () => {
     const mediaReceiver = {
       load: jest.fn((media, options, callback) => callback()),
-    }
+    } as unknown as DefaultMediaReceiver
+
     const media = {
       contentId: 'https://translate.google.com/translate_tts/dummy', // dummy speechUrl
       contentType: 'video/mp3',

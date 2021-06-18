@@ -1,6 +1,6 @@
 import { badData, notFound } from '@hapi/boom'
 import { Request, Response, NextFunction } from 'express'
-import { GoogleNestNotifier } from '../../../../packages/google-nest-notifier/src'
+import { GoogleNestNotifier } from 'google-nest-notifier'
 
 export const notificationsController = {
   create: (request: Request, response: Response, next: NextFunction): void => {
