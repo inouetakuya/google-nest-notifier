@@ -22,7 +22,7 @@
   },
   "scripts": {
     "build": "rm -rf dist/ && tsc",
-    "start": "node dist/index.js",
+    "start": "pm2 start ecosystem.config.js --env production",
     "dev": "nodemon",
     "test": "jest --verbose --runInBand --detectOpenHandles"
   },

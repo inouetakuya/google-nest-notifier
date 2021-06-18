@@ -34,12 +34,11 @@ yarn test
 
 ## Production
 
-```shell
-NODE_ENV=production yarn build
-```
+### Start server
 
 ```shell
-NODE_ENV=production yarn start
+yarn build
+yarn start
 ```
 
 ### Use ngrok (optional)
