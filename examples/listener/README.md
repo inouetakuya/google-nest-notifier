@@ -34,12 +34,50 @@ yarn test
 
 ## Production
 
-```shell
-NODE_ENV=production yarn build
-```
+### Start server
 
 ```shell
-NODE_ENV=production yarn start
+yarn build
+yarn start
+```
+
+### Zero downtime reload
+
+```shell
+yarn reload
+```
+
+### Restart server
+
+```shell
+yarn restart
+```
+
+### Stop server
+
+```shell
+yarn stop
+```
+
+### Show process list
+
+```shell
+npx pm2 list
+```
+
+```text
+┌─────┬─────────────┬─────────────┬─────────┬─────────┬──────────┬────────┬──────┬───────────┬──────────┬──────────┬──────────┬──────────┐
+│ id  │ name        │ namespace   │ version │ mode    │ pid      │ uptime │ ↺    │ status    │ cpu      │ mem      │ user     │ watching │
+├─────┼─────────────┼─────────────┼─────────┼─────────┼──────────┼────────┼──────┼───────────┼──────────┼──────────┼──────────┼──────────┤
+│ 0   │ listener    │ default     │ 0.0.2   │ cluster │ 85575    │ 18s    │ 0    │ online    │ 0%       │ 41.1mb   │ pi       │ disabled │
+└─────┴─────────────┴─────────────┴─────────┴─────────┴──────────┴────────┴──────┴───────────┴──────────┴──────────┴──────────┴──────────┘
+```
+
+### Show logs
+
+```shell
+npx pm2 logs google-nest-notifier
+npx pm2 logs google-nest-notifier --lines 50
 ```
 
 ### Use ngrok (optional)
