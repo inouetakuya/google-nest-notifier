@@ -41,6 +41,24 @@ yarn build
 yarn start
 ```
 
+### Zero downtime reload
+
+```shell
+yarn reload
+```
+
+### Restart server
+
+```shell
+yarn restart
+```
+
+### Stop server
+
+```shell
+yarn stop
+```
+
 ### Use ngrok (optional)
 
 You can use ngrok.
