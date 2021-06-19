@@ -66,11 +66,11 @@ npx pm2 list
 ```
 
 ```text
-┌─────┬─────────────┬─────────────┬─────────┬─────────┬──────────┬────────┬──────┬───────────┬──────────┬──────────┬──────────┬──────────┐
-│ id  │ name        │ namespace   │ version │ mode    │ pid      │ uptime │ ↺    │ status    │ cpu      │ mem      │ user     │ watching │
-├─────┼─────────────┼─────────────┼─────────┼─────────┼──────────┼────────┼──────┼───────────┼──────────┼──────────┼──────────┼──────────┤
-│ 0   │ listener    │ default     │ 0.0.2   │ cluster │ 85575    │ 18s    │ 0    │ online    │ 0%       │ 41.1mb   │ pi       │ disabled │
-└─────┴─────────────┴─────────────┴─────────┴─────────┴──────────┴────────┴──────┴───────────┴──────────┴──────────┴──────────┴──────────┘
+┌─────┬─────────────────────────┬─────────────┬─────────┬─────────┬──────────┬────────┬──────┬───────────┬──────────┬──────────┬──────────┬──────────┐
+│ id  │ name                    │ namespace   │ version │ mode    │ pid      │ uptime │ ↺    │ status    │ cpu      │ mem      │ user     │ watching │
+├─────┼─────────────────────────┼─────────────┼─────────┼─────────┼──────────┼────────┼──────┼───────────┼──────────┼──────────┼──────────┼──────────┤
+│ 0   │ google-nest-notifier    │ default     │ 0.0.2   │ cluster │ 84050    │ 4s     │ 2    │ online    │ 0%       │ 48.1mb   │ pi       │ disabled │
+└─────┴─────────────────────────┴─────────────┴─────────┴─────────┴──────────┴────────┴──────┴───────────┴──────────┴──────────┴──────────┴──────────┘
 ```
 
 ### Show logs
@@ -92,7 +92,7 @@ NODE_ENV=production yarn dev
 
 Copy your ngrok url from stdout.
 
-```
+```text
 Forwarding: https://xxxxxxxx.ngrok.io
 -> http://localhost:3000
 ```
@@ -112,7 +112,7 @@ NODE_ENV=production yarn dev
 
 Copy your AWS API Gateway url from stdout.
 
-```
+```text
 HttpProxy: https://xxxxxxxx.execute-api.ap-northeast-1.amazonaws.com/prod/notifications
 -> https://xxxxxxxx.jp.ngrok.io/notifications
 -> http://localhost:3000/notifications
@@ -120,4 +120,58 @@ HttpProxy: https://xxxxxxxx.execute-api.ap-northeast-1.amazonaws.com/prod/notifi
 
 ```shell
 curl -X POST -H "Accept: application/json" -H 'Content-Type: application/json' -d '{"deviceName":"rachael","text":"Hello world","language":"en"}' https://xxxxxxxxx.execute-api.ap-northeast-1.amazonaws.com/prod/notifications
+```
+
+## Deployment
+
+### Setup
+
+```shell
+yarn deploy:setup
+yarn deploy:only
+yarn deploy:install:yarn
+yarn deploy:install:google-nest-notifier
+```
+
+### Set .env
+
+```shell
+cp .env.example .env.production
+```
+
+Edit .env.production
+
+```shell
+scp .env.production {USER}@{HOST}:/var/www/google-nest-notifier/source/.env
+```
+
+```shell
+scp .env.production pi@raspberrypi:/var/www/google-nest-notifier/source/.env
+```
+
+### Build & Start
+
+```shell
+yarn deploy:build
+yarn deploy:start
+```
+
+### deploy
+
+```shell
+yarn deploy
+```
+
+### Execute commands
+
+```shell
+npx pm2 deploy production exec 'npx pm2 list'
+```
+
+```shell
+npx pm2 deploy production exec 'npx pm2 logs'
+```
+
+```shell
+npx pm2 deploy production exec 'tail logs/production.log'
 ```

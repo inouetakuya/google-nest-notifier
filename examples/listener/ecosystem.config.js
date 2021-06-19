@@ -1,7 +1,7 @@
 module.exports = {
   apps: [
     {
-      name: 'listener',
+      name: 'google-nest-notifier',
       script: 'dist/index.js',
 
       // Options reference: https://pm2.keymetrics.io/docs/usage/application-declaration/
@@ -17,4 +17,22 @@ module.exports = {
       },
     },
   ],
+  deploy: {
+    'deploy-only': {
+      user: 'pi',
+      host: 'raspberrypi',
+      ref: 'origin/main',
+      repo: 'git@github.com:inouetakuya/google-nest-notifier.git',
+      path: '/var/www/google-nest-notifier',
+      'post-deploy': 'echo "post-deploy is blank"',
+    },
+    production: {
+      user: 'pi',
+      host: 'raspberrypi',
+      ref: 'origin/main',
+      repo: 'git@github.com:inouetakuya/google-nest-notifier.git',
+      path: '/var/www/google-nest-notifier',
+      'post-deploy': 'yarn install && yarn workspace listener reload',
+    },
+  },
 }
