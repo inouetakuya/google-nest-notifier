@@ -37,5 +37,5 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}-{{ checksum "./packages/google-nest-notifier/package.json" }}-{{ checksum "./examples/listener/package.json" }}
 
       - run: yarn lint
-      - run: yarn build
+      - run: yarn workspace listener build
       - run: yarn test
