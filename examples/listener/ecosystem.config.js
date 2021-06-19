@@ -1,7 +1,7 @@
 module.exports = {
   apps: [
     {
-      name: 'listener',
+      name: 'google-nest-notifier',
       script: 'dist/index.js',
 
       // Options reference: https://pm2.keymetrics.io/docs/usage/application-declaration/
