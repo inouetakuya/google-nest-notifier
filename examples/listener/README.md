@@ -66,7 +66,6 @@ npx pm2 list
 ```
 
 ```text
-[@GISELE.local google-nest-notifier]$ npx pm2 list
 ┌─────┬─────────────────────────┬─────────────┬─────────┬─────────┬──────────┬────────┬──────┬───────────┬──────────┬──────────┬──────────┬──────────┐
 │ id  │ name                    │ namespace   │ version │ mode    │ pid      │ uptime │ ↺    │ status    │ cpu      │ mem      │ user     │ watching │
 ├─────┼─────────────────────────┼─────────────┼─────────┼─────────┼──────────┼────────┼──────┼───────────┼──────────┼──────────┼──────────┼──────────┤
@@ -93,7 +92,7 @@ NODE_ENV=production yarn dev
 
 Copy your ngrok url from stdout.
 
-```
+```text
 Forwarding: https://xxxxxxxx.ngrok.io
 -> http://localhost:3000
 ```
@@ -113,7 +112,7 @@ NODE_ENV=production yarn dev
 
 Copy your AWS API Gateway url from stdout.
 
-```
+```text
 HttpProxy: https://xxxxxxxx.execute-api.ap-northeast-1.amazonaws.com/prod/notifications
 -> https://xxxxxxxx.jp.ngrok.io/notifications
 -> http://localhost:3000/notifications
@@ -152,9 +151,15 @@ scp .env.production pi@raspberrypi:/var/www/google-nest-notifier/source/.env
 
 ### Build & Start
 
-```
+```shell
 yarn deploy:build
 yarn deploy:start
+```
+
+### deploy
+
+```shell
+yarn deploy
 ```
 
 ### Execute commands
