@@ -26,6 +26,7 @@
     "reload": "pm2 reload ecosystem.config.js --env production --update-env",
     "restart": "pm2 restart ecosystem.config.js --env production --update-env",
     "stop": "pm2 stop ecosystem.config.js",
+    "logs": "pm2 logs google-nest-notifier --nostream",
     "deploy": "pm2 deploy ecosystem.config.js production",
     "deploy:setup": "pm2 deploy ecosystem.config.js production setup",
     "deploy:only": "pm2 deploy ecosystem.config.js deploy-only",
@@ -33,7 +34,7 @@
     "deploy:install:google-nest-notifier": "pm2 deploy ecosystem.config.js production exec 'yarn install && yarn workspace google-nest-notifier build && yarn workspace listener install'",
     "deploy:build": "pm2 deploy ecosystem.config.js production exec 'yarn workspace listener build'",
     "deploy:start": "pm2 deploy ecosystem.config.js production exec 'yarn workspace listener start'",
-    "deploy:logs": "pm2 deploy ecosystem.config.js production exec 'npx pm2 logs google-nest-notifier'",
+    "deploy:logs": "pm2 deploy ecosystem.config.js production exec 'npx pm2 logs google-nest-notifier --nostream'",
     "dev": "nodemon",
     "test": "jest --verbose --runInBand --detectOpenHandles"
   },
