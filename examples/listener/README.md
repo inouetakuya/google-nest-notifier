@@ -76,8 +76,8 @@ npx pm2 list
 ### Show logs
 
 ```shell
-npx pm2 logs google-nest-notifier
-npx pm2 logs google-nest-notifier --lines 50
+yarn logs
+yarn logs --lines 50
 ```
 
 ### Use ngrok (optional)
@@ -87,10 +87,14 @@ You can use ngrok.
 Sign up ngrok and set your token to `.env` so that your tunnels don't time out.
 
 ```shell
-NODE_ENV=production yarn dev
+yarn start
 ```
 
-Copy your ngrok url from stdout.
+```shell
+yarn logs
+```
+
+Copy your ngrok url from pm2 logs.
 
 ```text
 Forwarding: https://xxxxxxxx.ngrok.io
@@ -107,10 +111,14 @@ curl -X POST -H "Accept: application/json" -H 'Content-Type: application/json' -
 - Set your AWS API Gateway info to `.env`
 
 ```shell
-NODE_ENV=production yarn dev
+yarn start
 ```
 
-Copy your AWS API Gateway url from stdout.
+```shell
+yarn logs
+```
+
+Copy your AWS API Gateway url from pm2 logs.
 
 ```text
 HttpProxy: https://xxxxxxxx.execute-api.ap-northeast-1.amazonaws.com/prod/notifications
