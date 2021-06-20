@@ -19,7 +19,9 @@ export const notificationsController = {
         })
       }
 
-      const googleNestNotifier = new GoogleNestNotifier()
+      const googleNestNotifier = new GoogleNestNotifier({
+        language: process.env.LANGUAGE || '',
+      })
 
       const _ipAddress =
         ipAddress || (await googleNestNotifier.getIpAddress(deviceName))
