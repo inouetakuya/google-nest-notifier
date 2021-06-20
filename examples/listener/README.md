@@ -150,11 +150,11 @@ cp .env.example .env.production
 Edit .env.production
 
 ```shell
-scp .env.production {USER}@{HOST}:/var/www/google-nest-notifier/source/.env
+scp .env.production {USER}@{HOST}:/var/www/google-nest-notifier/current/examples/listener/.env
 ```
 
 ```shell
-scp .env.production pi@raspberrypi:/var/www/google-nest-notifier/source/.env
+scp .env.production pi@raspberrypi:/var/www/google-nest-notifier/current/examples/listener/.env
 ```
 
 ### Build & Start
@@ -170,16 +170,8 @@ yarn deploy:start
 yarn deploy
 ```
 
-### Execute commands
+### logs
 
 ```shell
-npx pm2 deploy production exec 'npx pm2 list'
-```
-
-```shell
-npx pm2 deploy production exec 'npx pm2 logs'
-```
-
-```shell
-npx pm2 deploy production exec 'tail logs/production.log'
+yarn deploy:logs
 ```

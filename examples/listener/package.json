@@ -34,7 +34,7 @@
     "deploy:install:google-nest-notifier": "pm2 deploy ecosystem.config.js production exec 'yarn install && yarn workspace google-nest-notifier build && yarn workspace listener install'",
     "deploy:build": "pm2 deploy ecosystem.config.js production exec 'yarn workspace listener build'",
     "deploy:start": "pm2 deploy ecosystem.config.js production exec 'yarn workspace listener start'",
-    "deploy:logs": "pm2 deploy ecosystem.config.js production exec 'npx pm2 logs google-nest-notifier'",
+    "deploy:logs": "pm2 deploy ecosystem.config.js production exec 'npx pm2 logs google-nest-notifier --nostream'",
     "dev": "nodemon",
     "test": "jest --verbose --runInBand --detectOpenHandles"
   },
