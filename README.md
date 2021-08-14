@@ -2,7 +2,7 @@
 
 [![CircleCI](https://circleci.com/gh/inouetakuya/google-nest-notifier.svg?style=svg)](https://circleci.com/gh/inouetakuya/google-nest-notifier)
 
-Web API for Send notifications to Google Nest
+Send notifications to Google Nest
 
 ## Setup
 
