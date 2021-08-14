@@ -45,7 +45,7 @@
     "express": "^4.17.1",
     "google-nest-notifier": "^0.0.2",
     "morgan": "^1.10.0",
-    "ngrok": "^4.1.0",
+    "ngrok": "4.0.1",
     "pm2": "^5.1.0",
     "proper-url-join": "^2.1.1"
   },
