@@ -15,7 +15,8 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/inouetakuya/google-nest-notifier.git"
+    "url": "git+ssh://git@github.com/inouetakuya/google-nest-notifier.git",
+    "directory": "examples/listener"
   },
   "bugs": {
     "url": "https://github.com/inouetakuya/google-nest-notifier/issues"
