@@ -1,3 +1,4 @@
+// @ts-ignore TS1259: Module '"node_modules/@types/supertest/index"' can only be default-imported using the 'esModuleInterop' flag
 import request from 'supertest'
 import { app } from '../../src/app'
 
