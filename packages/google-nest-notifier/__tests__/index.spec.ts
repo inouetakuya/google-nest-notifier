@@ -52,23 +52,23 @@ describe('google-nest-notifier', () => {
     )
   })
 
-  describe('notify', () => {
-    it('succeeds', async () => {
-      await expect(
-        googleNestNotifier.notify('Hello', { deviceName: 'Rachael' })
-      ).toBeTruthy()
-    })
-
-    // describe('when neither deviceName nor ipAddress is assigned', () => {
-    //   it('throws an error', async () => {
-    //     try {
-    //       await googleNestNotifier.notify('Hello')
-    //     } catch (error) {
-    //       expect(error).toBeInstanceOf(Error)
-    //     }
-    //   })
-    // })
-  })
+  // describe('notify', () => {
+  //   it('succeeds', async () => {
+  //     await expect(
+  //       googleNestNotifier.notify('Hello', { deviceName: 'Rachael' })
+  //     ).toBeTruthy()
+  //   })
+  //
+  //   // describe('when neither deviceName nor ipAddress is assigned', () => {
+  //   //   it('throws an error', async () => {
+  //   //     try {
+  //   //       await googleNestNotifier.notify('Hello')
+  //   //     } catch (error) {
+  //   //       expect(error).toBeInstanceOf(Error)
+  //   //     }
+  //   //   })
+  //   // })
+  // })
 
   describe('getIpAddress', () => {
     describe('when Google Nest device is found', () => {
