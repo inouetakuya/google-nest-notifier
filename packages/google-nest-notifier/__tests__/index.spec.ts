@@ -57,7 +57,7 @@ describe('google-nest-notifier', () => {
       await expect(
         googleNestNotifier
           .notify('Hello', { deviceName: 'Rachael' })
-          .catch(() => ({}))
+          .catch(() => ({})) // for fixing UnhandledPromiseRejection
       ).toBeTruthy()
     })
 
