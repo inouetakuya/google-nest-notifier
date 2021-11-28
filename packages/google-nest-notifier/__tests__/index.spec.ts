@@ -4,6 +4,7 @@ import { GoogleNestNotifier } from '../src'
 import * as multicastDnsService from '../src/lib/multicastDnsService'
 import { MulticastDnsData } from '../src/lib/MulticastDnsData'
 import { DefaultMediaReceiver } from '../src/types/castv2-client'
+import * as console from 'console'
 
 jest.mock('../src/lib/textToSpeechUrl', () => {
   return {
@@ -34,7 +35,15 @@ describe('google-nest-notifier', () => {
         (
           Application: castv2.DefaultMediaReceiver,
           callback: LaunchCallbackType
-        ) => callback(null, new Application())
+        ) => {
+          try {
+            callback(null, new Application())
+          } catch (error) {
+            console.log(
+              'Error occurred by mockedCastv2Client, but skip handling it'
+            )
+          }
+        }
       ),
     }
     googleNestNotifier = new GoogleNestNotifier(
