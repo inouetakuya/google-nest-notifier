@@ -63,11 +63,7 @@ describe('google-nest-notifier', () => {
 
     describe('when neither deviceName nor ipAddress is assigned', () => {
       it('throws an error', async () => {
-        try {
-          await googleNestNotifier.notify('Hello')
-        } catch (error) {
-          expect(error).toBeInstanceOf(Error)
-        }
+        await expect(() => googleNestNotifier.notify('Hello')).rejects.toThrow()
       })
     })
   })
