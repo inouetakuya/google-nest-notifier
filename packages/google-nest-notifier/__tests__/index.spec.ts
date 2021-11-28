@@ -4,7 +4,6 @@ import { GoogleNestNotifier } from '../src'
 import * as multicastDnsService from '../src/lib/multicastDnsService'
 import { MulticastDnsData } from '../src/lib/MulticastDnsData'
 import { DefaultMediaReceiver } from '../src/types/castv2-client'
-import * as console from 'console'
 
 jest.mock('../src/lib/textToSpeechUrl', () => {
   return {
