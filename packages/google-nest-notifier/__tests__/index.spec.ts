@@ -45,6 +45,7 @@ describe('google-nest-notifier', () => {
           }
         }
       ),
+      on: jest.fn(),
     }
     googleNestNotifier = new GoogleNestNotifier(
       { language: 'jp' },
