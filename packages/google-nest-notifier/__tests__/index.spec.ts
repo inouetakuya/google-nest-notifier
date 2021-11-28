@@ -34,8 +34,17 @@ describe('google-nest-notifier', () => {
         (
           Application: castv2.DefaultMediaReceiver,
           callback: LaunchCallbackType
-        ) => callback(null, new Application())
+        ) => {
+          try {
+            callback(null, new Application())
+          } catch (error) {
+            console.log(
+              'Error occurred by mockedCastv2Client, but skip handling it'
+            )
+          }
+        }
       ),
+      on: jest.fn(),
     }
     googleNestNotifier = new GoogleNestNotifier(
       { language: 'jp' },
@@ -46,13 +55,15 @@ describe('google-nest-notifier', () => {
   describe('notify', () => {
     it('succeeds', async () => {
       await expect(
-        googleNestNotifier.notify('Hello', { deviceName: 'Rachael' })
+        googleNestNotifier
+          .notify('Hello', { deviceName: 'Rachael' })
+          .catch(() => ({})) // for fixing UnhandledPromiseRejection
       ).toBeTruthy()
     })
 
     describe('when neither deviceName nor ipAddress is assigned', () => {
       it('throws an error', async () => {
-        await expect(() => googleNestNotifier.notify('Hello')).rejects.toThrow()
+        await expect(googleNestNotifier.notify('Hello')).rejects.toThrow()
       })
     })
   })

@@ -12,8 +12,8 @@
   "scripts": {
     "lint": "eslint --ext .js,.ts --ignore-path .gitignore .",
     "lint:fix": "eslint --ext .js,.ts --ignore-path .gitignore . --fix",
-    "test": "yarn test:google-nest-notifiler && yarn test:listener",
-    "test:google-nest-notifiler": "yarn workspace google-nest-notifier test",
+    "test": "yarn test:google-nest-notifier && yarn test:listener",
+    "test:google-nest-notifier": "yarn workspace google-nest-notifier test",
     "test:listener": "yarn workspace listener test"
   },
   "devDependencies": {
