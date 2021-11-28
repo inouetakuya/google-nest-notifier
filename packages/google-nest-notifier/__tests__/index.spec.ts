@@ -54,13 +54,11 @@ describe('google-nest-notifier', () => {
 
   describe('notify', () => {
     it('succeeds', async () => {
-      try {
-        await expect(
-          googleNestNotifier.notify('Hello', { deviceName: 'Rachael' })
-        ).toBeTruthy()
-      } catch (error) {
-        console.error(error)
-      }
+      await expect(
+        googleNestNotifier
+          .notify('Hello', { deviceName: 'Rachael' })
+          .catch(() => ({}))
+      ).toBeTruthy()
     })
 
     // describe('when neither deviceName nor ipAddress is assigned', () => {
