@@ -53,6 +53,16 @@ describe('google-nest-notifier', () => {
   })
 
   describe('notify', () => {
+    const dummyIpAddress = '192.168.3.1'
+
+    beforeEach(() => {
+      jest
+        .spyOn(multicastDnsService, 'getMulticastDnsDataByDeviceName')
+        .mockResolvedValue({
+          ipAddress: dummyIpAddress,
+        } as MulticastDnsData)
+    })
+
     it('succeeds', async () => {
       await expect(
         googleNestNotifier
