@@ -68,7 +68,7 @@ describe('google-nest-notifier', () => {
         // https://github.com/facebook/jest/issues/5311
         promise.catch(() => ({}))
 
-        await expect(() => promise).rejects.toThrow()
+        await expect(promise).rejects.toThrow()
       })
     })
   })
