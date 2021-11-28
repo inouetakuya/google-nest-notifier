@@ -62,7 +62,13 @@ describe('google-nest-notifier', () => {
 
     describe('when neither deviceName nor ipAddress is assigned', () => {
       it('throws an error', async () => {
-        await expect(() => googleNestNotifier.notify('Hello')).rejects.toThrow()
+        const promise = googleNestNotifier.notify('Hello')
+
+        // fix UnhandledPromiseRejection
+        // https://github.com/facebook/jest/issues/5311
+        promise.catch(() => ({}))
+
+        await expect(() => promise).rejects.toThrow()
       })
     })
   })
