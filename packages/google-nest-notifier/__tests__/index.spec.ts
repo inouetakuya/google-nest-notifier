@@ -89,18 +89,18 @@ describe('google-nest-notifier', () => {
       })
     })
 
-    describe('when Google Nest device is not found', () => {
-      beforeEach(() => {
-        jest
-          .spyOn(multicastDnsService, 'getMulticastDnsDataByDeviceName')
-          .mockResolvedValue(undefined)
-      })
-
-      it('returns undefined', async () => {
-        const ipAddress = await googleNestNotifier.getIpAddress('Rachael')
-        expect(ipAddress).toBeUndefined()
-      })
-    })
+    // describe('when Google Nest device is not found', () => {
+    //   beforeEach(() => {
+    //     jest
+    //       .spyOn(multicastDnsService, 'getMulticastDnsDataByDeviceName')
+    //       .mockResolvedValue(undefined)
+    //   })
+    //
+    //   it('returns undefined', async () => {
+    //     const ipAddress = await googleNestNotifier.getIpAddress('Rachael')
+    //     expect(ipAddress).toBeUndefined()
+    //   })
+    // })
   })
 
   describe('getMedia', () => {
