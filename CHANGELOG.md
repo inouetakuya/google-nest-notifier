@@ -12,3 +12,7 @@
 - [chore: Bump google-tts-api from 0.0.6 to 2.0.2 #67](https://github.com/inouetakuya/google-nest-notifier/pull/67)
 - [Bump node.js to v16.13.0 #57](https://github.com/inouetakuya/google-nest-notifier/pull/57)
 - Security updates
+  
+## [0.0.2](https://github.com/inouetakuya/google-nest-notifier/tree/v0.0.2) (2021-08-15)
+
+- First release :tada:
