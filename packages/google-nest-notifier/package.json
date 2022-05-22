@@ -12,6 +12,7 @@
   "homepage": "https://github.com/inouetakuya/google-nest-notifier#readme",
   "license": "MIT",
   "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "files": [
     "dist"
   ],
