@@ -1,14 +1,20 @@
-// @ts-ignore TS7016: Could not find a declaration file for module 'google-tts-api'
-import googleTtsApi from 'google-tts-api'
+import { getAudioUrl } from 'google-tts-api'
 
 export const textToSpeechUrl = ({
   text,
   language = 'en',
-  speed,
+  slow = false,
 }: {
   text: string
   language?: string // https://cloud.google.com/translate/docs/languages
-  speed?: number
+  slow?: boolean
 }): Promise<string> => {
-  return googleTtsApi(text, language, speed)
+  if (text.length > 200) {
+    return Promise.reject(
+      new RangeError('text length (201) should be less than 200 characters')
+    )
+  }
+
+  const url = getAudioUrl(text, { lang: language, slow })
+  return Promise.resolve(url)
 }
