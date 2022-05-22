@@ -88,7 +88,7 @@ export class GoogleNestNotifier {
     const speechUrl: string = await textToSpeechUrl({
       text,
       language,
-      speed: 1,
+      slow: false,
     })
 
     return {
