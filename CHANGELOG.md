@@ -1,5 +1,11 @@
 # Changelog
 
+## main
+
+### Chores
+
+- Add CHANGELOG
+
 ## [0.0.3](https://github.com/inouetakuya/google-nest-notifier/compare/v0.0.2...v0.0.3) (2022-05-22)
 
 ### Bug Fixes
