@@ -1,6 +1,6 @@
 {
   "name": "google-nest-notifier-workspaces",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Workspaces for google-nest-notifier",
   "author": "INOUE Takuya <inouetakuya5@gmail.com>",
   "license": "MIT",
