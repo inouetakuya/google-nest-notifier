@@ -17,14 +17,14 @@
     "test:listener": "yarn workspace listener test"
   },
   "devDependencies": {
-    "@types/jest": "28.1.4",
+    "@types/jest": "28.1.5",
     "@typescript-eslint/eslint-plugin": "5.30.6",
     "@typescript-eslint/parser": "5.30.6",
     "add": "2.0.6",
     "eslint": "8.19.0",
     "eslint-config-prettier": "8.5.0",
     "eslint-plugin-prettier": "4.2.1",
-    "jest": "28.1.2",
+    "jest": "28.1.3",
     "prettier": "2.7.1",
     "ts-jest": "28.0.5",
     "typescript": "4.7.4"
