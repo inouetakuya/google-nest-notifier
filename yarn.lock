@@ -3029,20 +3029,6 @@ globby@^11.1.0:
     merge2 "^1.4.1"
     slash "^3.0.0"
 
-google-nest-notifier@^0.0.2:
-  version "0.0.2"
-  resolved "https://registry.yarnpkg.com/google-nest-notifier/-/google-nest-notifier-0.0.2.tgz#0036cb061268c3a2aae01bda03f6ca03aa6bb015"
-  integrity sha512-VGuByF10ETzBd+VNW8Coue/b9WOJEMH6OYtr760WwN1fedEsQjDq7/lCF8fZdVZ6U/4nIytIf2Yprr6Vbs/jbg==
-  dependencies:
-    castv2-client "^1.2.0"
-    google-tts-api "^0.0.6"
-    mdns-js "^1.0.3"
-
-google-tts-api@^0.0.6:
-  version "0.0.6"
-  resolved "https://registry.yarnpkg.com/google-tts-api/-/google-tts-api-0.0.6.tgz#3e8509caf066e09f6166b7e5e2816a374a7899d3"
-  integrity sha512-Tt7AOwQ6HkVlhOylYYyHzmCvharwLov1Mrrq6RogtRwQzGCPpnrR6Um7Bcx3xlXYHJX0wcLGFW9RuJIFxXYcaQ==
-
 google-tts-api@^2.0.2:
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/google-tts-api/-/google-tts-api-2.0.2.tgz#5f02bbde9b41f57569a94a3dd1d2de808a97bb97"
