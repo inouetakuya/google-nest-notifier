@@ -97,12 +97,12 @@ yarn logs
 Copy your ngrok url from pm2 logs.
 
 ```text
-Forwarding: https://xxxxxxxx.ngrok.io
+Forwarding: https://xxxxxxxx.ngrok-free.app
 -> http://localhost:3000
 ```
 
 ```shell
-curl -X POST -H "Accept: application/json" -H 'Content-Type: application/json' -d '{"deviceName":"rachael","text":"Hello world","language":"en"}' https://xxxxxxxx.ngrok.io/notifications
+curl -X POST -H "Accept: application/json" -H 'Content-Type: application/json' -d '{"deviceName":"rachael","text":"Hello world","language":"en"}' https://xxxxxxxx.ngrok-free.app/notifications
 ```
 
 ### Fix URL with AWS API Gateway (optional)
@@ -122,7 +122,7 @@ Copy your AWS API Gateway url from pm2 logs.
 
 ```text
 HttpProxy: https://xxxxxxxx.execute-api.ap-northeast-1.amazonaws.com/prod/notifications
--> https://xxxxxxxx.jp.ngrok.io/notifications
+-> https://xxxxxxxx.ngrok-free.app/notifications
 -> http://localhost:3000/notifications
 ```
 

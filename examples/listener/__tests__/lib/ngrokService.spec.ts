@@ -4,13 +4,12 @@ import { ngrokService } from '../../src/lib/ngrokService'
 const dummyPort = 3000
 const dummyToken = 'xxxxxxxx'
 const dummyRegion = 'jp'
-const dummyNgrokUrl = 'https://xxxxxxxx.ngrok.io'
-
+const dummyNgrokUrl = 'https://xxxxxxxx.ngrok-free.app'
 jest.mock('ngrok', () => {
   return {
     // connect: jest.fn().mockResolvedValue(dummyNgrokUrl) だと
     // ReferenceError: Cannot access 'dummyNgrokUrl' before initialization
-    connect: jest.fn().mockResolvedValue('https://xxxxxxxx.ngrok.io'),
+    connect: jest.fn().mockResolvedValue('https://xxxxxxxx.ngrok-free.app'),
   }
 })
 

@@ -13,7 +13,7 @@ describe('apiGatewayService', () => {
           restApiId: 'xxxxxxxx',
           resourceId: 'xxxxxxxx',
           httpMethod: 'POST',
-          url: 'https://xxxxxxxx.ngrok.io',
+          url: 'https://xxxxxxxx.ngrok-free.app',
           path: '/notifications',
         })
       })
