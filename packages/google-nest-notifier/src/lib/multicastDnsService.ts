@@ -32,7 +32,7 @@ export const getMulticastDnsDataAll = (): Promise<MulticastDnsData[]> => {
 }
 
 export const queryMulticastDnsDataByDeviceNames = async (
-  deviceNames: string[]
+  deviceNames: string[],
 ): Promise<MulticastDnsData[]> => {
   const dataArray: MulticastDnsData[] = await getMulticastDnsDataAll()
   return dataArray.filter((data) => {
@@ -43,7 +43,7 @@ export const queryMulticastDnsDataByDeviceNames = async (
 }
 
 export const getMulticastDnsDataByDeviceName = async (
-  deviceName: string
+  deviceName: string,
 ): Promise<MulticastDnsData | undefined> => {
   const dataArray: MulticastDnsData[] = await getMulticastDnsDataAll()
   return dataArray.find((data) => {

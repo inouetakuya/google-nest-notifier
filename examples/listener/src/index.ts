@@ -18,7 +18,7 @@ const server = app.listen(process.env.PORT || 3000, async () => {
         region: process.env.NGROK_REGION,
       })
       console.log(
-        [`Forwarding: ${ngrokUrl}`, `-> http://localhost:${port}`].join('\n')
+        [`Forwarding: ${ngrokUrl}`, `-> http://localhost:${port}`].join('\n'),
       )
 
       if (process.env.USE_API_GATEWAY === '1') {
@@ -37,7 +37,7 @@ const server = app.listen(process.env.PORT || 3000, async () => {
             `HttpProxy: ${apiGatewayUrl}`,
             `-> ${ngrokUrl}/notifications`,
             `-> http://localhost:${port}/notifications`,
-          ].join('\n')
+          ].join('\n'),
         )
       }
     } else {

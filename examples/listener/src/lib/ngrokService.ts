@@ -21,7 +21,7 @@ export const ngrokService = {
       Object.assign(ngrokOptions, { authtoken })
     } else {
       console.warn(
-        "Please sign up ngrok and set your token to .env so that your tunnels don't time out"
+        "Please sign up ngrok and set your token to .env so that your tunnels don't time out",
       )
     }
 

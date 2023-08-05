@@ -171,5 +171,5 @@ export type JsonController = (
   client: any,
   sourceId: any,
   destinationId: any,
-  namespace: any
+  namespace: any,
 ) => void
