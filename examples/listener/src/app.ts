@@ -23,7 +23,7 @@ const logFormat =
 
 const logStream = fs.createWriteStream(
   path.join(__dirname, `../logs/${environment}.log`),
-  { flags: 'a' }
+  { flags: 'a' },
 )
 
 app.use(morgan(logFormat))

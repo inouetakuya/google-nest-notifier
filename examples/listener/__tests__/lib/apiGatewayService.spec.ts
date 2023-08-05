@@ -20,7 +20,7 @@ describe('apiGatewayService', () => {
 
       test('returns apiGatewayUrl', () => {
         expect(apiGatewayUrl).toBe(
-          'https://xxxxxxxx.execute-api.ap-northeast-1.amazonaws.com/prod/notifications'
+          'https://xxxxxxxx.execute-api.ap-northeast-1.amazonaws.com/prod/notifications',
         )
       })
     })

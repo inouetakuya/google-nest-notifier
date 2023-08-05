@@ -19,7 +19,7 @@ export class MulticastDnsData {
     if (!this.response.txt) return ''
 
     const txtRecord: string | undefined = this.response.txt.find(
-      (value: string) => value.match(/^fn=/)
+      (value: string) => value.match(/^fn=/),
     )
 
     return txtRecord ? txtRecord.replace(/^fn=/, '') : ''
@@ -29,7 +29,7 @@ export class MulticastDnsData {
     if (!this.response.txt) return ''
 
     const txtRecord: string | undefined = this.response.txt.find(
-      (value: string) => value.match(/^md=/)
+      (value: string) => value.match(/^md=/),
     )
 
     return txtRecord ? txtRecord.replace(/^md=/, '') : ''

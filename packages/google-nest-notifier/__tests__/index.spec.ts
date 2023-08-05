@@ -10,7 +10,7 @@ jest.mock('../src/lib/textToSpeechUrl', () => {
     textToSpeechUrl: jest
       .fn()
       .mockResolvedValue(
-        'https://translate.google.com/translate_tts?foo=dummy'
+        'https://translate.google.com/translate_tts?foo=dummy',
       ),
   }
 })
@@ -23,32 +23,32 @@ describe('google-nest-notifier', () => {
     type ConnectCallbackType = () => void
     type LaunchCallbackType = (
       error: Error | null,
-      application: castv2.DefaultMediaReceiver
+      application: castv2.DefaultMediaReceiver,
     ) => void
 
     mockedCastv2Client = {
       connect: jest.fn((ip: string, callback: ConnectCallbackType): void =>
-        callback()
+        callback(),
       ),
       launch: jest.fn(
         (
           Application: castv2.DefaultMediaReceiver,
-          callback: LaunchCallbackType
+          callback: LaunchCallbackType,
         ) => {
           try {
             callback(null, new Application())
           } catch (error) {
             console.log(
-              'Error occurred by mockedCastv2Client, but skip handling it'
+              'Error occurred by mockedCastv2Client, but skip handling it',
             )
           }
-        }
+        },
       ),
       on: jest.fn(),
     }
     googleNestNotifier = new GoogleNestNotifier(
       { language: 'jp' },
-      mockedCastv2Client
+      mockedCastv2Client,
     )
   })
 
@@ -67,7 +67,7 @@ describe('google-nest-notifier', () => {
       await expect(
         googleNestNotifier
           .notify('Hello', { deviceName: 'Rachael' })
-          .catch(() => ({})) // for fixing UnhandledPromiseRejection
+          .catch(() => ({})), // for fixing UnhandledPromiseRejection
       ).toBeTruthy()
     })
 
@@ -117,7 +117,7 @@ describe('google-nest-notifier', () => {
       })
       expect(media).toEqual({
         contentId: expect.stringContaining(
-          'https://translate.google.com/translate_tts'
+          'https://translate.google.com/translate_tts',
         ),
         contentType: 'video/mp3',
         streamType: 'BUFFERED',

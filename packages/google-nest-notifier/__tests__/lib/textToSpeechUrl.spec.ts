@@ -7,7 +7,7 @@ describe('textToSpeechUrl', () => {
         textToSpeechUrl({
           text: 'あ'.repeat(200),
           language: 'ja',
-        })
+        }),
       ).resolves.toMatch(/^https:\/\/translate\.google\.com\/translate_tts\?/)
     })
   })
@@ -18,9 +18,9 @@ describe('textToSpeechUrl', () => {
         textToSpeechUrl({
           text: 'あ'.repeat(201),
           language: 'ja',
-        })
+        }),
       ).rejects.toThrow(
-        new RangeError('text length (201) should be less than 200 characters')
+        new RangeError('text length (201) should be less than 200 characters'),
       )
     })
   })

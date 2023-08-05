@@ -11,7 +11,7 @@ export const textToSpeechUrl = ({
 }): Promise<string> => {
   if (text.length > 200) {
     return Promise.reject(
-      new RangeError('text length (201) should be less than 200 characters')
+      new RangeError('text length (201) should be less than 200 characters'),
     )
   }
 

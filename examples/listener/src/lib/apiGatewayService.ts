@@ -78,7 +78,7 @@ export const apiGatewayService = {
 
     if (apiGatewayOptions.profile) {
       createDeploymentCommandArray.push(
-        `--profile ${apiGatewayOptions.profile}`
+        `--profile ${apiGatewayOptions.profile}`,
       )
     }
 
@@ -87,7 +87,7 @@ export const apiGatewayService = {
     return urlJoin(
       `https://${apiGatewayOptions.restApiId}.execute-api.ap-northeast-1.amazonaws.com`,
       apiGatewayOptions.stageName,
-      apiGatewayOptions.path
+      apiGatewayOptions.path,
     )
   },
 }

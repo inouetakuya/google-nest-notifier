@@ -52,9 +52,9 @@ describe('multicastDnsService', () => {
         const result = queryMulticastDnsDataByDeviceNames(deviceNames).then(
           (dataArray) => {
             expect(dataArray.map((data) => data.deviceName)).toEqual(
-              deviceNames
+              deviceNames,
             )
-          }
+          },
         )
 
         browser.emit('ready')
@@ -74,9 +74,9 @@ describe('multicastDnsService', () => {
         const result = queryMulticastDnsDataByDeviceNames(deviceNames).then(
           (dataArray) => {
             expect(
-              dataArray.map((data) => data.deviceName.toLowerCase())
+              dataArray.map((data) => data.deviceName.toLowerCase()),
             ).toEqual(deviceNames)
-          }
+          },
         )
 
         browser.emit('ready')
@@ -97,7 +97,7 @@ describe('multicastDnsService', () => {
       const result = getMulticastDnsDataByDeviceName(deviceName).then(
         (data) => {
           expect(data?.deviceName).toBe(deviceName)
-        }
+        },
       )
 
       browser.emit('ready')

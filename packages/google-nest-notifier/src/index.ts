@@ -25,7 +25,7 @@ export class GoogleNestNotifier {
 
   constructor(
     { deviceName, ipAddress, language }: NotificationOptions = {},
-    client: Client = new castv2.Client()
+    client: Client = new castv2.Client(),
   ) {
     if (deviceName) this.defaultDeviceName = deviceName
     if (ipAddress) this.defaultIpAddress = ipAddress
@@ -46,7 +46,7 @@ export class GoogleNestNotifier {
 
   async notify(
     text: string,
-    { deviceName, ipAddress, language }: NotificationOptions = {}
+    { deviceName, ipAddress, language }: NotificationOptions = {},
   ): Promise<boolean> {
     if (
       !(
@@ -83,7 +83,7 @@ export class GoogleNestNotifier {
 
   async getMedia(
     text: string,
-    { language }: Pick<NotificationOptions, 'language'>
+    { language }: Pick<NotificationOptions, 'language'>,
   ): Promise<Media> {
     const speechUrl: string = await textToSpeechUrl({
       text,
@@ -105,7 +105,7 @@ export class GoogleNestNotifier {
         (error: Error, mediaReceiver: DefaultMediaReceiver) => {
           if (error) return reject(error)
           resolve(mediaReceiver)
-        }
+        },
       )
     })
   }
@@ -124,7 +124,7 @@ export class GoogleNestNotifier {
         (error: Error, status: Record<string, any>) => {
           if (error) reject(error)
           resolve(status)
-        }
+        },
       )
     })
   }

@@ -5,7 +5,7 @@ export const boomHandler = (
   error: Boom,
   request: Request,
   response: Response,
-  next: NextFunction
+  next: NextFunction,
 ): void => {
   if (!error.isBoom) return next(error)
 
