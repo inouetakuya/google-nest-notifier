@@ -1,5 +1,9 @@
 {
   "files": ["**/*.js", "**/*.ts"],
+  "ignores": [
+    "node_modules",
+    "dist"
+  ],
   "env": {
     "es6": true,
     "node": true
