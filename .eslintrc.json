@@ -1,5 +1,4 @@
 {
-  "files": ["**/*.js", "**/*.ts"],
   "env": {
     "es6": true,
     "node": true
