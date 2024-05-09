@@ -10,8 +10,8 @@
     "examples/*"
   ],
   "scripts": {
-    "lint": "eslint .",
-    "lint:fix": "eslint . --fix",
+    "lint": "eslint --ignore-path .gitignore .",
+    "lint:fix": "eslint --ignore-path .gitignore . --fix",
     "format:check": "prettier --check .",
     "format:fix": "prettier --write .",
     "test": "yarn test:google-nest-notifier && yarn test:listener",
