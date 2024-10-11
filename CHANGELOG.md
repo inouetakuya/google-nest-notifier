@@ -2,9 +2,17 @@
 
 ## main
 
+## [0.0.4](https://github.com/inouetakuya/google-nest-notifier/compare/v0.0.3...v0.0.4) (2023-03-19)
+
+### Bug Fixes
+ 
+- [fix: yarn workspace listener dev #205](https://github.com/inouetakuya/google-nest-notifier/pull/205)
+
 ### Chores
 
 - Add CHANGELOG
+- Configure Renovate
+- Update dependencies
 
 ## [0.0.3](https://github.com/inouetakuya/google-nest-notifier/compare/v0.0.2...v0.0.3) (2022-05-22)
 
