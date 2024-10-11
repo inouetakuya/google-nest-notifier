@@ -1,6 +1,11 @@
 # Changelog
 
-## main
+## [0.0.6](https://github.com/inouetakuya/google-nest-notifier/compare/v0.0.5...v0.0.6) (2024-10-11)
+
+### Chores
+
+- Bump Node.js to v20
+- Update dependencies
 
 ## [0.0.5](https://github.com/inouetakuya/google-nest-notifier/compare/v0.0.4...v0.0.5) (2023-12-31)
 
