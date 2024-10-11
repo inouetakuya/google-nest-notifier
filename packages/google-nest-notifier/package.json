@@ -32,8 +32,8 @@
     "test": "jest --verbose --runInBand --detectOpenHandles"
   },
   "dependencies": {
-    "castv2-client": "^1.2.0",
-    "google-tts-api": "^2.0.2",
-    "mdns-js": "^1.0.3"
+    "castv2-client": "1.2.0",
+    "google-tts-api": "2.0.2",
+    "mdns-js": "1.0.3"
   }
 }
