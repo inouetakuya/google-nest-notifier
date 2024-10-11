@@ -2,6 +2,13 @@
 
 ## main
 
+## [0.0.5](https://github.com/inouetakuya/google-nest-notifier/compare/v0.0.4...v0.0.5) (2023-12-31)
+
+### Chores
+
+- [Bump Node.js to v18 #295](https://github.com/inouetakuya/google-nest-notifier/pull/295)
+- Update dependencies
+
 ## [0.0.4](https://github.com/inouetakuya/google-nest-notifier/compare/v0.0.3...v0.0.4) (2023-03-19)
 
 ### Bug Fixes
