@@ -37,7 +37,7 @@ describe('google-nest-notifier', () => {
         ) => {
           try {
             callback(null, new Application())
-          } catch (error) {
+          } catch {
             console.log(
               'Error occurred by mockedCastv2Client, but skip handling it',
             )
