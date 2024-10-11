@@ -1,6 +1,8 @@
-require('dotenv').config({ path: '.env.test' })
+import { config } from 'dotenv'
 
-module.exports = {
+config({ path: '.env.test' })
+
+export default {
   preset: 'ts-jest',
   testEnvironment: 'node',
   moduleFileExtensions: ['js', 'ts', 'json'],
