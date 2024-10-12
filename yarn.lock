@@ -581,7 +581,7 @@
   resolved "https://registry.yarnpkg.com/@eslint/core/-/core-0.6.0.tgz#9930b5ba24c406d67a1760e94cdbac616a6eb674"
   integrity sha512-8I2Q8ykA4J0x0o7cg67FPVnehcqWTBehu/lmY+bolPFHGjh49YzGBMXTvpqVgEbBdvNCSxj6iFgiIyHzf03lzg==
 
-"@eslint/eslintrc@^3.1.0":
+"@eslint/eslintrc@3.1.0", "@eslint/eslintrc@^3.1.0":
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/@eslint/eslintrc/-/eslintrc-3.1.0.tgz#dbd3482bfd91efa663cbe7aa1f506839868207b6"
   integrity sha512-4Bfj15dVJdoy3RfZmmo86RK1Fwzn6SstsvK9JS+BaVKqC6QQQQyXekNaC+g+LKNgkQ+2VhGAzm6hO40AhMR3zQ==
@@ -3182,6 +3182,11 @@ global-dirs@^3.0.0:
   integrity sha512-v8ho2DS5RiCjftj1nD9NmnfaOzTdud7RRnVd9kFNOjqZbISlx5DQ+OrTkywgd0dIt7oFCvKetZSHoHcP3sDdiA==
   dependencies:
     ini "2.0.0"
+
+globals@15.11.0:
+  version "15.11.0"
+  resolved "https://registry.yarnpkg.com/globals/-/globals-15.11.0.tgz#b96ed4c6998540c6fb824b24b5499216d2438d6e"
+  integrity sha512-yeyNSjdbyVaWurlwCpcA6XNBrHTMIeDdj0/hnvX/OLJ9ekOXYbLsLinH/MucQyGvNnXhidTdNhTtJaffL2sMfw==
 
 globals@^11.1.0:
   version "11.12.0"
