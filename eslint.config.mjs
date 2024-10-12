@@ -1,5 +1,7 @@
 import { includeIgnoreFile } from '@eslint/compat'
 import js from '@eslint/js'
+import typescriptEslintPlugin from '@typescript-eslint/eslint-plugin'
+import typescriptEslintParser from '@typescript-eslint/parser'
 import globals from 'globals'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
@@ -16,10 +18,19 @@ export default [
   includeIgnoreFile(gitignorePath),
 
   {
+    plugins: {
+      '@typescript-eslint': typescriptEslintPlugin,
+    },
     languageOptions: {
       globals: {
         ...globals.node,
       },
+      parser: typescriptEslintParser,
+    },
+    rules: {
+      '@typescript-eslint/ban-ts-comment': 'off',
+      '@typescript-eslint/no-explicit-any': 'off',
+      '@typescript-eslint/no-var-requires': 'off',
     },
   },
 ]
