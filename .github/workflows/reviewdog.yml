@@ -1,7 +1,5 @@
 name: reviewdog
 on: [pull_request]
-env:
-  ESLINT_USE_FLAT_CONFIG: false
 jobs:
   eslint:
     name: runner / eslint
