@@ -2,6 +2,7 @@ import { includeIgnoreFile } from '@eslint/compat'
 import js from '@eslint/js'
 import typescriptEslintPlugin from '@typescript-eslint/eslint-plugin'
 import typescriptEslintParser from '@typescript-eslint/parser'
+import eslintConfigPrettier from 'eslint-config-prettier'
 import globals from 'globals'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
@@ -33,4 +34,5 @@ export default [
       '@typescript-eslint/no-var-requires': 'off',
     },
   },
+  eslintConfigPrettier,
 ]
