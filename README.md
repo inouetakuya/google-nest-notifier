@@ -1,6 +1,6 @@
 # google-nest-notifier
 
-[![CircleCI](https://circleci.com/gh/inouetakuya/google-nest-notifier.svg?style=svg)](https://circleci.com/gh/inouetakuya/google-nest-notifier)
+![main workflow](https://github.com/inouetakuya/google-nest-notifier/actions/workflows/main.yml/badge.svg)
 
 Send notifications to Google Nest
 
