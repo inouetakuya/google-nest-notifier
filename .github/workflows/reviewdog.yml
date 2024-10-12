@@ -15,7 +15,7 @@ jobs:
       - run: yarn workspace google-nest-notifier build
       - run: yarn install
       - name: eslint
-        uses: reviewdog/action-eslint@v1
+        uses: reviewdog/action-eslint@v1.32.0
         with:
           level: warning
           reporter: github-pr-review
