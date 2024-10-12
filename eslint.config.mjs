@@ -1,5 +1,6 @@
 import { includeIgnoreFile } from '@eslint/compat'
 import js from '@eslint/js'
+import globals from 'globals'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 
@@ -13,4 +14,12 @@ export default [
   // Ignore Files - ESLint - Pluggable JavaScript Linter
   // https://eslint.org/docs/latest/use/configure/ignore
   includeIgnoreFile(gitignorePath),
+
+  {
+    languageOptions: {
+      globals: {
+        ...globals.node,
+      },
+    },
+  },
 ]
