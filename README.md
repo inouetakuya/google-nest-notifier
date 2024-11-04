@@ -7,7 +7,7 @@ Send notifications to Google Nest
 ## Setup
 
 ```shell
-yarn install
+pnpm install
 ```
 
 ## Packages

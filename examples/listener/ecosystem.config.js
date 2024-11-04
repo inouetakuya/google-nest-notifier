@@ -32,7 +32,7 @@ module.exports = {
       ref: 'origin/main',
       repo: 'git@github.com:inouetakuya/google-nest-notifier.git',
       path: '/var/www/google-nest-notifier',
-      'post-deploy': 'yarn install && yarn workspace listener reload',
+      'post-deploy': 'pnpm install && pnpm --filter listener reload',
     },
   },
 }

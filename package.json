@@ -5,18 +5,14 @@
   "author": "INOUE Takuya <inouetakuya5@gmail.com>",
   "license": "MIT",
   "private": true,
-  "workspaces": [
-    "packages/*",
-    "examples/*"
-  ],
   "scripts": {
     "lint": "eslint",
     "lint:fix": "eslint --fix",
     "format:check": "prettier --check .",
     "format:fix": "prettier --write .",
-    "test": "yarn test:google-nest-notifier && yarn test:listener",
-    "test:google-nest-notifier": "yarn workspace google-nest-notifier test",
-    "test:listener": "yarn workspace listener test"
+    "test": "pnpm test:google-nest-notifier && pnpm test:listener",
+    "test:google-nest-notifier": "pnpm --filter google-nest-notifier test",
+    "test:listener": "pnpm --filter listener test"
   },
   "devDependencies": {
     "@eslint/compat": "1.2.2",
