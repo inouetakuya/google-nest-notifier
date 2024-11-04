@@ -1,6 +1,6 @@
 {
   "name": "listener",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Listener for google-nest-notifier",
   "author": "INOUE Takuya <inouetakuya5@gmail.com>",
   "homepage": "https://github.com/inouetakuya/google-nest-notifier#readme",
@@ -9,9 +9,6 @@
   "main": "src/index.ts",
   "directories": {
     "test": "__tests__"
-  },
-  "publishConfig": {
-    "registry": "https://registry.yarnpkg.com"
   },
   "repository": {
     "type": "git",
@@ -46,7 +43,7 @@
     "@hapi/boom": "9.1.2",
     "dotenv": "16.4.5",
     "express": "4.20.0",
-    "google-nest-notifier": "0.0.6",
+    "google-nest-notifier": "latest",
     "morgan": "1.10.0",
     "ngrok": "4.0.1",
     "pm2": "5.2.0",
