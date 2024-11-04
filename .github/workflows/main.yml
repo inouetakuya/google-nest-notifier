@@ -20,21 +20,21 @@ jobs:
 
       - name: Setup
         run: |
-          yarn workspace google-nest-notifier install
-          yarn workspace google-nest-notifier build
-          yarn install
+          pnpm --filter google-nest-notifier install
+          pnpm --filter google-nest-notifier build
+          pnpm install
 
       - name: Check format
-        run: yarn format:check
+        run: pnpm format:check
 
       - name: Lint
-        run: yarn lint
+        run: pnpm lint
 
       - name: Test
-        run: yarn test
+        run: pnpm test
 
       - name: Build listener
-        run: yarn workspace listener build
+        run: pnpm --filter listener build
 
       - name: '[Pull Request] Get commit message'
         id: pr_get_commit_message

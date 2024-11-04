@@ -9,9 +9,9 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
-      - run: yarn workspace google-nest-notifier install
-      - run: yarn workspace google-nest-notifier build
-      - run: yarn install
+      - run: pnpm --filter google-nest-notifier install
+      - run: pnpm --filter google-nest-notifier build
+      - run: pnpm install
       - name: eslint
         uses: reviewdog/action-eslint@v1
         with:

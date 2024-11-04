@@ -5,7 +5,7 @@ Web API for Send notifications to Google Nest
 ## Setup
 
 ```shell
-yarn install
+pnpm install
 ```
 
 ```shell
@@ -15,7 +15,7 @@ cp .env.example .env
 ## Development
 
 ```shell
-yarn dev
+pnpm dev
 ```
 
 ```shell
@@ -29,7 +29,7 @@ curl -X POST -H "Accept: application/json" -H 'Content-Type: application/json' -
 ## Testing
 
 ```shell
-yarn test
+pnpm test
 ```
 
 ## Production
@@ -37,26 +37,26 @@ yarn test
 ### Start server
 
 ```shell
-yarn build
-yarn start
+pnpm build
+pnpm start
 ```
 
 ### Zero downtime reload
 
 ```shell
-yarn reload
+pnpm reload
 ```
 
 ### Restart server
 
 ```shell
-yarn restart
+pnpm restart
 ```
 
 ### Stop server
 
 ```shell
-yarn stop
+pnpm stop
 ```
 
 ### Show process list
@@ -76,8 +76,8 @@ npx pm2 list
 ### Show logs
 
 ```shell
-yarn logs
-yarn logs --lines 50
+pnpm logs
+pnpm logs --lines 50
 ```
 
 ### Use ngrok (optional)
@@ -87,11 +87,11 @@ You can use ngrok.
 Sign up ngrok and set your token to `.env` so that your tunnels don't time out.
 
 ```shell
-yarn start
+pnpm start
 ```
 
 ```shell
-yarn logs
+pnpm logs
 ```
 
 Copy your ngrok url from pm2 logs.
@@ -111,11 +111,11 @@ curl -X POST -H "Accept: application/json" -H 'Content-Type: application/json' -
 - Set your AWS API Gateway info to `.env`
 
 ```shell
-yarn start
+pnpm start
 ```
 
 ```shell
-yarn logs
+pnpm logs
 ```
 
 Copy your AWS API Gateway url from pm2 logs.
@@ -135,10 +135,10 @@ curl -X POST -H "Accept: application/json" -H 'Content-Type: application/json' -
 ### Setup
 
 ```shell
-yarn deploy:setup
-yarn deploy:only
-yarn deploy:install:yarn
-yarn deploy:install:google-nest-notifier
+pnpm deploy:setup
+pnpm deploy:only
+pnpm deploy:install:pnpm
+pnpm deploy:install:google-nest-notifier
 ```
 
 ### Set .env
@@ -160,18 +160,18 @@ scp .env.production pi@raspberrypi:/var/www/google-nest-notifier/current/example
 ### Build & Start
 
 ```shell
-yarn deploy:build
-yarn deploy:start
+pnpm deploy:build
+pnpm deploy:start
 ```
 
 ### deploy
 
 ```shell
-yarn deploy
+pnpm deploy
 ```
 
 ### logs
 
 ```shell
-yarn deploy:logs
+pnpm deploy:logs
 ```
