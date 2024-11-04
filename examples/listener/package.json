@@ -10,9 +10,6 @@
   "directories": {
     "test": "__tests__"
   },
-  "publishConfig": {
-    "registry": "https://registry.yarnpkg.com"
-  },
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com/inouetakuya/google-nest-notifier.git",
