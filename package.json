@@ -5,10 +5,6 @@
   "author": "INOUE Takuya <inouetakuya5@gmail.com>",
   "license": "MIT",
   "private": true,
-  "workspaces": [
-    "packages/*",
-    "examples/*"
-  ],
   "scripts": {
     "lint": "eslint",
     "lint:fix": "eslint --fix",
