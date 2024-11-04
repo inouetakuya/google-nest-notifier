@@ -18,6 +18,9 @@ jobs:
         with:
           node-version: '20'
 
+      - name: Install pnpm
+        run: npm install --global pnpm
+
       - name: Setup
         run: |
           pnpm --filter google-nest-notifier install

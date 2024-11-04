@@ -9,6 +9,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
+      - run: npm install --global pnpm
       - run: pnpm --filter google-nest-notifier install
       - run: pnpm --filter google-nest-notifier build
       - run: pnpm install
