@@ -63,8 +63,8 @@ importers:
         specifier: 4.20.0
         version: 4.20.0
       google-nest-notifier:
-        specifier: 0.0.6
-        version: 0.0.6
+        specifier: latest
+        version: 0.0.7
       morgan:
         specifier: 1.10.0
         version: 1.10.0
@@ -1568,8 +1568,8 @@ packages:
     resolution: {integrity: sha512-yeyNSjdbyVaWurlwCpcA6XNBrHTMIeDdj0/hnvX/OLJ9ekOXYbLsLinH/MucQyGvNnXhidTdNhTtJaffL2sMfw==}
     engines: {node: '>=18'}
 
-  google-nest-notifier@0.0.6:
-    resolution: {integrity: sha512-qwH5aoFTiOH+GlNZAfkOeKWP+IG3Ssp+3CrAX4c+QQPu9PR3Kftj5FFP8bXl3XiISNY6KWnTzfyXdQQJ8pxZyg==}
+  google-nest-notifier@0.0.7:
+    resolution: {integrity: sha512-DRPQb7ohbbQ7pauUxwm5bKI5or8uF3hvVF7tLJKPD8vqIY3VVWDbyLdsMNvLaTozsJ4JIBcBFvmXH/tYGgP1kg==}
 
   google-tts-api@2.0.2:
     resolution: {integrity: sha512-MkQYbBJEdom8hJpfEVDfD3tpBtkz0X59C+FNsoRhbnCiFjZRnzyurGQ5OrAr3xkigII56/jmk0JNwZsp450G+Q==}
@@ -4717,7 +4717,7 @@ snapshots:
 
   globals@15.11.0: {}
 
-  google-nest-notifier@0.0.6:
+  google-nest-notifier@0.0.7:
     dependencies:
       castv2-client: 1.2.0
       google-tts-api: 2.0.2
