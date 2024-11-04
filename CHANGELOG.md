@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.0.7](https://github.com/inouetakuya/google-nest-notifier/compare/v0.0.6...v0.0.7) (2024-11-04)
+
+### Chores
+
+- [chore: lock versions of npm packages #370](https://github.com/inouetakuya/google-nest-notifier/pull/370)
+- [Migrate to ESLint Flat Config #373](https://github.com/inouetakuya/google-nest-notifier/pull/373)
+- [chore: Replace Yarn with pnpm #382](https://github.com/inouetakuya/google-nest-notifier/pull/382)
+- [chore: Bump Node.js to v22 #383](https://github.com/inouetakuya/google-nest-notifier/pull/383)
+- Update dependencies
+
 ## [0.0.6](https://github.com/inouetakuya/google-nest-notifier/compare/v0.0.5...v0.0.6) (2024-10-11)
 
 ### Chores
