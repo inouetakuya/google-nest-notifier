@@ -15,7 +15,7 @@
     "test:listener": "pnpm --filter listener test"
   },
   "devDependencies": {
-    "@eslint/compat": "1.2.4",
+    "@eslint/compat": "1.2.5",
     "@eslint/js": "9.17.0",
     "@types/jest": "29.5.14",
     "@types/node": "22.10.5",
