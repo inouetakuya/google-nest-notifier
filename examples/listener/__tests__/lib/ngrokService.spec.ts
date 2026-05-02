@@ -27,7 +27,7 @@ describe('ngrokService', () => {
 
       test('connects with authtoken', async () => {
         expect(ngrokUrl).toBe(dummyNgrokUrl)
-        expect(ngrok.connect).toBeCalledWith({
+        expect(ngrok.connect).toHaveBeenCalledWith({
           port: dummyPort,
           authtoken: dummyToken,
         })
@@ -47,7 +47,7 @@ describe('ngrokService', () => {
 
       test('connects with region', async () => {
         expect(ngrokUrl).toBe(dummyNgrokUrl)
-        expect(ngrok.connect).toBeCalledWith({
+        expect(ngrok.connect).toHaveBeenCalledWith({
           port: dummyPort,
           authtoken: dummyToken,
           region: dummyRegion,
