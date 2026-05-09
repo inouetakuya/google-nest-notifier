@@ -18,7 +18,7 @@
     "@eslint/compat": "2.0.5",
     "@eslint/js": "10.0.1",
     "@types/jest": "30.0.0",
-    "@types/node": "22.19.17",
+    "@types/node": "22.19.18",
     "@typescript-eslint/eslint-plugin": "8.59.1",
     "@typescript-eslint/parser": "8.59.1",
     "add": "2.0.6",
