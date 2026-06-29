@@ -48,14 +48,12 @@ export class GoogleNestNotifier {
     text: string,
     { deviceName, ipAddress, language }: NotificationOptions = {},
   ): Promise<boolean> {
-    if (
-      !(
-        deviceName ||
-        ipAddress ||
-        this.defaultDeviceName ||
-        this.defaultIpAddress
-      )
-    )
+    if (!(
+      deviceName ||
+      ipAddress ||
+      this.defaultDeviceName ||
+      this.defaultIpAddress
+    ))
       throw new Error('Neither deviceName nor ipAddress is assigned')
 
     const _ipAddress =
