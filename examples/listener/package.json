@@ -44,7 +44,7 @@
     "dotenv": "16.4.5",
     "express": "4.20.0",
     "google-nest-notifier": "latest",
-    "morgan": "1.10.0",
+    "morgan": "1.11.0",
     "ngrok": "4.0.1",
     "pm2": "7.0.0",
     "proper-url-join": "2.1.1"
