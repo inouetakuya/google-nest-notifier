@@ -39,8 +39,8 @@ importers:
         specifier: 10.1.8
         version: 10.1.8(eslint@10.8.0(supports-color@8.1.1))
       globals:
-        specifier: 17.7.0
-        version: 17.7.0
+        specifier: 17.8.0
+        version: 17.8.0
       jest:
         specifier: 30.4.2
         version: 30.4.2(@types/node@22.20.1)(supports-color@8.1.1)(ts-node@10.9.1(@types/node@22.20.1)(typescript@6.0.3))
@@ -1779,8 +1779,8 @@ packages:
     resolution: {integrity: sha512-NBcGGFbBA9s1VzD41QXDG+3++t9Mn5t1FpLdhESY6oKY4gYTFpX4wO3sqGUa0Srjtbfj3szX0RnemmrVRUdULA==}
     engines: {node: '>=10'}
 
-  globals@17.7.0:
-    resolution: {integrity: sha512-Czmyns5dUsq4seFBR/Kdydhmo8y9kC79hiSkPn0YcGtNnYWnrgt0vjrSjx9tspoDGWm2CMarffRuLjM4xUz8xg==}
+  globals@17.8.0:
+    resolution: {integrity: sha512-Zz/LMDZScFmkakeL2cTHzf+PbWKdpU3uclqkZT7TjDG58j5WPt0PpA+n9uPI24fZtlw07q0OtEi84K+umsRzqQ==}
     engines: {node: '>=18'}
 
   google-nest-notifier@0.0.7:
@@ -5084,7 +5084,7 @@ snapshots:
     dependencies:
       ini: 2.0.0
 
-  globals@17.7.0: {}
+  globals@17.8.0: {}
 
   google-nest-notifier@0.0.7(debug@4.3.7(supports-color@5.5.0))(supports-color@5.5.0):
     dependencies:
