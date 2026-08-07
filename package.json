@@ -24,7 +24,7 @@
     "add": "2.0.9",
     "eslint": "10.8.0",
     "eslint-config-prettier": "10.1.8",
-    "globals": "17.8.0",
+    "globals": "17.9.0",
     "jest": "30.4.2",
     "prettier": "3.9.6",
     "ts-jest": "29.4.12",
