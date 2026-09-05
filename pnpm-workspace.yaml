@@ -2,6 +2,7 @@ packages:
   - 'packages/*'
   - 'examples/*'
 allowBuilds:
+  '@parcel/watcher': false
   ngrok: true
   nodemon: true
   protobufjs: true
