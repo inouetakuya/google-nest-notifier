@@ -1784,17 +1784,8 @@ packages:
   flatted@3.4.4:
     resolution: {integrity: sha512-5+ybhBZANEJxaH3X5evAFatUxLfEHSr7n6kYJ+1Qd0mUqr4eu9gIf6GDbWHf8RJijHrjjO8G+la14SlL2SeS1Q==}
 
-  follow-redirects@1.15.9:
-    resolution: {integrity: sha512-gew4GsXizNgdoRyqmyfMHyAmXsZDk6mHkSxZFCzW9gwlbtOW44CDtYavM+y+72qD/Vq2l550kMF52DT8fOLJqQ==}
-    engines: {node: '>=4.0'}
-    peerDependencies:
-      debug: '*'
-    peerDependenciesMeta:
-      debug:
-        optional: true
-
-  follow-redirects@1.16.0:
-    resolution: {integrity: sha512-y5rN/uOsadFT/JfYwhxRS5R7Qce+g3zG97+JrtFZlC9klX/W5hD7iiLzScI4nZqUS7DNUdhPgw4xI8W2LuXlUw==}
+  follow-redirects@1.16.1:
+    resolution: {integrity: sha512-FNvFGzoMLWmE6Yj9spb/zjd7yiNCHiAW9/Tg9CXrQ8wuu32HtlJOwWO11OJafl5FfY3DxTdQ0vj42zU1kvv5jg==}
     engines: {node: '>=4.0'}
     peerDependencies:
       debug: '*'
@@ -4446,13 +4437,13 @@ snapshots:
 
   axios@0.21.4(debug@4.3.7(supports-color@5.5.0)):
     dependencies:
-      follow-redirects: 1.15.9(debug@4.3.7(supports-color@5.5.0))
+      follow-redirects: 1.16.1(debug@4.3.7(supports-color@5.5.0))
     transitivePeerDependencies:
       - debug
 
   axios@0.21.4(debug@4.4.3(supports-color@8.1.1)):
     dependencies:
-      follow-redirects: 1.15.9(debug@4.4.3(supports-color@8.1.1))
+      follow-redirects: 1.16.1(debug@4.4.3(supports-color@8.1.1))
     transitivePeerDependencies:
       - debug
 
@@ -5133,7 +5124,7 @@ snapshots:
 
   extrareqp2@1.0.0(debug@4.3.7(supports-color@5.5.0)):
     dependencies:
-      follow-redirects: 1.16.0(debug@4.3.7(supports-color@5.5.0))
+      follow-redirects: 1.16.1(debug@4.3.7(supports-color@5.5.0))
     transitivePeerDependencies:
       - debug
 
@@ -5199,17 +5190,13 @@ snapshots:
 
   flatted@3.4.4: {}
 
-  follow-redirects@1.15.9(debug@4.3.7(supports-color@5.5.0)):
+  follow-redirects@1.16.1(debug@4.3.7(supports-color@5.5.0)):
     optionalDependencies:
       debug: 4.3.7(supports-color@5.5.0)
 
-  follow-redirects@1.15.9(debug@4.4.3(supports-color@8.1.1)):
+  follow-redirects@1.16.1(debug@4.4.3(supports-color@8.1.1)):
     optionalDependencies:
       debug: 4.4.3(supports-color@8.1.1)
-
-  follow-redirects@1.16.0(debug@4.3.7(supports-color@5.5.0)):
-    optionalDependencies:
-      debug: 4.3.7(supports-color@5.5.0)
 
   foreground-child@3.3.1:
     dependencies:
